@@ -14,6 +14,9 @@ GameState::GameState( std::shared_ptr<Scene> scenePtr )
 
 void GameState::onStart()
 {
+	mouse = std::make_shared<Mouse>();
+	scenePointer->renderer.addSingle( mouse, 0 );
+
 	auto mainSubState = std::make_shared<MainGameSubState>();
 	mainSubState->fillRenderer( scenePointer->renderer );
 
@@ -29,6 +32,8 @@ void GameState::run()
 	sf::Event event;
 
 	this->loopSubStates();
+
+	mouse->update( scenePointer );
 
 	eventControl->checkEvent( event );
 

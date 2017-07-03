@@ -8,6 +8,7 @@ https://github.com/mvxxx
 #include "states/State.hpp"
 #include "subStates/mainGameSubState.hpp"
 #include "eventControl/EventControl.hpp"
+#include "mouse/Mouse.hpp"
 
 class GameState :public State
 {
@@ -17,6 +18,7 @@ protected:
 private:
 	std::shared_ptr<mv::EventControl> eventControl;
 	std::shared_ptr<Scene> scenePointer;
+	std::shared_ptr<Mouse> mouse;
 	/* ===Methods=== */
 public:
 

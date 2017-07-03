@@ -23,6 +23,11 @@ int main()
 
 //temporary template
 
+/*
+mvxxx 2017
+https://github.com/mvxxx
+*/
+
 //#pragma once
 //
 //class T
