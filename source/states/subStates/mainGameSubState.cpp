@@ -27,5 +27,5 @@ void MainGameSubState::run()
 
 void MainGameSubState::fillRenderer(Renderer& renderer)
 {
-	renderer.addCollection( mapManager.tilesManager.getTiles(), 0 );
+	//renderer.addCollection( mapManager.tilesManager.getTiles(), 1 );
 }

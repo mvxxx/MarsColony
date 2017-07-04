@@ -7,7 +7,7 @@ https://github.com/mvxxx
 
 #include <memory>
 #include <vector>
-#include <unordered_map>
+#include <map>
 
 #include "ecs/entity/Entity.hpp"
 #include "ecs/component/ProperBody.hpp"
@@ -22,14 +22,16 @@ private:
 
 	//using entityCollection_t = std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>;
 
-	std::unordered_map < layer_t, std::vector<std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>>> drawLayers;
+	std::map < layer_t, std::vector<std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>>> drawLayers;
 
 	/* ===Methods=== */
 public:
 	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, layer_t numberOfLayer );
 	void drawAll( sf::RenderWindow& window );
+	bool addSingle( std::shared_ptr<mv::Entity> , layer_t numberOfLayer );
 
 protected:
 private:
 	bool hasProperBody( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection  );
+	bool hasProperBody( std::shared_ptr<mv::Entity> entity );
 };

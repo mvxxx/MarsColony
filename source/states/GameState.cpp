@@ -14,6 +14,8 @@ GameState::GameState( std::shared_ptr<Scene> scenePtr )
 
 void GameState::onStart()
 {
+	scenePointer->getWindow()->setMouseCursorVisible( false );
+
 	mouse = std::make_shared<Mouse>();
 	scenePointer->renderer.addSingle( mouse, 0 );
 
