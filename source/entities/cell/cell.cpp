@@ -16,8 +16,3 @@ Cell::Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& tex
 
 	this->getComponent<UnitPosition>()->setUnitPosition( Math::convertToUnitPosition( position, cellDimensions ) );
 }
-
-void Cell::draw( sf::RenderTarget& target, sf::RenderStates states )
-{
-	target.draw( *this->getComponent<ProperBody>(), states );
-}

@@ -24,5 +24,4 @@ public:
 	Cell::Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& texture, int id );
 protected:
 private:
-	virtual void draw( sf::RenderTarget& target, sf::RenderStates states );
 };
