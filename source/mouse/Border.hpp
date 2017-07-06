@@ -8,20 +8,21 @@ https://github.com/mvxxx
 #include <sfml/Graphics/VertexArray.hpp>
 #include "ecs/entity/Entity.hpp"
 #include "scene/Scene.hpp"
+#include "ecs/component/Selection.hpp"
 #include "Math.hpp"
 
-class Border : public mv::Entity
+class Border : public mv::Entity, public sf::Drawable
 {
 	/* ===Objects=== */
 public:
 protected:
 private:
-	sf::VertexArray selection;
 	/* ===Methods=== */
 public:
 	Border( std::shared_ptr<Scene> scene );
 protected:
 private:
+	virtual void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
 };
 
 

@@ -15,9 +15,8 @@ void SelectionManager::cancelSelection()
 	std::cout << "RELASED" << std::endl;
 }
 
-void SelectionManager::manage()
+void SelectionManager::manage( sf::Event& event )
 {
-	sf::Event event;
 	
 	while ( scene->getWindow()->pollEvent( event ) )
 	{

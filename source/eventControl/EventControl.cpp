@@ -13,7 +13,7 @@ namespace mv
 	{	
 	}
 
-	void EventControl::checkEvent(sf::Event & event)
+	void EventControl::checkEvent(sf::Event& event)
 	{
 		while(scene->getWindow()->pollEvent(event))
 		{

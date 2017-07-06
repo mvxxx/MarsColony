@@ -10,6 +10,7 @@ https://github.com/mvxxx
 #include "cache/Cache.hpp"
 #include "scene/Scene.hpp"
 #include "Math.hpp"
+#include "Border.hpp"
 
 class Mouse :public mv::Entity
 {
@@ -18,6 +19,7 @@ public:
 protected:
 private:
 	mv::Cache<sf::Texture> textureAtlas;
+	std::shared_ptr<Border> border;
 	/* ===Methods=== */
 public:
 	Mouse();
@@ -25,4 +27,6 @@ public:
 	void update( std::shared_ptr<Scene> scene );
 protected:
 private:
+	virtual void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
+
 };

@@ -15,3 +15,12 @@ void Mouse::update( std::shared_ptr<Scene> scene )
 
 	//std::cout << this->getComponent<ProperBody>()->body.getPosition().x << std::endl;
 }
+
+void Mouse::draw( sf::RenderTarget& target, sf::RenderStates states ) const
+{
+	target.draw( *border );
+	target.draw( getComponent<ProperBody>()->body, states );
+}
+
+
+

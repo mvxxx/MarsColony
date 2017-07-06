@@ -1,15 +1,14 @@
 #include "Border.hpp"
 
-Border::Border(std::shared_ptr<Scene> scene)
+Border::Border( std::shared_ptr<Scene> scene )
 {
-	constexpr int8_t ammountOfCorners = 7;
+	this->addComponent<Selection>();
+	this->getComponent<Selection>()->init( scene );
+}
 
-	selection.setPrimitiveType( sf::Lines );
-	for ( size_t i = 0; i <= ammountOfCorners; i++ )
-	{
-		selection.append( sf::Vertex( Math::mouseWorldPosition(scene)) );
-		selection[i].color = sf::Color::Yellow;
-	}
+void Border::draw( sf::RenderTarget& target, sf::RenderStates states ) const
+{
+	target.draw( this->getComponent<Selection>()->getBorder(), states );
 }
 
 

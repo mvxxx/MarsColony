@@ -33,10 +33,11 @@ void GameState::run()
 {
 	sf::Event event;
 
-	mouse->update( scenePointer );
-	this->loopSubStates();
-
+	this->loopSubStates( event );
 	eventControl->checkEvent( event );
+
+	mouse->update( scenePointer );
+
 
 	scenePointer->clear();
 	scenePointer->drawAll();

@@ -23,7 +23,11 @@ private:
 public:
 	SelectionManager( std::shared_ptr<Scene> _scene );
 
-	void manage() override;
+	void manage( sf::Event& event );
+
+	//to do: implement in future
+	virtual void manage() override {};
+
 	virtual void addEntityToManage( std::shared_ptr<mv::Entity> entity ) override;
 protected:
 private:

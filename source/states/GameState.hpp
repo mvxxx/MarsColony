@@ -28,7 +28,7 @@ public:
 
 	virtual void onStop() override;
 
-	virtual void run() override;
+	void run();
 
 protected:
 private:

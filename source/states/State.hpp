@@ -9,11 +9,13 @@ https://github.com/mvxxx
 #include <map>
 #include <memory>
 
+#include <sfml/window/event.hpp>
+
 #include "SubState.hpp"
 
 class Scene;
 
-class State :public SubState
+class State
 {
 	/* ===Objects=== */
 public:
@@ -26,17 +28,21 @@ protected:
 private:
 	/* ===Methods=== */
 public:
+	virtual void onStart() = 0;
 
+	virtual void onStop() = 0;
+
+	virtual void run() = 0;
 protected:
-	void loopSubStates();
+	void loopSubStates( sf::Event& event );
 private:
 };
 
 
-inline void State::loopSubStates()
+inline void State::loopSubStates( sf::Event& event )
 {
 	for ( auto& subState : subStates )
 	{
-		subState.second->run();
+		subState.second->run( event );
 	}
 }

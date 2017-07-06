@@ -22,10 +22,10 @@ void MainGameSubState::onStop()
 {
 }
 
-void MainGameSubState::run()
+void MainGameSubState::run( sf::Event event )
 {
 	mapManager.manageAll();
-	selectionManager.manage();
+	selectionManager.manage( event );
 }
 
 void MainGameSubState::fillRenderer( Renderer& renderer )

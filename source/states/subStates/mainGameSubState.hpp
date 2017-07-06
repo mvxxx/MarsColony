@@ -29,7 +29,7 @@ public:
 
 	virtual void onStop() override;
 
-	virtual void run() override;
+	virtual void run( sf::Event event ) override;
 
 	void fillRenderer( Renderer& renderer );
 

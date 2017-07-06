@@ -22,7 +22,7 @@ namespace mv
 		/* ===Methods=== */
 	public:
 		template<class T>
-		std::shared_ptr<T> getComponent();
+		std::shared_ptr<T> getComponent() const;
 
 		template<class T>
 		bool addComponent();
@@ -37,7 +37,7 @@ namespace mv
 	};
 
 	template<class T>
-	inline std::shared_ptr<T> Entity::getComponent()
+	inline std::shared_ptr<T> Entity::getComponent() const
 	{
 		for ( auto&cw : componentWrappers )
 			if ( cw.id == typeid(T).hash_code() )

@@ -5,6 +5,8 @@ https://github.com/mvxxx
 
 #pragma once
 
+#include <SFML/Window/Event.hpp>
+
 class SubState
 {
 	/* ===Objects=== */
@@ -18,7 +20,7 @@ public:
 
 	virtual void onStop() = 0;
 
-	virtual void run() = 0;
+	virtual void run( sf::Event event ) = 0;
 
 protected:
 private:

@@ -34,7 +34,7 @@ namespace mv
 		std::shared_ptr<Scene> scene;
 		/* ===Methods=== */
 	public:
-		void checkEvent(sf::Event &event);
+		void checkEvent(sf::Event& event);
 		EventControl( std::shared_ptr<Scene> scenePointer );
 	protected:
 	private:
