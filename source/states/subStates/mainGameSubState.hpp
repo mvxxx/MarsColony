@@ -8,6 +8,8 @@ https://github.com/mvxxx
 #include "states/SubState.hpp"
 #include "mapManager/mapManager.hpp"
 #include "eventControl/EventControl.hpp"
+#include "renderer/renderer.hpp"
+#include "mapManager/SelectionManager.hpp"
 
 class MainGameSubState :public SubState
 {
@@ -16,11 +18,12 @@ public:
 protected:
 private:
 	MapManager mapManager;
+	SelectionManager selectionManager;
 
 	/* ===Methods=== */
 public:
 
-	MainGameSubState();
+	MainGameSubState( std::shared_ptr<Scene> scene );
 
 	virtual void onStart() override;
 
