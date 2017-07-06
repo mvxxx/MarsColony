@@ -15,12 +15,11 @@ void SelectionManager::cancelSelection()
 	std::cout << "RELASED" << std::endl;
 }
 
-void SelectionManager::manage( sf::Event& event )
+void SelectionManager::manage( eventWrapper_t& eventTypes )
 {
-	
-	while ( scene->getWindow()->pollEvent( event ) )
+	for ( auto&type : eventTypes.list )
 	{
-		switch ( event.type )
+		switch ( type )
 		{
 		case sf::Event::MouseButtonPressed:
 		{

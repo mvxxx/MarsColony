@@ -5,11 +5,11 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include "states/SubState.hpp"
 #include "mapManager/mapManager.hpp"
-#include "eventControl/EventControl.hpp"
 #include "renderer/renderer.hpp"
 #include "mapManager/SelectionManager.hpp"
+#include "wrappers/EventWrapper.hpp"
+
 
 class MainGameSubState :public SubState
 {
@@ -29,7 +29,7 @@ public:
 
 	virtual void onStop() override;
 
-	virtual void run( sf::Event event ) override;
+	virtual void run( eventWrapper_t& eventTypes ) override;
 
 	void fillRenderer( Renderer& renderer );
 

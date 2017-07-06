@@ -4,10 +4,10 @@ https://github.com/mvxxx
 */
 
 #pragma once
+
 #include "ecs/entity/Entity.hpp"
 #include "scene/Scene.hpp"
 #include "TilesManager.hpp"
-#include <SFML/Window/Event.hpp>
 
 
 class Border;
@@ -23,7 +23,7 @@ private:
 public:
 	SelectionManager( std::shared_ptr<Scene> _scene );
 
-	void manage( sf::Event& event );
+	void manage( eventWrapper_t& eventTypes );
 
 	//to do: implement in future
 	virtual void manage() override {};

@@ -5,8 +5,8 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <SFML/Window/Event.hpp>
 #include "scene/Scene.hpp"
+#include "wrappers/EventWrapper.hpp"
 #include <memory>
 
 
@@ -34,7 +34,7 @@ namespace mv
 		std::shared_ptr<Scene> scene;
 		/* ===Methods=== */
 	public:
-		void checkEvent(sf::Event& event);
+		eventWrapper_t checkEvent(sf::Event& event);
 		EventControl( std::shared_ptr<Scene> scenePointer );
 	protected:
 	private:

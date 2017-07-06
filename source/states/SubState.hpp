@@ -5,7 +5,7 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <SFML/Window/Event.hpp>
+#include "wrappers/EventWrapper.hpp"
 
 class SubState
 {
@@ -20,7 +20,7 @@ public:
 
 	virtual void onStop() = 0;
 
-	virtual void run( sf::Event event ) = 0;
+	virtual void run( eventWrapper_t& eventTypes ) = 0;
 
 protected:
 private:

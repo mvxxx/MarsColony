@@ -10,6 +10,7 @@ https://github.com/mvxxx
 #include "eventControl/EventControl.hpp"
 #include "mouse/Mouse.hpp"
 
+
 class GameState :public State
 {
 	/* ===Objects=== */

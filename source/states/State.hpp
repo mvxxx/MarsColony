@@ -5,14 +5,11 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <vector>
 #include <map>
 #include <memory>
-
-#include <sfml/window/event.hpp>
-
 #include "SubState.hpp"
 
+struct eventWrapper_t;
 class Scene;
 
 class State
@@ -34,15 +31,15 @@ public:
 
 	virtual void run() = 0;
 protected:
-	void loopSubStates( sf::Event& event );
+	void loopSubStates( eventWrapper_t& eventTypes );
 private:
 };
 
 
-inline void State::loopSubStates( sf::Event& event )
+inline void State::loopSubStates( eventWrapper_t& eventTypes )
 {
 	for ( auto& subState : subStates )
 	{
-		subState.second->run( event );
+		subState.second->run( eventTypes );
 	}
 }

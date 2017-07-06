@@ -9,7 +9,6 @@ https://github.com/mvxxx
 
 struct WorldWrapper_t
 {
-public:
 	int unitDimensions_x;
 	int unitDimensions_y;
 

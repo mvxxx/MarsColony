@@ -22,13 +22,13 @@ void MainGameSubState::onStop()
 {
 }
 
-void MainGameSubState::run( sf::Event event )
+void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
 	mapManager.manageAll();
-	selectionManager.manage( event );
+	selectionManager.manage( eventTypes );
 }
 
 void MainGameSubState::fillRenderer( Renderer& renderer )
 {
-	//renderer.addCollection( mapManager.tilesManager.getTiles(), 0 );
+	renderer.addCollection( mapManager.tilesManager.getTiles(), 0 );
 }

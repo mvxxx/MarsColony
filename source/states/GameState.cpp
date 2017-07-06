@@ -33,8 +33,9 @@ void GameState::run()
 {
 	sf::Event event;
 
-	this->loopSubStates( event );
-	eventControl->checkEvent( event );
+	auto eventTypes = eventControl->checkEvent( event );
+
+	this->loopSubStates( eventTypes );
 
 	mouse->update( scenePointer );
 
