@@ -9,6 +9,7 @@ https://github.com/mvxxx
 #include "renderer/renderer.hpp"
 #include "mapManager/SelectionManager.hpp"
 #include "wrappers/EventWrapper.hpp"
+#include "inputManager/InputManager.hpp"
 
 
 class MainGameSubState :public SubState
@@ -19,6 +20,7 @@ protected:
 private:
 	MapManager mapManager;
 	SelectionManager selectionManager;
+	mv::InputManager cameraControl; 
 
 	/* ===Methods=== */
 public:

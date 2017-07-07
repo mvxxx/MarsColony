@@ -10,6 +10,7 @@ MainGameSubState::MainGameSubState( std::shared_ptr<Scene> scene )
 	:selectionManager( scene )
 {
 	this->onStart();
+	cameraControl.addKeyToCheck( sf::Keyboard::A, []() { &Scene::help } );
 }
 
 void MainGameSubState::onStart()

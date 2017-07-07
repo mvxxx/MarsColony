@@ -21,9 +21,26 @@ public:
 	Renderer renderer;
 protected:
 private:
+	const float viewSpeed = 2.f;
 	std::unique_ptr<State> state;
 
 	std::shared_ptr<sf::RenderWindow> window;
+	std::shared_ptr<sf::View> view;
+
+	enum class zoom_t
+	{
+		ZOOM,
+		DECREASE
+	};
+
+	enum class direction_t
+	{
+		TOP,
+		RIGHT,
+		DOWN,
+		LEFT
+	};
+
 	/* ===Methods=== */
 public:
 
@@ -41,6 +58,12 @@ public:
 
 	std::shared_ptr<sf::RenderWindow> getWindow() const;
 
+	void moveViewRight();
+	void moveViewLeft();
+	void moveViewTop();
+	void moveViewDown();
+
 protected:
 private:
+	void moveView( direction_t direction );
 };
