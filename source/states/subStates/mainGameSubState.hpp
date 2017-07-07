@@ -5,6 +5,7 @@ https://github.com/mvxxx
 
 #pragma once
 
+#include "wrappers/FunctionPointerWrapper_t.hpp"
 #include "mapManager/mapManager.hpp"
 #include "renderer/renderer.hpp"
 #include "mapManager/SelectionManager.hpp"
@@ -20,7 +21,7 @@ protected:
 private:
 	MapManager mapManager;
 	SelectionManager selectionManager;
-	mv::InputManager cameraControl; 
+	mv::InputManager<Scene> cameraControl; 
 
 	/* ===Methods=== */
 public:
