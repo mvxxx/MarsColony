@@ -27,6 +27,11 @@ public:
 	{
 		return scene->getWindow()->mapPixelToCoords( sf::Mouse::getPosition( *scene->getWindow() ) );
 	}
+
+	static sf::Vector2f mouseWindowPosition( std::shared_ptr<Scene> scene )
+	{
+		return static_cast<sf::Vector2f>(sf::Mouse::getPosition( *scene->getWindow() ));
+	}
 protected:
 private:
 };

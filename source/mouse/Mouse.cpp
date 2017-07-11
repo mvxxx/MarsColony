@@ -11,9 +11,20 @@ Mouse::Mouse()
 
 void Mouse::update( std::shared_ptr<Scene> scene )
 {
-	this->getComponent<ProperBody>()->body.setPosition( Math::mouseWorldPosition( scene ) );
+	auto windowPosition = Math::mouseWindowPosition( scene );
 
-	//std::cout << this->getComponent<ProperBody>()->body.getPosition().x << std::endl;
+	if ( this->getComponent<ProperBody>()->body.getGlobalBounds().contains( static_cast<sf::Vector2f>(sf::Mouse::getPosition( *scene->getWindow() )) ) )
+	{
+		if ( windowPosition.x > scene->getWindow()->getSize().x - scene->motionSensitivity )
+			scene->moveViewRight();
+		else if ( windowPosition.x < scene->motionSensitivity )
+			scene->moveViewLeft();
+
+		if ( windowPosition.y > scene->getWindow()->getSize().y - scene->motionSensitivity )
+			scene->moveViewDown();
+		else if ( windowPosition.y < scene->motionSensitivity )
+			scene->moveViewTop();
+	}
 }
 
 void Mouse::draw( sf::RenderTarget& target, sf::RenderStates states ) const

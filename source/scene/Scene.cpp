@@ -69,7 +69,7 @@ void Scene::moveView( direction_t direction )
 	{
 	case direction_t::TOP:
 	{
-		view->move( 0, viewSpeed );
+		view->move( 0, -viewSpeed );
 		break;
 	}
 	case direction_t::RIGHT:
