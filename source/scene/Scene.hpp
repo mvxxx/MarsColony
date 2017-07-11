@@ -20,10 +20,11 @@ class Scene
 public:
 	Renderer renderer;
 
-	const float motionSensitivity = 50.f;
+	const float motionSensitivity;
+	const float viewSpeed;
 protected:
 private:
-	const float viewSpeed = 0.0001f;
+
 	std::unique_ptr<State> state;
 
 	std::shared_ptr<sf::RenderWindow> window;

@@ -13,7 +13,7 @@ void Mouse::update( std::shared_ptr<Scene> scene )
 {
 	auto windowPosition = Math::mouseWindowPosition( scene );
 
-	if ( this->getComponent<ProperBody>()->body.getGlobalBounds().contains( static_cast<sf::Vector2f>(sf::Mouse::getPosition( *scene->getWindow() )) ) )
+	if ( windowPosition.x*windowPosition.y>0 && windowPosition.x + windowPosition.y > 0 )
 	{
 		if ( windowPosition.x > scene->getWindow()->getSize().x - scene->motionSensitivity )
 			scene->moveViewRight();

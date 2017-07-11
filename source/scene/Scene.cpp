@@ -6,6 +6,7 @@ https://github.com/mvxxx
 #include "Scene.hpp"
 
 Scene::Scene( const std::string& title, const sf::Vector2f& dimensions )
+	:viewSpeed( 0.2f ), motionSensitivity( 50.f )
 {
 	window = std::shared_ptr<sf::RenderWindow>( new sf::RenderWindow( sf::VideoMode( dimensions.x, dimensions.y ), title ) );
 	view = std::make_shared<sf::View>();
