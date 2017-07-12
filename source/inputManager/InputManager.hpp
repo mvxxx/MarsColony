@@ -22,7 +22,7 @@ namespace mv
 	public:
 		void update();
 
-		bool addKeyToCheck( sf::Keyboard::Key key, std::function<void( T& )> function, std::shared_ptr<T>& object );
+		bool addKeyToCheck( sf::Keyboard::Key key, std::function<void( T& )> function, std::shared_ptr<T> object );
 
 		bool eraseKey( sf::Keyboard::Key key );
 	protected:
@@ -38,7 +38,7 @@ namespace mv
 	}
 
 	template <class T>
-	bool InputManager<T>::addKeyToCheck( sf::Keyboard::Key key, std::function<void( T& )> function, std::shared_ptr<T>& object )
+	bool InputManager<T>::addKeyToCheck( sf::Keyboard::Key key, std::function<void( T& )> function, std::shared_ptr<T> object )
 	{
 		keyData.emplace( key, FunctionPointerWrapper_t<T>( function, object ) );
 

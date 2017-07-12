@@ -11,11 +11,10 @@ MainGameSubState::MainGameSubState( std::shared_ptr<Scene> scene )
 {
 	this->onStart();
 
-	//cameraControl.addKeyToCheck( sf::Keyboard::A, std::function<void( Scene& )>( &Scene::moveViewLeft ), scene );
-	//cameraControl.addKeyToCheck( sf::Keyboard::A, [](Scene&) { &Scene::moveViewLeft; }, scene );
-	//cameraControl.addKeyToCheck( sf::Keyboard::D, []( Scene& ) { &Scene::moveViewRight; }, scene );
-	//cameraControl.addKeyToCheck( sf::Keyboard::S, []( Scene& ) { &Scene::moveViewDown; }, scene );
-	//cameraControl.addKeyToCheck( sf::Keyboard::W, []( Scene& ) { &Scene::moveViewTop; }, scene );
+	cameraControl.addKeyToCheck( sf::Keyboard::A, std::function<void( Scene& )>( &Scene::moveViewLeft ), scene );
+	cameraControl.addKeyToCheck( sf::Keyboard::D, std::function<void( Scene& )>( &Scene::moveViewRight ), scene );
+	cameraControl.addKeyToCheck( sf::Keyboard::S, std::function<void( Scene& )>( &Scene::moveViewDown ), scene );
+	cameraControl.addKeyToCheck( sf::Keyboard::W, std::function<void( Scene& )>( &Scene::moveViewTop ), scene );
 
 }
 
