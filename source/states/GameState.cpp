@@ -32,13 +32,13 @@ void GameState::onStop()
 void GameState::run()
 {
 	sf::Event event;
-
 	auto eventTypes = eventControl->checkEvent( event );
 
 	this->loopSubStates( eventTypes );
 
 	mouse->update( scenePointer );
 
+	scenePointer->handleEventTypes( eventTypes );
 
 	scenePointer->clear();
 	scenePointer->drawAll();

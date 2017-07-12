@@ -54,6 +54,21 @@ void Scene::moveViewDown()
 	moveView( direction_t::DOWN );
 }
 
+void Scene::handleEventTypes( const eventWrapper_t& eventList )
+{
+	for ( auto&type : eventList.list )
+	{
+		switch ( type )
+		{
+		case sf::Event::Closed:
+		{
+			this->close();
+			break;
+		}
+		}
+	}
+}
+
 void Scene::clear() const
 {
 	window->clear();

@@ -13,8 +13,9 @@ https://github.com/mvxxx
 
 #include "states/State.hpp"
 #include "renderer/renderer.hpp"
+#include "eventDock/EventDock.hpp"
 
-class Scene
+class Scene : public EventDock
 {
 	/* ===Objects=== */
 public:
@@ -66,6 +67,8 @@ public:
 	void moveViewLeft();
 	void moveViewTop();
 	void moveViewDown();
+
+	virtual void handleEventTypes( const eventWrapper_t& eventList ) override;
 
 protected:
 private:

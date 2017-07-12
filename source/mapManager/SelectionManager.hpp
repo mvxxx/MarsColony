@@ -12,7 +12,7 @@ https://github.com/mvxxx
 
 class Border;
 
-class SelectionManager :public Manager<mv::Entity>
+class SelectionManager :public Manager<mv::Entity>, public EventDock
 {
 	/* ===Objects=== */
 public:
@@ -23,12 +23,12 @@ private:
 public:
 	SelectionManager( std::shared_ptr<Scene> _scene );
 
-	void manage( eventWrapper_t& eventTypes );
-
 	//to do: implement in future
 	virtual void manage() override {};
 
 	virtual void addEntityToManage( std::shared_ptr<mv::Entity> entity ) override;
+
+	virtual void handleEventTypes( const eventWrapper_t& eventList ) override;
 protected:
 private:
 	void callSelection();

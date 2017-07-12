@@ -15,9 +15,14 @@ void SelectionManager::cancelSelection()
 	std::cout << "RELASED" << std::endl;
 }
 
-void SelectionManager::manage( eventWrapper_t& eventTypes )
+void SelectionManager::addEntityToManage( std::shared_ptr<mv::Entity> entity )
 {
-	for ( auto&type : eventTypes.list )
+	this->addEntityToManage( entity );
+}
+
+void SelectionManager::handleEventTypes(const eventWrapper_t& eventList)
+{
+	for ( auto&type : eventList.list )
 	{
 		switch ( type )
 		{
@@ -33,9 +38,4 @@ void SelectionManager::manage( eventWrapper_t& eventTypes )
 		}
 		}
 	}
-}
-
-void SelectionManager::addEntityToManage( std::shared_ptr<mv::Entity> entity )
-{
-	this->addEntityToManage( entity );
 }
