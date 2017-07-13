@@ -31,7 +31,7 @@ void MainGameSubState::onStop()
 void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
 	mapManager.manageAll();
-	selectionManager.manage( eventTypes );
+	selectionManager.handleEventTypes( eventTypes );
 	cameraControl.update();
 }
 

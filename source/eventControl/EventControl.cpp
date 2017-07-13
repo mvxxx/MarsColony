@@ -5,6 +5,7 @@ https://github.com/mvxxx
 
 #include "EventControl.hpp"
 #include <iostream>
+#include "Math.hpp"
 
 namespace mv
 {
@@ -19,8 +20,28 @@ namespace mv
 		eventWrapper_t eventTypes;
 
 		while ( scene->getWindow()->pollEvent( event ) )
+		{
 			eventTypes.list.push_back( event.type );
-		
+
+			/*
+			 *Extraordinary events
+			 *The use of them requires more info than only id
+			*/
+			switch ( event.type )
+			{
+			case sf::Event::MouseWheelMoved:
+			{
+				if ( Math::isInWindow( Math::mouseWindowPosition( scene ), scene ) )
+					if ( event.mouseWheel.delta < 0 )
+						scene->zoom( Scene::zoom_t::ZOOM );
+					else
+						scene->zoom( Scene::zoom_t::DECREASE );
+				break;
+			}
+			}
+		}
+
+
 		return eventTypes;
 	}
 }

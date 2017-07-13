@@ -18,6 +18,6 @@ void Game::run()
 
 void Game::init()
 {
-	scene = std::make_shared<Scene>( "MarsColony", sf::Vector2f( 600, 600 ) );
+	scene = std::make_shared<Scene>( "MarsCombat", sf::Vector2f( 600, 600 ) );
 	state = std::make_unique<GameState>( scene );
 }

@@ -12,14 +12,8 @@ https://github.com/mvxxx
 
 /*
 				===---===
-	If you want to extend event control you need to modife checkControl() method:
-	-Add new case like this:
-
-	case sf::Event::MouseLeft:
-	{
-		do sth...
-		break;
-	}
+	If you want to extend event control you need to implement eventDock in your class
+	If your event need more informations than only id of event, implement it in checkEvent method
 			    ===---===
 */
 

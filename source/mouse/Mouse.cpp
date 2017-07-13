@@ -11,18 +11,19 @@ Mouse::Mouse()
 
 void Mouse::update( std::shared_ptr<Scene> scene )
 {
-	auto windowPosition = Math::mouseWindowPosition( scene );
+	auto mouseWindowPosition = Math::mouseWindowPosition( scene );
+	auto windowSize = scene->getWindow()->getSize();
 
-	if ( windowPosition.x*windowPosition.y>0 && windowPosition.x + windowPosition.y > 0 )
+	if ( Math::isInWindow( mouseWindowPosition, scene ) )
 	{
-		if ( windowPosition.x > scene->getWindow()->getSize().x - scene->motionSensitivity )
+		if ( mouseWindowPosition.x > windowSize.x - scene->motionSensitivity )
 			scene->moveViewRight();
-		else if ( windowPosition.x < scene->motionSensitivity )
+		else if ( mouseWindowPosition.x < scene->motionSensitivity )
 			scene->moveViewLeft();
 
-		if ( windowPosition.y > scene->getWindow()->getSize().y - scene->motionSensitivity )
+		if ( mouseWindowPosition.y > windowSize.y - scene->motionSensitivity )
 			scene->moveViewDown();
-		else if ( windowPosition.y < scene->motionSensitivity )
+		else if ( mouseWindowPosition.y < scene->motionSensitivity )
 			scene->moveViewTop();
 	}
 }

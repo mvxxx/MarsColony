@@ -19,24 +19,23 @@ class Scene : public EventDock
 {
 	/* ===Objects=== */
 public:
-	Renderer renderer;
-
 	const float motionSensitivity;
 	const float viewSpeed;
-protected:
-private:
+	const float zoomSpeed;
 
-	std::unique_ptr<State> state;
-
-	std::shared_ptr<sf::RenderWindow> window;
-	std::shared_ptr<sf::View> view;
-
+	Renderer renderer;
 
 	enum class zoom_t
 	{
 		ZOOM,
 		DECREASE
 	};
+protected:
+private:
+	std::unique_ptr<State> state;
+
+	std::shared_ptr<sf::RenderWindow> window;
+	std::shared_ptr<sf::View> view;
 
 	enum class direction_t
 	{
@@ -60,6 +59,8 @@ public:
 	void clear() const;
 
 	void display() const;
+
+	void zoom( const zoom_t& type );
 
 	std::shared_ptr<sf::RenderWindow> getWindow() const;
 

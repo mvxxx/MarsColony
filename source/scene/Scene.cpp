@@ -4,9 +4,10 @@ https://github.com/mvxxx
 */
 
 #include "Scene.hpp"
+#include "Config.hpp"
 
 Scene::Scene( const std::string& title, const sf::Vector2f& dimensions )
-	:viewSpeed( 0.2f ), motionSensitivity( 50.f )
+	:viewSpeed( 0.2f ), motionSensitivity( 50.f ), zoomSpeed( 0.05f )
 {
 	window = std::shared_ptr<sf::RenderWindow>( new sf::RenderWindow( sf::VideoMode( dimensions.x, dimensions.y ), title ) );
 	view = std::make_shared<sf::View>();
@@ -77,6 +78,16 @@ void Scene::clear() const
 void Scene::display() const
 {
 	window->display();
+}
+
+void Scene::zoom( const zoom_t& type )
+{
+	if ( type == zoom_t::ZOOM )
+		view->zoom( 1 + zoomSpeed );
+	else
+		view->zoom( 1 - zoomSpeed );
+
+	window->setView( *view );
 }
 
 void Scene::moveView( direction_t direction )
