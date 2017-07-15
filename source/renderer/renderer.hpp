@@ -11,6 +11,7 @@ https://github.com/mvxxx
 
 #include "ecs/entity/Entity.hpp"
 #include "ecs/component/ProperBody.hpp"
+#include "wrappers/DrawMap.hpp"
 
 class Renderer
 {
@@ -18,17 +19,13 @@ class Renderer
 public:
 protected:
 private:
-	using layerID_t = unsigned int;
-
-	using layerPack_t = std::map < layerID_t, std::vector<std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>>>;
-
-	layerPack_t gameDrawLayers;
+	DrawMap drawMap;
 
 	/* ===Methods=== */
 public:
-	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, layerID_t numberOfLayer );
+	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer );
 	void drawAll( sf::RenderWindow& window );
-	bool addSingle( const std::shared_ptr<mv::Entity>& , layerID_t numberOfLayer );
+	bool addSingle( const std::shared_ptr<mv::Entity>& , DrawMap::layerID_t numberOfLayer );
 
 protected:
 private:
