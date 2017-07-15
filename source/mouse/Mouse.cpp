@@ -3,7 +3,7 @@
 Mouse::Mouse()
 {
 	this->addComponent<ProperBody>();
-	auto body = this->getComponent<ProperBody>()->body;
+	sf::Sprite& body = this->getComponent<ProperBody>()->body;
 
 	body.setTexture( *textureAtlas.get( "data/textures/mouseAtlas.png" ) );
 	body.setTextureRect( sf::IntRect( 0, 0, 20, 20 ) );
@@ -28,11 +28,6 @@ void Mouse::update( std::shared_ptr<Scene> scene )
 	}
 }
 
-void Mouse::draw( sf::RenderTarget& target, sf::RenderStates states ) const
-{
-	target.draw( *border );
-	target.draw( getComponent<ProperBody>()->body, states );
-}
 
 
 

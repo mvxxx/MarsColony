@@ -24,13 +24,14 @@ void Renderer::drawAll( sf::RenderWindow& window )
 		{
 			for ( auto& drawableObject : *collection )
 			{
-				drawableObject->getComponent<ProperBody>()->draw( window );
+				//drawableObject->getComponent<ProperBody>()->draw( window );
+				window.draw( *drawableObject->getComponent<ProperBody>() );
 			}
 		}
 	}
 }
 
-bool Renderer::addSingle( std::shared_ptr<mv::Entity> entity, layer_t numberOfLayer )
+bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, layer_t numberOfLayer )
 {
 	if ( hasProperBody( entity ) )
 	{

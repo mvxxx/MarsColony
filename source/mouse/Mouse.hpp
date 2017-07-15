@@ -27,6 +27,4 @@ public:
 	void update( std::shared_ptr<Scene> scene );
 protected:
 private:
-	virtual void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
-
 };
