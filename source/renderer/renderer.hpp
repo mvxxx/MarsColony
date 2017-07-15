@@ -18,17 +18,17 @@ class Renderer
 public:
 protected:
 private:
-	using layer_t = unsigned int;
+	using layerID_t = unsigned int;
 
-	//using entityCollection_t = std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>;
+	using layerPack_t = std::map < layerID_t, std::vector<std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>>>;
 
-	std::map < layer_t, std::vector<std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>>> drawLayers;
+	layerPack_t gameDrawLayers;
 
 	/* ===Methods=== */
 public:
-	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, layer_t numberOfLayer );
+	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, layerID_t numberOfLayer );
 	void drawAll( sf::RenderWindow& window );
-	bool addSingle( const std::shared_ptr<mv::Entity>& , layer_t numberOfLayer );
+	bool addSingle( const std::shared_ptr<mv::Entity>& , layerID_t numberOfLayer );
 
 protected:
 private:

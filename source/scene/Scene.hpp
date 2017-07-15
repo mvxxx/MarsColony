@@ -35,7 +35,8 @@ private:
 	std::unique_ptr<State> state;
 
 	std::shared_ptr<sf::RenderWindow> window;
-	std::shared_ptr<sf::View> view;
+	std::shared_ptr<sf::View> gameView;
+	std::shared_ptr<sf::View> UIView;
 
 	enum class direction_t
 	{

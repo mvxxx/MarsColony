@@ -18,7 +18,7 @@ bool Renderer::hasProperBody( std::shared_ptr<mv::Entity> entity )
 
 void Renderer::drawAll( sf::RenderWindow& window )
 {
-	for ( auto& layer : drawLayers )
+	for ( auto& layer : gameDrawLayers )
 	{
 		for ( auto& collection : layer.second )
 		{
@@ -31,22 +31,22 @@ void Renderer::drawAll( sf::RenderWindow& window )
 	}
 }
 
-bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, layer_t numberOfLayer )
+bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, layerID_t numberOfLayer )
 {
 	if ( hasProperBody( entity ) )
 	{
 		auto tempCollection = std::make_shared<std::vector<std::shared_ptr<mv::Entity>>>();
 		tempCollection->push_back( entity );
-		drawLayers[numberOfLayer].push_back( tempCollection );
+		gameDrawLayers[numberOfLayer].push_back( tempCollection );
 	}
 
 	return true;
 }
 
-bool Renderer::addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, layer_t numberOfLayer )
+bool Renderer::addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, layerID_t numberOfLayer )
 {
 	if ( hasProperBody( collection ) )
-		drawLayers[numberOfLayer].push_back( collection );
+		gameDrawLayers[numberOfLayer].push_back( collection );
 
 	return true;
 }
