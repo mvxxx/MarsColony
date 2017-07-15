@@ -29,7 +29,7 @@ void Scene::close() const
 
 void Scene::drawAll()
 {
-	renderer.drawAll( *window );
+	renderer.drawAll( *window, views[viewType_t::DEFAULT], views[viewType_t::UI] );
 }
 
 std::shared_ptr<sf::RenderWindow> Scene::getWindow() const

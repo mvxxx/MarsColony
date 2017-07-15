@@ -16,12 +16,12 @@ bool Renderer::hasProperBody( std::shared_ptr<mv::Entity> entity )
 	return entity->hasComponent<ProperBody>();
 }
 
-void Renderer::drawAll( sf::RenderWindow& window )
+void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defaultView, std::shared_ptr<sf::View> UIView )
 {
-	for( auto& layerPack: drawMap.layerPackData )
+	for ( auto& layerPack : drawMap.layerPackData )
 	{
-		if(layerPack.first == DrawMap::renderType_t::UI )
-			scene
+		if ( layerPack.first == DrawMap::renderType_t::UI )
+			window.setView( *UIView );
 
 		for ( auto& layer : layerPack.second )
 		{
@@ -33,6 +33,8 @@ void Renderer::drawAll( sf::RenderWindow& window )
 				}
 			}
 		}
+		if ( layerPack.first == DrawMap::renderType_t::UI )
+			window.setView( *defaultView );
 	}
 }
 

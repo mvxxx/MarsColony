@@ -25,7 +25,7 @@ private:
 	/* ===Methods=== */
 public:
 	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType );
-	void drawAll( sf::RenderWindow& window );
+	void drawAll( sf::RenderWindow& window , std::shared_ptr<sf::View> defaultView, std::shared_ptr<sf::View> UIView );
 	bool addSingle( const std::shared_ptr<mv::Entity>& , DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType );
 
 protected:
