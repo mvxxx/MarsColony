@@ -15,7 +15,6 @@ MainGameSubState::MainGameSubState( std::shared_ptr<Scene> scene )
 	cameraControl.addKeyToCheck( sf::Keyboard::D, std::function<void( Scene& )>( &Scene::moveViewRight ), scene );
 	cameraControl.addKeyToCheck( sf::Keyboard::S, std::function<void( Scene& )>( &Scene::moveViewDown ), scene );
 	cameraControl.addKeyToCheck( sf::Keyboard::W, std::function<void( Scene& )>( &Scene::moveViewTop ), scene );
-
 }
 
 void MainGameSubState::onStart()
@@ -37,5 +36,5 @@ void MainGameSubState::run( eventWrapper_t& eventTypes )
 
 void MainGameSubState::fillRenderer( Renderer& renderer )
 {
-	renderer.addCollection( mapManager.tilesManager.getTiles(), 0 );
+	renderer.addCollection( mapManager.tilesManager.getTiles(), 0, DrawMap::renderType_t::DEFAULT );
 }

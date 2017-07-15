@@ -14,6 +14,7 @@ https://github.com/mvxxx
 #include "states/State.hpp"
 #include "renderer/renderer.hpp"
 #include "eventDock/EventDock.hpp"
+#include <unordered_map>
 
 class Scene : public EventDock
 {
@@ -30,13 +31,19 @@ public:
 		ZOOM,
 		DECREASE
 	};
+
+	enum class viewType_t
+	{
+		DEFAULT,
+		UI
+	};
+
 protected:
 private:
 	std::unique_ptr<State> state;
 
 	std::shared_ptr<sf::RenderWindow> window;
-	std::shared_ptr<sf::View> gameView;
-	std::shared_ptr<sf::View> UIView;
+	std::unordered_map<viewType_t, std::shared_ptr<sf::View> > views;
 
 	enum class direction_t
 	{
@@ -62,6 +69,8 @@ public:
 	void display() const;
 
 	void zoom( const zoom_t& type );
+
+	void setView( viewType_t type );
 
 	std::shared_ptr<sf::RenderWindow> getWindow() const;
 

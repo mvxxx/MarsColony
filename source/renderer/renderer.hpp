@@ -17,15 +17,16 @@ class Renderer
 {
 	/* ===Objects=== */
 public:
+
 protected:
 private:
 	DrawMap drawMap;
 
 	/* ===Methods=== */
 public:
-	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer );
+	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType );
 	void drawAll( sf::RenderWindow& window );
-	bool addSingle( const std::shared_ptr<mv::Entity>& , DrawMap::layerID_t numberOfLayer );
+	bool addSingle( const std::shared_ptr<mv::Entity>& , DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType );
 
 protected:
 private:

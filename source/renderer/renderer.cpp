@@ -18,34 +18,40 @@ bool Renderer::hasProperBody( std::shared_ptr<mv::Entity> entity )
 
 void Renderer::drawAll( sf::RenderWindow& window )
 {
-	for ( auto& layer : drawMap.gameDrawLayers )
+	for( auto& layerPack: drawMap.layerPackData )
 	{
-		for ( auto& collection : layer.second )
+		if(layerPack.first == DrawMap::renderType_t::UI )
+			scene
+
+		for ( auto& layer : layerPack.second )
 		{
-			for ( auto& drawableObject : *collection )
+			for ( auto& collection : layer.second )
 			{
-				window.draw( *drawableObject->getComponent<ProperBody>() );
+				for ( auto& drawableObject : *collection )
+				{
+					window.draw( *drawableObject->getComponent<ProperBody>() );
+				}
 			}
 		}
 	}
 }
 
-bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, DrawMap::layerID_t numberOfLayer )
+bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType )
 {
 	if ( hasProperBody( entity ) )
 	{
 		auto tempCollection = std::make_shared<std::vector<std::shared_ptr<mv::Entity>>>();
 		tempCollection->push_back( entity );
-		drawMap.gameDrawLayers[numberOfLayer].push_back( tempCollection );
+		drawMap.layerPackData[renderType][numberOfLayer].push_back( tempCollection );
 	}
 
 	return true;
 }
 
-bool Renderer::addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer )
+bool Renderer::addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType )
 {
 	if ( hasProperBody( collection ) )
-		drawMap.gameDrawLayers[numberOfLayer].push_back( collection );
+		drawMap.layerPackData[renderType][numberOfLayer].push_back( collection );
 
 	return true;
 }

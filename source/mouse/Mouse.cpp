@@ -6,7 +6,7 @@ Mouse::Mouse()
 	auto properBody = this->getComponent<ProperBody>();
 
 	properBody->body.setTexture( *textureAtlas.get( "data/textures/mouseAtlas.png" ) );
-	properBody->body.setTextureRect( sf::IntRect( 0, 0, 20, 20 ) );
+	//properBody->body.setTextureRect( sf::IntRect( 0, 0, 20, 20 ) );
 	properBody->setCenter();
 }
 

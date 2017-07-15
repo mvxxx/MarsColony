@@ -10,10 +10,11 @@ Scene::Scene( const std::string& title, const sf::Vector2f& dimensions )
 	:viewSpeed( 0.2f ), motionSensitivity( 50.f ), zoomSpeed( 0.05f )
 {
 	window = std::shared_ptr<sf::RenderWindow>( new sf::RenderWindow( sf::VideoMode( dimensions.x, dimensions.y ), title ) );
-	gameView = std::make_shared<sf::View>();
-	UIView = std::make_shared<sf::View>();
 
-	window->setView( *gameView );
+	views[viewType_t::DEFAULT] = std::make_shared<sf::View>();
+	views[viewType_t::UI] = std::make_shared<sf::View>();
+
+	window->setView( *views[viewType_t::DEFAULT] );
 }
 
 bool Scene::isOpen() const
@@ -84,11 +85,16 @@ void Scene::display() const
 void Scene::zoom( const zoom_t& type )
 {
 	if ( type == zoom_t::ZOOM )
-		gameView->zoom( 1 + zoomSpeed );
+		views[viewType_t::DEFAULT]->zoom( 1 + zoomSpeed );
 	else
-		gameView->zoom( 1 - zoomSpeed );
+		views[viewType_t::DEFAULT]->zoom( 1 - zoomSpeed );
 
-	window->setView( *gameView );
+	window->setView( *views[viewType_t::DEFAULT] );
+}
+
+void Scene::setView(viewType_t type)
+{
+	window->setView( *views[type] );
 }
 
 void Scene::moveView( direction_t direction )
@@ -97,24 +103,24 @@ void Scene::moveView( direction_t direction )
 	{
 	case direction_t::TOP:
 	{
-		gameView->move( 0, -viewSpeed );
+		views[viewType_t::DEFAULT]->move( 0, -viewSpeed );
 		break;
 	}
 	case direction_t::RIGHT:
 	{
-		gameView->move( viewSpeed, 0 );
+		views[viewType_t::DEFAULT]->move( viewSpeed, 0 );
 		break;
 	}
 	case direction_t::DOWN:
 	{
-		gameView->move( 0, viewSpeed );
+		views[viewType_t::DEFAULT]->move( 0, viewSpeed );
 		break;
 	}
 	case direction_t::LEFT:
 	{
-		gameView->move( -viewSpeed, 0 );
+		views[viewType_t::DEFAULT]->move( -viewSpeed, 0 );
 		break;
 	}
 	}
-	window->setView( *gameView );
+	window->setView( *views[viewType_t::DEFAULT] );
 }

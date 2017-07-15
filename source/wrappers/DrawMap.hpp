@@ -14,6 +14,17 @@ struct DrawMap
 	using layerID_t = unsigned int;
 	using layerPack_t = std::map< layerID_t, std::vector<std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>>>;
 
-	layerPack_t gameDrawLayers;
-	layerPack_t UIDrawLayers;
+	enum class renderType_t
+	{
+		DEFAULT,
+		UI
+	};
+
+	std::map<renderType_t, layerPack_t> layerPackData;
+
+	DrawMap()
+	{
+		layerPackData[renderType_t::DEFAULT] = layerPack_t();
+		layerPackData[renderType_t::UI] = layerPack_t();
+	}
 };
