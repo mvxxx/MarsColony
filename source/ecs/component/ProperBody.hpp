@@ -22,6 +22,9 @@ private:
 public:
 	ProperBody()
 		:collidable(false)
+	{}
+
+	void setCenter()
 	{
 		body.setOrigin( body.getGlobalBounds().width / 2.f, body.getGlobalBounds().height / 2.f );
 	}

@@ -3,16 +3,19 @@
 Mouse::Mouse()
 {
 	this->addComponent<ProperBody>();
-	sf::Sprite& body = this->getComponent<ProperBody>()->body;
+	auto properBody = this->getComponent<ProperBody>();
 
-	body.setTexture( *textureAtlas.get( "data/textures/mouseAtlas.png" ) );
-	body.setTextureRect( sf::IntRect( 0, 0, 20, 20 ) );
+	properBody->body.setTexture( *textureAtlas.get( "data/textures/mouseAtlas.png" ) );
+	properBody->body.setTextureRect( sf::IntRect( 0, 0, 20, 20 ) );
+	properBody->setCenter();
 }
 
 void Mouse::update( std::shared_ptr<Scene> scene )
 {
 	auto mouseWindowPosition = Math::mouseWindowPosition( scene );
 	auto windowSize = scene->getWindow()->getSize();
+
+	this->getComponent<ProperBody>()->body.setPosition( Math::mouseWorldPosition( scene ) );
 
 	if ( Math::isInWindow( mouseWindowPosition, scene ) )
 	{
