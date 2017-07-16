@@ -14,10 +14,10 @@ GameState::GameState( std::shared_ptr<Scene> scenePtr )
 
 void GameState::onStart()
 {
-	//scenePointer->getWindow()->setMouseCursorVisible( false );
+	scenePointer->getWindow()->setMouseCursorVisible( false );
 
 	mouse = std::make_shared<Mouse>();
-	scenePointer->renderer.addSingle( mouse, 1 );
+	scenePointer->renderer.addSingle( mouse, 1, DrawMap::renderType_t::UI);
 
 	auto mainSubState = std::make_shared<MainGameSubState>( scenePointer );
 	mainSubState->fillRenderer( scenePointer->renderer );

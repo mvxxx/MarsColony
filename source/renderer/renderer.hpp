@@ -11,24 +11,22 @@ https://github.com/mvxxx
 
 #include "ecs/entity/Entity.hpp"
 #include "ecs/component/ProperBody.hpp"
+#include "wrappers/DrawMap.hpp"
 
 class Renderer
 {
 	/* ===Objects=== */
 public:
+
 protected:
 private:
-	using layer_t = unsigned int;
-
-	//using entityCollection_t = std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>;
-
-	std::map < layer_t, std::vector<std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>>>> drawLayers;
+	DrawMap drawMap;
 
 	/* ===Methods=== */
 public:
-	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, layer_t numberOfLayer );
-	void drawAll( sf::RenderWindow& window );
-	bool addSingle( const std::shared_ptr<mv::Entity>& , layer_t numberOfLayer );
+	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType );
+	void drawAll( sf::RenderWindow& window , std::shared_ptr<sf::View> defaultView, std::shared_ptr<sf::View> UIView );
+	bool addSingle( const std::shared_ptr<mv::Entity>& , DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType );
 
 protected:
 private:

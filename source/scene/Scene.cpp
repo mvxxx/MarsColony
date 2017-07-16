@@ -10,9 +10,11 @@ Scene::Scene( const std::string& title, const sf::Vector2f& dimensions )
 	:viewSpeed( 0.2f ), motionSensitivity( 50.f ), zoomSpeed( 0.05f )
 {
 	window = std::shared_ptr<sf::RenderWindow>( new sf::RenderWindow( sf::VideoMode( dimensions.x, dimensions.y ), title ) );
-	view = std::make_shared<sf::View>();
 
-	window->setView( *view );
+	views[viewType_t::DEFAULT] = std::make_shared<sf::View>();
+	views[viewType_t::UI] = std::make_shared<sf::View>();
+
+	window->setView( *views[viewType_t::DEFAULT] );
 }
 
 bool Scene::isOpen() const
@@ -27,7 +29,7 @@ void Scene::close() const
 
 void Scene::drawAll()
 {
-	renderer.drawAll( *window );
+	renderer.drawAll( *window, views[viewType_t::DEFAULT], views[viewType_t::UI] );
 }
 
 std::shared_ptr<sf::RenderWindow> Scene::getWindow() const
@@ -82,38 +84,47 @@ void Scene::display() const
 
 void Scene::zoom( const zoom_t& type )
 {
-	if ( type == zoom_t::ZOOM )
-		view->zoom( 1 + zoomSpeed );
-	else
-		view->zoom( 1 - zoomSpeed );
+	window->setView( *views[viewType_t::DEFAULT] );
 
-	window->setView( *view );
+	if ( type == zoom_t::ZOOM )
+		views[viewType_t::DEFAULT]->zoom( 1 + zoomSpeed );
+	else
+		views[viewType_t::DEFAULT]->zoom( 1 - zoomSpeed );
+
+	window->setView( *views[viewType_t::UI] );
+}
+
+void Scene::setView(viewType_t type)
+{
+	window->setView( *views[type] );
 }
 
 void Scene::moveView( direction_t direction )
 {
+	window->setView( *views[viewType_t::DEFAULT] );
+
 	switch ( direction )
 	{
 	case direction_t::TOP:
 	{
-		view->move( 0, -viewSpeed );
+		views[viewType_t::DEFAULT]->move( 0, -viewSpeed );
 		break;
 	}
 	case direction_t::RIGHT:
 	{
-		view->move( viewSpeed, 0 );
+		views[viewType_t::DEFAULT]->move( viewSpeed, 0 );
 		break;
 	}
 	case direction_t::DOWN:
 	{
-		view->move( 0, viewSpeed );
+		views[viewType_t::DEFAULT]->move( 0, viewSpeed );
 		break;
 	}
 	case direction_t::LEFT:
 	{
-		view->move( -viewSpeed, 0 );
+		views[viewType_t::DEFAULT]->move( -viewSpeed, 0 );
 		break;
 	}
 	}
-	window->setView( *view );
+	window->setView( *views[viewType_t::UI] );
 }

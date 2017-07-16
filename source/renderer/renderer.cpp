@@ -16,37 +16,43 @@ bool Renderer::hasProperBody( std::shared_ptr<mv::Entity> entity )
 	return entity->hasComponent<ProperBody>();
 }
 
-void Renderer::drawAll( sf::RenderWindow& window )
+void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defaultView, std::shared_ptr<sf::View> UIView )
 {
-	for ( auto& layer : drawLayers )
+	for ( auto& layerPack : drawMap.layerPackData )
 	{
-		for ( auto& collection : layer.second )
+		if ( layerPack.first == DrawMap::renderType_t::UI )
+			window.setView( *UIView );
+		else window.setView( *defaultView );
+
+		for ( auto& layer : layerPack.second )
 		{
-			for ( auto& drawableObject : *collection )
+			for ( auto& collection : layer.second )
 			{
-				//drawableObject->getComponent<ProperBody>()->draw( window );
-				window.draw( *drawableObject->getComponent<ProperBody>() );
+				for ( auto& drawableObject : *collection )
+				{
+					window.draw( *drawableObject->getComponent<ProperBody>() );
+				}
 			}
 		}
 	}
 }
 
-bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, layer_t numberOfLayer )
+bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType )
 {
 	if ( hasProperBody( entity ) )
 	{
 		auto tempCollection = std::make_shared<std::vector<std::shared_ptr<mv::Entity>>>();
 		tempCollection->push_back( entity );
-		drawLayers[numberOfLayer].push_back( tempCollection );
+		drawMap.layerPackData[renderType][numberOfLayer].push_back( tempCollection );
 	}
 
 	return true;
 }
 
-bool Renderer::addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, layer_t numberOfLayer )
+bool Renderer::addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType )
 {
 	if ( hasProperBody( collection ) )
-		drawLayers[numberOfLayer].push_back( collection );
+		drawMap.layerPackData[renderType][numberOfLayer].push_back( collection );
 
 	return true;
 }
