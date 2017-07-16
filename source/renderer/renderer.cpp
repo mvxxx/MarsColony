@@ -22,6 +22,7 @@ void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defa
 	{
 		if ( layerPack.first == DrawMap::renderType_t::UI )
 			window.setView( *UIView );
+		else window.setView( *defaultView );
 
 		for ( auto& layer : layerPack.second )
 		{
@@ -33,8 +34,6 @@ void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defa
 				}
 			}
 		}
-		if ( layerPack.first == DrawMap::renderType_t::UI )
-			window.setView( *defaultView );
 	}
 }
 

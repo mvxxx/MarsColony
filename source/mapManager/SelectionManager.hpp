@@ -12,6 +12,7 @@ https://github.com/mvxxx
 
 class Border;
 
+/*not finished*/
 class SelectionManager :public Manager<mv::Entity>, public EventDock
 {
 	/* ===Objects=== */

@@ -11,6 +11,7 @@ https://github.com/mvxxx
 #include "ecs/component/Selection.hpp"
 #include "Math.hpp"
 
+/*not finished*/
 class Border : public mv::Entity, public sf::Drawable
 {
 	/* ===Objects=== */

@@ -84,12 +84,14 @@ void Scene::display() const
 
 void Scene::zoom( const zoom_t& type )
 {
+	window->setView( *views[viewType_t::DEFAULT] );
+
 	if ( type == zoom_t::ZOOM )
 		views[viewType_t::DEFAULT]->zoom( 1 + zoomSpeed );
 	else
 		views[viewType_t::DEFAULT]->zoom( 1 - zoomSpeed );
 
-	window->setView( *views[viewType_t::DEFAULT] );
+	window->setView( *views[viewType_t::UI] );
 }
 
 void Scene::setView(viewType_t type)
@@ -99,6 +101,8 @@ void Scene::setView(viewType_t type)
 
 void Scene::moveView( direction_t direction )
 {
+	window->setView( *views[viewType_t::DEFAULT] );
+
 	switch ( direction )
 	{
 	case direction_t::TOP:
@@ -122,5 +126,5 @@ void Scene::moveView( direction_t direction )
 		break;
 	}
 	}
-	window->setView( *views[viewType_t::DEFAULT] );
+	window->setView( *views[viewType_t::UI] );
 }
