@@ -35,7 +35,7 @@ private:
 template <class T>
 void SimpleDrawable::appendType()
 {
-	drawableObject = std::make_shared<T>();
+	core = std::make_shared<T>();
 }
 
 inline SimpleDrawable::SimpleDrawable()
