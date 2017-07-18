@@ -22,9 +22,11 @@ private:
 	std::shared_ptr<Border> border;
 	/* ===Methods=== */
 public:
-	Mouse();
+	Mouse( std::shared_ptr<Scene> scene );
 
 	void update( std::shared_ptr<Scene> scene );
+
+	std::shared_ptr<Border> getBorder();
 protected:
 private:
 };
