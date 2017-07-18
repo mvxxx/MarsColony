@@ -7,7 +7,6 @@ https://github.com/mvxxx
 
 #include <SFML/System/Vector2.hpp>
 #include "Math.hpp"
-#include "SimpleDrawable.hpp"
 
 class Selection : public mv::Entity
 {
@@ -19,33 +18,33 @@ private:
 public:
 	Selection();
 	void init( std::shared_ptr<Scene> scene );
-	std::shared_ptr<sf::VertexArray> getBorder();
+	sf::VertexArray& getBorder();
 protected:
 private:
 };
 
 inline Selection::Selection()
 {
-	this->addComponent<SimpleDrawable>();
-	this->getComponent<SimpleDrawable>()->appendType<sf::VertexArray>();
+	this->addComponent<ProperBody>();
+	this->getComponent<ProperBody>()->appendType<sf::VertexArray>();
 }
 
 inline void Selection::init( std::shared_ptr<Scene> scene )
 {
 	constexpr int8_t ammountOfCorners = 7;
 
-	auto vertexArray = std::dynamic_pointer_cast<sf::VertexArray>(this->getComponent<SimpleDrawable>()->getCore());
+	auto vertexArray = this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
 
-	vertexArray->setPrimitiveType( sf::Lines );
+	vertexArray.setPrimitiveType( sf::Lines );
 	for ( size_t i = 0; i <= ammountOfCorners; i++ )
 	{
-		vertexArray->append( sf::Vertex( Math::mouseWorldPosition( scene ) ) );
-		(*vertexArray)[i].color = sf::Color::Yellow;
+		vertexArray.append( sf::Vertex( Math::mouseWorldPosition( scene ) ) );
+		vertexArray[i].color = sf::Color::Yellow;
 	}
 }
 
-inline std::shared_ptr<sf::VertexArray> Selection::getBorder()
+inline sf::VertexArray& Selection::getBorder()
 {
-	return std::dynamic_pointer_cast<sf::VertexArray>(this->getComponent<SimpleDrawable>()->getCore());
+	return this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
 }
 
