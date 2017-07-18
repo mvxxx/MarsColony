@@ -14,7 +14,7 @@ class ProperBody : public sf::Drawable
 {
 	/* ===Objects=== */
 public:
-	sf::Sprite body;
+	std::shared_ptr<sf::Drawable> body;
 	bool collidable;
 	bool visible;
 protected:
@@ -27,10 +27,25 @@ public:
 
 	void setCenter()
 	{
-		body.setOrigin( body.getGlobalBounds().width / 2.f, body.getGlobalBounds().height / 2.f );
+		if ( sf::Sprite* sprite = dynamic_cast< sf::Sprite* >(&*body) )
+		{
+			sprite->setOrigin( sprite->getGlobalBounds().width / 2.f, sprite->getGlobalBounds().height / 2.f );
+		}
 	}
 
 	void draw( sf::RenderWindow& window );
+
+	template<class T>
+	void appendType()
+	{
+		body = std::make_shared<T>();
+	}
+
+	template<class T>
+	T& getAs()
+	{
+		return *dynamic_cast<T*>(&*body);
+	}
 
 protected:
 private:
@@ -39,10 +54,10 @@ private:
 
 inline void ProperBody::draw(sf::RenderWindow& window)
 {
-	window.draw( body );
+	window.draw( *body );
 }
 
 inline void ProperBody::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw( body, states );
+	target.draw( *body, states );
 }
