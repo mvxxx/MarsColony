@@ -6,12 +6,12 @@ https://github.com/mvxxx
 #include "renderer.hpp"
 
 
-bool Renderer::hasProperBody( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection )
+bool Renderer::isAbleToDraw( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection )
 {
 	return !collection->empty() && (*collection)[0]->hasComponent<ProperBody>();
 }
 
-bool Renderer::hasProperBody( std::shared_ptr<mv::Entity> entity )
+bool Renderer::isAbleToDraw( std::shared_ptr<mv::Entity> entity )
 {
 	return entity->hasComponent<ProperBody>();
 }
@@ -30,7 +30,10 @@ void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defa
 			{
 				for ( auto& drawableObject : *collection )
 				{
-					window.draw( *drawableObject->getComponent<ProperBody>() );
+					auto properBody = drawableObject->getComponent<ProperBody>();
+
+					if ( properBody->visible )
+						window.draw( *properBody );
 				}
 			}
 		}
@@ -39,7 +42,7 @@ void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defa
 
 bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType )
 {
-	if ( hasProperBody( entity ) )
+	if ( isAbleToDraw( entity ) )
 	{
 		auto tempCollection = std::make_shared<std::vector<std::shared_ptr<mv::Entity>>>();
 		tempCollection->push_back( entity );
@@ -51,7 +54,7 @@ bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, DrawMap::la
 
 bool Renderer::addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType )
 {
-	if ( hasProperBody( collection ) )
+	if ( isAbleToDraw( collection ) )
 		drawMap.layerPackData[renderType][numberOfLayer].push_back( collection );
 
 	return true;

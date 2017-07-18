@@ -9,6 +9,7 @@ https://github.com/mvxxx
 #include <vector>
 #include <map>
 
+#include <SFML/Graphics/Drawable.hpp>
 #include "ecs/entity/Entity.hpp"
 #include "ecs/component/ProperBody.hpp"
 #include "wrappers/DrawMap.hpp"
@@ -30,6 +31,6 @@ public:
 
 protected:
 private:
-	bool hasProperBody( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection  );
-	bool hasProperBody( std::shared_ptr<mv::Entity> entity );
+	bool isAbleToDraw( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection  );
+	bool isAbleToDraw( std::shared_ptr<mv::Entity> entity );
 };

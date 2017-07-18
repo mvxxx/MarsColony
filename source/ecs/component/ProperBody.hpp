@@ -16,12 +16,13 @@ class ProperBody : public sf::Drawable
 public:
 	sf::Sprite body;
 	bool collidable;
+	bool visible;
 protected:
 private:
 	/* ===Methods=== */
 public:
 	ProperBody()
-		:collidable(false)
+		:collidable( false ), visible( true )
 	{}
 
 	void setCenter()
