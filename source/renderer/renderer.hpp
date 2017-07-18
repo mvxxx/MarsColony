@@ -18,11 +18,15 @@ class Renderer
 {
 	/* ===Objects=== */
 public:
-
 protected:
 private:
 	DrawMap drawMap;
 
+	enum class drawObjectType_t
+	{
+		SIMPLE_DRAWABLE,
+		PROPER_BODY
+	};
 	/* ===Methods=== */
 public:
 	bool addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType );
