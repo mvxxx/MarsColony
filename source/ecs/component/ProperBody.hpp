@@ -10,19 +10,20 @@ https://github.com/mvxxx
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-class ProperBody : public sf::Drawable
+#include <features/Visible.hpp>
+
+class ProperBody : public sf::Drawable, public Visible
 {
 	/* ===Objects=== */
 public:
 	std::shared_ptr<sf::Drawable> body;
 	bool collidable;
-	bool visible;
 protected:
 private:
 	/* ===Methods=== */
 public:
 	ProperBody()
-		:collidable( false ), visible( true )
+		:collidable( false ), Visible( true )
 	{}
 
 	void setCenter()

@@ -32,7 +32,7 @@ void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defa
 				{
 						auto properBody = drawableObject->getComponent<ProperBody>();
 
-						if ( properBody->visible )
+						if ( properBody->isVisible() )
 							window.draw( *properBody );
 				}
 			}
