@@ -9,6 +9,7 @@ https://github.com/mvxxx
 #include "scene/Scene.hpp"
 #include "TilesManager.hpp"
 #include "mouse/Border.hpp"
+#include "Math.hpp"
 
 
 class Border;

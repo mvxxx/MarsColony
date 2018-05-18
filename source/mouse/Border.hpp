@@ -22,8 +22,8 @@ private:
 public:
 	Border( std::shared_ptr<Scene> scene );
 
-  void activateSelection(const Point<int>& coords);
-  void deactivateSelection(const Point<int>& coords);
+  void activateSelection(const sf::Vector2f& coords);
+  void deactivateSelection(const sf::Vector2f& coords);
 protected:
 private:
 	virtual void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
