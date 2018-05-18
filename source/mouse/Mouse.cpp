@@ -8,8 +8,6 @@ Mouse::Mouse( std::shared_ptr<Scene> scene )
 
 	properBody->getAs<sf::Sprite>().setTexture( *textureAtlas.get( "data/textures/mouseAtlas.png" ) );
 	properBody->setCenter();
-
-	border = std::make_shared<Border>( scene );
 }
 
 void Mouse::update( std::shared_ptr<Scene> scene )
@@ -31,11 +29,6 @@ void Mouse::update( std::shared_ptr<Scene> scene )
 		else if ( mouseWindowPosition.y < scene->motionSensitivity )
 			scene->moveViewTop();
 	}
-}
-
-std::shared_ptr<Border> Mouse::getBorder()
-{
-	return border;
 }
 
 

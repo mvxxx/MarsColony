@@ -19,14 +19,11 @@ public:
 protected:
 private:
 	mv::Cache<sf::Texture> textureAtlas;
-	std::shared_ptr<Border> border;
 	/* ===Methods=== */
 public:
 	Mouse( std::shared_ptr<Scene> scene );
 
 	void update( std::shared_ptr<Scene> scene );
-
-	std::shared_ptr<Border> getBorder();
 protected:
 private:
 };

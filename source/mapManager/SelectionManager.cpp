@@ -3,11 +3,14 @@
 SelectionManager::SelectionManager( std::shared_ptr<Scene> _scene )
 	:scene( _scene )
 {
+  border = std::make_shared<Border>(scene);
 }
 
 void SelectionManager::callSelection()
 {
 	std::cout << "PRESSED" << std::endl;
+ // scene->
+
 }
 
 void SelectionManager::cancelSelection()
@@ -38,4 +41,9 @@ void SelectionManager::handleEventTypes(const eventWrapper_t& eventList)
 		}
 		}
 	}
+}
+
+std::shared_ptr<Border> SelectionManager::getBorder()
+{
+  return border;
 }
