@@ -23,7 +23,7 @@ void GameState::onStart()
 
   this->subStates.emplace(State::type_t::mainGame, mainSubState);
 
-	scenePointer->renderer.addSingle( mainSubState->getSelectionManager()->getBorder(), 1, DrawMap::renderType_t::UI );
+	//scenePointer->renderer.addSingle( mainSubState->getSelectionManager()->getBorder(), 1, DrawMap::renderType_t::UI );
 	scenePointer->renderer.addSingle( mouse, 1, DrawMap::renderType_t::UI );
 
 }

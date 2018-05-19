@@ -35,7 +35,8 @@ void MainGameSubState::run( eventWrapper_t& eventTypes )
 
 void MainGameSubState::fillRenderer( Renderer& renderer )
 {
-	renderer.addCollection( mapManager.tilesManager.getTiles(), 0, DrawMap::renderType_t::DEFAULT );
+  //renderer.addCollection( mapManager.tilesManager.getTiles(), 0, DrawMap::renderType_t::DEFAULT );
+  renderer.addSingle(selectionManager.getBorder(), 1, DrawMap::renderType_t::UI);
 }
 
 std::shared_ptr<SelectionManager> MainGameSubState::getSelectionManager()
