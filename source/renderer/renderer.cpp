@@ -13,7 +13,7 @@ bool Renderer::isAbleToDraw( std::shared_ptr<std::vector<std::shared_ptr<mv::Ent
 
 bool Renderer::isAbleToDraw( std::shared_ptr<mv::Entity> entity )
 {
-	return entity->hasComponent<ProperBody>()/*there is a problem with selection*/;
+  return entity->hasComponent<ProperBody>() || entity->hasComponent<Selection>();/*there is a problem with selection*/
 }
 
 void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defaultView, std::shared_ptr<sf::View> UIView )

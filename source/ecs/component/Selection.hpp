@@ -6,12 +6,13 @@ https://github.com/mvxxx
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/VertexArray.hpp>
 #include "Math.hpp"
 #include "logger/Logger.hpp"
 
 
 
-class Selection : public mv::Entity
+class Selection
 {
   /* ===Objects=== */
 public:
@@ -25,11 +26,13 @@ private:
   sf::Vector2f start;
   sf::Vector2f end;
 
+  sf::VertexArray frame;
+  bool visible;
+
   /* ===Methods=== */
 public:
-  Selection();
   void init(std::shared_ptr<Scene> scene);
-  sf::VertexArray& getBorder();
+  const sf::VertexArray& getFrame();
 
   void setPoint(const sf::Vector2f& coords, const PointStatus& status);
 protected:
@@ -37,29 +40,23 @@ private:
   void configureFrame();
 };
 
-inline Selection::Selection()
-{
-  this->addComponent<ProperBody>();
-  this->getComponent<ProperBody>()->appendType<sf::VertexArray>();
-}
 
 inline void Selection::init(std::shared_ptr<Scene> scene)
 {
+  visible = false;
   constexpr int8_t ammountOfCorners = 7; /*it sums to 8*/
 
-  sf::VertexArray& vertexArray = this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
-
-  vertexArray.setPrimitiveType(sf::Lines);
+  frame.setPrimitiveType(sf::Lines);
   for ( size_t i = 0; i <= ammountOfCorners; i++ )
   {
-    vertexArray.append(sf::Vertex(Math::mouseWorldPosition(scene)));
-    vertexArray[i].color = sf::Color::Yellow;
+    frame.append(sf::Vertex(Math::mouseWorldPosition(scene)));
+    frame[i].color = sf::Color::Yellow;
   }
 }
 
-inline sf::VertexArray& Selection::getBorder()
+inline const sf::VertexArray& Selection::getFrame()
 {
-  return this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
+  return frame;
 }
 
 inline void Selection::setPoint(const sf::Vector2f& data, const PointStatus & status)
@@ -75,17 +72,15 @@ inline void Selection::setPoint(const sf::Vector2f& data, const PointStatus & st
 
 inline void Selection::configureFrame()
 {
-  auto vertexArray = this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
-  int t = vertexArray.getVertexCount();
-  vertexArray[0].position = start;
-  vertexArray[1].position = { start.x,end.y };
-  vertexArray[2].position = { start.x,end.y };
-  vertexArray[3].position = end;
-  vertexArray[4].position = end;
-  vertexArray[5].position = { end.x,start.y };
-  vertexArray[6].position = { end.x, start.y };
-  vertexArray[7].position = start;
-  this->getComponent<ProperBody>()->setVisible(true);
+  frame[0].position = start;
+  frame[1].position = { start.x,end.y };
+  frame[2].position = { start.x,end.y };
+  frame[3].position = end;
+  frame[4].position = end;
+  frame[5].position = { end.x,start.y };
+  frame[6].position = { end.x, start.y };
+  frame[7].position = start;
+  visible = true;
 }
 
 
