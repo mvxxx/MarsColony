@@ -1,21 +1,14 @@
 #include "Frame.hpp"
 
-Frame::Frame( std::shared_ptr<Scene> scene )
-  :Visible(false)
+Frame::Frame(const std::shared_ptr<Scene>& scene)
 {
-  constexpr int8_t ammountOfCorners = 7; /*it sums to 8*/
-
-  frame.setPrimitiveType(sf::Lines);
-  for ( size_t i = 0; i <= ammountOfCorners; i++ )
-  {
-    frame.append(sf::Vertex(Math::mouseWorldPosition(scene)));
-    frame[i].color = sf::Color::Yellow;
-  }
+  this->addComponent<Visible>();
+  this->initFrame(scene);
 }
 
-void Frame::draw( sf::RenderTarget& target, sf::RenderStates states ) const
+void Frame::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw( frame, states );
+  target.draw(frame, states);
 }
 
 void Frame::activateSelection(const sf::Vector2f& coords)
@@ -28,7 +21,7 @@ void Frame::deactivateSelection(const sf::Vector2f& coords)
   this->setPoint(coords, PointType::END);
 }
 
-inline const sf::VertexArray& Selection::getFrame()
+inline const sf::VertexArray& Frame::getFrame()
 {
   return frame;
 }
@@ -44,6 +37,18 @@ void Frame::setPoint(const sf::Vector2f& data, const PointType & status)
     configureFrame();
 }
 
+void Frame::initFrame(const std::shared_ptr<Scene>& scene)
+{
+  constexpr int8_t ammountOfCorners = 7; /*it sums to 8*/
+
+  frame.setPrimitiveType(sf::Lines);
+  for ( size_t i = 0; i <= ammountOfCorners; i++ )
+  {
+    frame.append(sf::Vertex(Math::mouseWorldPosition(scene)));
+    frame[i].color = sf::Color::Yellow;
+  }
+}
+
 void Frame::configureFrame()
 {
   frame[0].position = start;
@@ -54,7 +59,6 @@ void Frame::configureFrame()
   frame[5].position = { end.x,start.y };
   frame[6].position = { end.x, start.y };
   frame[7].position = start;
-  visible = true;
 }
 
 

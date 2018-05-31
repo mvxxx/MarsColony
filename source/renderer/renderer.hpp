@@ -11,7 +11,6 @@ https://github.com/mvxxx
 
 #include <SFML/Graphics/Drawable.hpp>
 #include "ecs/entity/Entity.hpp"
-#include "ecs/component/Selection.hpp"
 #include "ecs/component/ProperBody.hpp"
 #include "wrappers/DrawMap.hpp"
 #include "logger/Logger.hpp"

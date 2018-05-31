@@ -10,7 +10,6 @@ https://github.com/mvxxx
 #include "cache/Cache.hpp"
 #include "scene/Scene.hpp"
 #include "Math.hpp"
-#include "Border.hpp"
 
 class Mouse :public mv::Entity
 {

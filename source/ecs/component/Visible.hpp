@@ -5,6 +5,10 @@ https://github.com/mvxxx
 
 #pragma once
 
+/*
+ * This component excludes from properBody
+ * mainly for UI
+ */
 class Visible
 {
 	/* ===Objects=== */
@@ -14,8 +18,8 @@ protected:
 private:
   /* ===Methods=== */
 public:
-  Visible(bool status)
-    :visible(status)
+  Visible()  
+    :visible(false)
   {}
 
   bool isVisible() 

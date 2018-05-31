@@ -10,7 +10,7 @@ https://github.com/mvxxx
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include <features/Visible.hpp>
+#include <ecs/component/Visible.hpp>
 
 class ProperBody : public sf::Drawable, public Visible
 {
@@ -22,9 +22,11 @@ protected:
 private:
 	/* ===Methods=== */
 public:
-	ProperBody()
-		:collidable( false ), Visible( true )
-	{}
+  ProperBody()
+    :collidable(false)
+	{
+    visible = true;
+  }
 
 	void setCenter()
 	{

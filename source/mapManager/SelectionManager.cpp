@@ -3,17 +3,17 @@
 SelectionManager::SelectionManager( std::shared_ptr<Scene> _scene )
 	:scene( _scene )
 {
-  border = std::make_shared<Border>(scene);
+  frame = std::make_shared<Frame>(scene);
 }
 
 void SelectionManager::callSelection()
 {
-  border->activateSelection(Math::mouseWorldPosition(scene));
+  frame->activateSelection(Math::mouseWorldPosition(scene));
 }
 
 void SelectionManager::cancelSelection()
 {
-  border->deactivateSelection(Math::mouseWorldPosition(scene));
+  frame->deactivateSelection(Math::mouseWorldPosition(scene));
 }
 
 void SelectionManager::addEntityToManage( std::shared_ptr<mv::Entity> entity )
@@ -41,7 +41,7 @@ void SelectionManager::handleEventTypes(const eventWrapper_t& eventList)
 	}
 }
 
-std::shared_ptr<Border> SelectionManager::getBorder()
+std::shared_ptr<Frame> SelectionManager::getFrame()
 {
-  return border;
+  return frame;
 }
