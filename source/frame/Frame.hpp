@@ -27,7 +27,6 @@ private:
   sf::Vector2f start;
   sf::Vector2f end;
 
-  sf::VertexArray frame;
 	/* ===Methods=== */
 public:
 	Frame( const std::shared_ptr<Scene>& scene );

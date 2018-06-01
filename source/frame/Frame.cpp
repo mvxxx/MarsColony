@@ -2,13 +2,14 @@
 
 Frame::Frame(const std::shared_ptr<Scene>& scene)
 {
-  this->addComponent<Visible>();
+  this->addComponent<ProperBody>();
+  this->getComponent<ProperBody>()->appendType<sf::VertexArray>();
   this->initFrame(scene);
 }
 
 void Frame::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-  target.draw(frame, states);
+  target.draw(this->getComponent<ProperBody>()->getAs<sf::VertexArray>(), states);
 }
 
 void Frame::activateSelection(const sf::Vector2f& coords)
@@ -23,7 +24,7 @@ void Frame::deactivateSelection(const sf::Vector2f& coords)
 
 inline const sf::VertexArray& Frame::getFrame()
 {
-  return frame;
+  return   this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
 }
 
 void Frame::setPoint(const sf::Vector2f& data, const PointType & status)
@@ -40,17 +41,21 @@ void Frame::setPoint(const sf::Vector2f& data, const PointType & status)
 void Frame::initFrame(const std::shared_ptr<Scene>& scene)
 {
   constexpr int8_t ammountOfCorners = 7; /*it sums to 8*/
-
+  sf::VertexArray& frame = this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
   frame.setPrimitiveType(sf::Lines);
+  mv::Logger::Log(std::to_string(frame.getVertexCount()));
   for ( size_t i = 0; i <= ammountOfCorners; i++ )
   {
     frame.append(sf::Vertex(Math::mouseWorldPosition(scene)));
     frame[i].color = sf::Color::Yellow;
   }
+  mv::Logger::Log(std::to_string(frame.getVertexCount()));
 }
 
 void Frame::configureFrame()
 {
+  sf::VertexArray& frame = this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
+  mv::Logger::Log(std::to_string(frame.getVertexCount()));
   frame[0].position = start;
   frame[1].position = { start.x,end.y };
   frame[2].position = { start.x,end.y };
