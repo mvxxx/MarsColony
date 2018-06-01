@@ -4,6 +4,7 @@ Frame::Frame(const std::shared_ptr<Scene>& scene)
 {
   this->addComponent<ProperBody>();
   this->getComponent<ProperBody>()->appendType<sf::VertexArray>();
+  this->getComponent<ProperBody>()->setVisible(false);
   this->initFrame(scene);
 }
 
@@ -14,12 +15,29 @@ void Frame::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Frame::activateSelection(const sf::Vector2f& coords)
 {
+  this->getComponent<ProperBody>()->setVisible(true);
   this->setPoint(coords, PointType::START);
 }
 
-void Frame::deactivateSelection(const sf::Vector2f& coords)
+void Frame::deactivateSelection()
 {
-  this->setPoint(coords, PointType::END);
+  sf::VertexArray& frame = this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
+
+  frame[0].position = { 0,0 };
+  frame[1].position = { 0,0 };
+  frame[2].position = { 0,0 };
+  frame[3].position = { 0,0 };
+  frame[4].position = { 0,0 };
+  frame[5].position = { 0,0 };
+  frame[6].position = { 0,0 };
+  frame[7].position = { 0,0 };
+
+  this->getComponent<ProperBody>()->setVisible(false);
+}
+
+void Frame::updateSelection(const sf::Vector2f& coords)
+{
+  this->setPoint(coords, PointType::CURRENT);
 }
 
 inline const sf::VertexArray& Frame::getFrame()
@@ -29,13 +47,10 @@ inline const sf::VertexArray& Frame::getFrame()
 
 void Frame::setPoint(const sf::Vector2f& data, const PointType & status)
 {
-  sf::Vector2f& point = status == PointType::START ? start : end;
-  mv::Logger::Log((status == PointType::START ? "Start Point: " : "End Point ") + std::to_string(point.x) + " " + std::to_string(point.y), mv::Logger::STREAM::CONSOLE, mv::Logger::TYPE::INFO);
+  sf::Vector2f& point = status == PointType::START ? start : current;
   point.x = data.x;
   point.y = data.y;
-
-  if ( status == PointType::END )
-    configureFrame();
+  configureFrame();
 }
 
 void Frame::initFrame(const std::shared_ptr<Scene>& scene)
@@ -55,14 +70,13 @@ void Frame::initFrame(const std::shared_ptr<Scene>& scene)
 void Frame::configureFrame()
 {
   sf::VertexArray& frame = this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
-  mv::Logger::Log(std::to_string(frame.getVertexCount()));
   frame[0].position = start;
-  frame[1].position = { start.x,end.y };
-  frame[2].position = { start.x,end.y };
-  frame[3].position = end;
-  frame[4].position = end;
-  frame[5].position = { end.x,start.y };
-  frame[6].position = { end.x, start.y };
+  frame[1].position = { start.x,current.y };
+  frame[2].position = { start.x,current.y };
+  frame[3].position = current;
+  frame[4].position = current;
+  frame[5].position = { current.x,start.y };
+  frame[6].position = { current.x, start.y };
   frame[7].position = start;
 }
 

@@ -19,20 +19,21 @@ public:
   enum class PointType
   {
     START,
-    END
+    CURRENT
   };
 
 protected:
 private:
   sf::Vector2f start;
-  sf::Vector2f end;
+  sf::Vector2f current;
 
 	/* ===Methods=== */
 public:
 	Frame( const std::shared_ptr<Scene>& scene );
 
   void activateSelection(const sf::Vector2f& coords);
-  void deactivateSelection(const sf::Vector2f& coords);
+  void deactivateSelection();
+  void updateSelection(const sf::Vector2f& coords);
 
   const sf::VertexArray& getFrame();
 

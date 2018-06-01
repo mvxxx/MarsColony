@@ -6,16 +6,6 @@ SelectionManager::SelectionManager( std::shared_ptr<Scene> _scene )
   frame = std::make_shared<Frame>(scene);
 }
 
-void SelectionManager::callSelection()
-{
-  frame->activateSelection(Math::mouseWorldPosition(scene));
-}
-
-void SelectionManager::cancelSelection()
-{
-  frame->deactivateSelection(Math::mouseWorldPosition(scene));
-}
-
 void SelectionManager::addEntityToManage( std::shared_ptr<mv::Entity> entity )
 {
 	this->addEntityToManage( entity );
@@ -29,14 +19,20 @@ void SelectionManager::handleEventTypes(const eventWrapper_t& eventList)
 		{//TO DO: add right or left button click   
     case sf::Event::MouseButtonPressed:
 		{
-			callSelection();
+      frame->activateSelection(Math::mouseWorldPosition(scene));
 			break;
 		}
 		case sf::Event::MouseButtonReleased:
 		{
-			cancelSelection();
-			break;
+      frame->deactivateSelection();
+      break;
 		}
+
+    case sf::Event::MouseMoved:
+    {
+      frame->updateSelection(Math::mouseWorldPosition(scene));
+      break;
+    }
 		}
 	}
 }
