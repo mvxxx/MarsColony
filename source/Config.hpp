@@ -17,13 +17,18 @@ namespace mv
 			constexpr auto ZOOM_SPEED = 0.05f;
 		}
 
+    namespace loop
+    {
+      const auto TIME_PER_FRAME = 1.f / 60.f;
+    }
+
 		namespace mouse
 		{
 			constexpr auto FREQUENCY = 0.2f;
 		}
 
 		namespace error
-		{
+    {
 
       namespace renderer
       {

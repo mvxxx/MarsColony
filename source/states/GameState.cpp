@@ -5,26 +5,26 @@ https://github.com/mvxxx
 
 #include "GameState.hpp"
 
-GameState::GameState( std::shared_ptr<Scene> scenePtr )
-	:scenePointer( scenePtr )
+GameState::GameState(std::shared_ptr<Scene> scenePtr)
+  :scenePointer(scenePtr), loopManager(sf::seconds(mv::constants::loop::TIME_PER_FRAME))
 {
-	this->onStart();
-	eventControl = std::make_shared<mv::EventControl>( scenePointer );
+  this->onStart();
+  eventControl = std::make_shared<mv::EventControl>(scenePointer);
 }
 
 void GameState::onStart()
 {
-	scenePointer->getWindow()->setMouseCursorVisible( false );
+  scenePointer->getWindow()->setMouseCursorVisible(false);
 
-	mouse = std::make_shared<Mouse>( scenePointer );
+  mouse = std::make_shared<Mouse>(scenePointer);
 
   auto mainSubState = std::make_shared<MainGameSubState>(scenePointer);
   mainSubState->fillRenderer(scenePointer->renderer);
 
   this->subStates.emplace(State::type_t::mainGame, mainSubState);
 
-	//scenePointer->renderer.addSingle( mainSubState->getSelectionManager()->getBorder(), 1, DrawMap::renderType_t::UI );
-	scenePointer->renderer.addSingle( mouse, 1, DrawMap::renderType_t::UI );
+  //scenePointer->renderer.addSingle( mainSubState->getSelectionManager()->getBorder(), 1, DrawMap::renderType_t::UI );
+  scenePointer->renderer.addSingle(mouse, 1, DrawMap::renderType_t::UI);
 
 }
 
@@ -34,17 +34,30 @@ void GameState::onStop()
 
 void GameState::run()
 {
-	sf::Event event;
-	auto eventTypes = eventControl->checkEvent( event );
+  loopManager.increaseTime();
 
-	this->loopSubStates( eventTypes );
+  while ( !loopManager.canChangeTheFrame() )
+  {
+    logicProcessing();
+    loopManager.reduceTime();
+  }
 
-	mouse->update( scenePointer );
+  visualProcessing();
+}
 
-	scenePointer->handleEventTypes( eventTypes );
+void GameState::logicProcessing()
+{
+  sf::Event event;
+  auto eventTypes = eventControl->checkEvent(event);
+  this->loopSubStates(eventTypes);
+  mouse->update(scenePointer);
+  scenePointer->handleEventTypes(eventTypes);
+}
 
-	scenePointer->clear();
-	scenePointer->drawAll();
-	scenePointer->display();
+void GameState::visualProcessing()
+{
+  scenePointer->clear();
+  scenePointer->drawAll();
+  scenePointer->display();
 }
 

@@ -37,6 +37,4 @@ public:
   std::shared_ptr<Frame> getFrame();
 protected:
 private:
-	void callSelection();
-	void cancelSelection();
 };

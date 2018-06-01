@@ -9,6 +9,7 @@ https://github.com/mvxxx
 #include "subStates/mainGameSubState.hpp"
 #include "eventControl/EventControl.hpp"
 #include "mouse/Mouse.hpp"
+#include "LoopManager/LoopManager.hpp"
 
 
 class GameState :public State
@@ -20,6 +21,7 @@ private:
 	std::shared_ptr<mv::EventControl> eventControl;
 	std::shared_ptr<Scene> scenePointer;
 	std::shared_ptr<Mouse> mouse;
+  LoopManager loopManager;
 	/* ===Methods=== */
 public:
 
@@ -33,4 +35,6 @@ public:
 
 protected:
 private:
+  void logicProcessing();
+  void visualProcessing();
 };

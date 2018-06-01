@@ -7,7 +7,7 @@ https://github.com/mvxxx
 #include "Config.hpp"
 
 Scene::Scene( const std::string& title, const sf::Vector2f& dimensions )
-	:viewSpeed( 0.2f ), motionSensitivity( 50.f ), zoomSpeed( 0.05f )
+	:viewSpeed( 10.f ), motionSensitivity( 50.f ), zoomSpeed( 0.05f )
 {
 	window = std::shared_ptr<sf::RenderWindow>( new sf::RenderWindow( sf::VideoMode( dimensions.x, dimensions.y ), title ) );
 
