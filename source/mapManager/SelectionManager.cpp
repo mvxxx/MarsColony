@@ -3,16 +3,7 @@
 SelectionManager::SelectionManager( std::shared_ptr<Scene> _scene )
 	:scene( _scene )
 {
-}
-
-void SelectionManager::callSelection()
-{
-	std::cout << "PRESSED" << std::endl;
-}
-
-void SelectionManager::cancelSelection()
-{
-	std::cout << "RELASED" << std::endl;
+  frame = std::make_shared<Frame>(scene);
 }
 
 void SelectionManager::addEntityToManage( std::shared_ptr<mv::Entity> entity )
@@ -25,17 +16,28 @@ void SelectionManager::handleEventTypes(const eventWrapper_t& eventList)
 	for ( auto&type : eventList.list )
 	{
 		switch ( type )
+		{//TO DO: add right or left button click   
+    case sf::Event::MouseButtonPressed:
 		{
-		case sf::Event::MouseButtonPressed:
-		{
-			callSelection();
+      frame->activateSelection(Math::mouseWorldPosition(scene));
 			break;
 		}
 		case sf::Event::MouseButtonReleased:
 		{
-			cancelSelection();
-			break;
+      frame->deactivateSelection();
+      break;
 		}
+
+    case sf::Event::MouseMoved:
+    {
+      frame->updateSelection(Math::mouseWorldPosition(scene));
+      break;
+    }
 		}
 	}
+}
+
+std::shared_ptr<Frame> SelectionManager::getFrame()
+{
+  return frame;
 }

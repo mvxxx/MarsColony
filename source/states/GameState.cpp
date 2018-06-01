@@ -18,13 +18,14 @@ void GameState::onStart()
 
 	mouse = std::make_shared<Mouse>( scenePointer );
 
-	scenePointer->renderer.addSingle( mouse->getBorder() , 1, DrawMap::renderType_t::UI );
+  auto mainSubState = std::make_shared<MainGameSubState>(scenePointer);
+  mainSubState->fillRenderer(scenePointer->renderer);
+
+  this->subStates.emplace(State::type_t::mainGame, mainSubState);
+
+	//scenePointer->renderer.addSingle( mainSubState->getSelectionManager()->getBorder(), 1, DrawMap::renderType_t::UI );
 	scenePointer->renderer.addSingle( mouse, 1, DrawMap::renderType_t::UI );
 
-	auto mainSubState = std::make_shared<MainGameSubState>( scenePointer );
-	mainSubState->fillRenderer( scenePointer->renderer );
-
-	this->subStates.emplace( State::type_t::mainGame, mainSubState );
 }
 
 void GameState::onStop()

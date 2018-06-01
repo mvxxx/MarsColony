@@ -13,6 +13,7 @@ https://github.com/mvxxx
 #include "ecs/entity/Entity.hpp"
 #include "ecs/component/ProperBody.hpp"
 #include "wrappers/DrawMap.hpp"
+#include "logger/Logger.hpp"
 
 class Renderer
 {

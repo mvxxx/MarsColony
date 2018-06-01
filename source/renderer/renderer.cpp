@@ -13,7 +13,7 @@ bool Renderer::isAbleToDraw( std::shared_ptr<std::vector<std::shared_ptr<mv::Ent
 
 bool Renderer::isAbleToDraw( std::shared_ptr<mv::Entity> entity )
 {
-	return entity->hasComponent<ProperBody>();
+  return entity->hasComponent<ProperBody>();/*there is a problem with selection*/
 }
 
 void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defaultView, std::shared_ptr<sf::View> UIView )
@@ -32,7 +32,7 @@ void Renderer::drawAll( sf::RenderWindow& window, std::shared_ptr<sf::View> defa
 				{
 						auto properBody = drawableObject->getComponent<ProperBody>();
 
-						if ( properBody->visible )
+						if ( properBody->isVisible() )
 							window.draw( *properBody );
 				}
 			}
@@ -47,7 +47,13 @@ bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, DrawMap::la
 		auto tempCollection = std::make_shared<std::vector<std::shared_ptr<mv::Entity>>>();
 		tempCollection->push_back( entity );
 		drawMap.layerPackData[renderType][numberOfLayer].push_back( tempCollection );
-	}
+  }
+  else 
+  {
+    mv::Logger::Log(mv::constants::error::renderer::T_CAN_NOT_BE_DRAWN, mv::Logger::STREAM::BOTH, mv::Logger::TYPE::ERROR);
+    return false;
+    //
+  }
 
 	return true;
 }

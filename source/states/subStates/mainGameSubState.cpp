@@ -20,7 +20,6 @@ MainGameSubState::MainGameSubState( std::shared_ptr<Scene> scene )
 void MainGameSubState::onStart()
 {
 	mapManager.createWorld( "data/defaultMaps/map0.txt" );
-
 }
 
 void MainGameSubState::onStop()
@@ -36,5 +35,11 @@ void MainGameSubState::run( eventWrapper_t& eventTypes )
 
 void MainGameSubState::fillRenderer( Renderer& renderer )
 {
-	renderer.addCollection( mapManager.tilesManager.getTiles(), 0, DrawMap::renderType_t::DEFAULT );
+  renderer.addCollection( mapManager.tilesManager.getTiles(), 0, DrawMap::renderType_t::DEFAULT );
+  renderer.addSingle(selectionManager.getFrame(), 1, DrawMap::renderType_t::UI);
+}
+
+std::shared_ptr<SelectionManager> MainGameSubState::getSelectionManager()
+{
+  return std::make_shared<SelectionManager>(selectionManager);
 }

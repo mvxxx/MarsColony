@@ -24,6 +24,12 @@ namespace mv
 
 		namespace error
 		{
+
+      namespace renderer
+      {
+        constexpr auto T_CAN_NOT_BE_DRAWN = "RENDERER: T can't be drawn. Check details of given class";
+      }
+
 			namespace scene
 			{
 				constexpr auto T_DOES_NOT_INHERT_FROM_DRAWABLE = "T doesn't inhert from sf::Drawable. It cannont be drawn by this method";

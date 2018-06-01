@@ -10,31 +10,34 @@ https://github.com/mvxxx
 #include "renderer/renderer.hpp"
 #include "mapManager/SelectionManager.hpp"
 #include "wrappers/EventWrapper.hpp"
+#include "ecs/entity/Entity.hpp"
 #include "inputManager/InputManager.hpp"
 
 
 class MainGameSubState :public SubState
 {
-	/* ===Objects=== */
+  /* ===Objects=== */
 public:
 protected:
 private:
-	MapManager mapManager;
-	SelectionManager selectionManager;
-	mv::InputManager<Scene> cameraControl; 
+  MapManager mapManager;
+  SelectionManager selectionManager;
+  mv::InputManager<Scene> cameraControl;
 
-	/* ===Methods=== */
+  /* ===Methods=== */
 public:
 
-	MainGameSubState( std::shared_ptr<Scene> scene );
+  MainGameSubState(std::shared_ptr<Scene> scene);
 
-	virtual void onStart() override;
+  virtual void onStart() override;
 
-	virtual void onStop() override;
+  virtual void onStop() override;
 
-	virtual void run( eventWrapper_t& eventTypes ) override;
+  virtual void run(eventWrapper_t& eventTypes) override;
 
-	void fillRenderer( Renderer& renderer );
+  void fillRenderer(Renderer& renderer);
+
+  std::shared_ptr<SelectionManager> getSelectionManager();
 
 protected:
 private:
