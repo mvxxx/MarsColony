@@ -6,8 +6,9 @@ https://github.com/mvxxx
 #include "Scene.hpp"
 #include "Config.hpp"
 
+#include "mapManager/SelectionManager.hpp"
 
-Scene::Scene( const std::string& title, const sf::Vector2f& dimensions )
+Scene::Scene( const std::string& title, const sf::Vector2f& dimensions)
 	:viewSpeed( 10.f ), motionSensitivity( 50.f ), zoomSpeed( 0.05f )
 {
 	window = std::shared_ptr<sf::RenderWindow>( new sf::RenderWindow( sf::VideoMode( dimensions.x, dimensions.y ), title) );
@@ -41,7 +42,6 @@ std::shared_ptr<sf::RenderWindow> Scene::getWindow() const
 void Scene::moveViewRight()
 {
 	moveView( direction_t::RIGHT );
-	
 }
 
 void Scene::moveViewLeft()
@@ -101,10 +101,15 @@ void Scene::setView(viewType_t type)
 	window->setView( *views[type] );
 }
 
+void Scene::assignSelectionManager(std::shared_ptr<SelectionManager> manager)
+{
+	selectionManager = manager;
+}
+
 void Scene::moveView( direction_t direction )
 {
 	window->setView( *views[viewType_t::DEFAULT] );
-
+	selectionManager->getFrame()->updateSelection(Math::mouseWorldPosition(this, Scene::viewType_t::DEFAULT));
 	switch ( direction )
 	{
 	case direction_t::TOP:

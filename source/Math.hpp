@@ -28,9 +28,19 @@ public:
 		return scene->getWindow()->mapPixelToCoords( sf::Mouse::getPosition( *scene->getWindow() ), *(scene->getViews().at(viewType)) );
 	}
 
+	static sf::Vector2f mouseWorldPosition(Scene* scene, const Scene::viewType_t& viewType)
+	{
+		return scene->getWindow()->mapPixelToCoords(sf::Mouse::getPosition(*scene->getWindow()), *(scene->getViews().at(viewType)));
+	}
+
 	static sf::Vector2f mouseWindowPosition( const std::shared_ptr<Scene>& scene )
 	{
 		return static_cast<sf::Vector2f>(sf::Mouse::getPosition( *scene->getWindow() ));
+	}
+
+	static sf::Vector2f mouseWindowPosition(Scene* scene)
+	{
+		return static_cast<sf::Vector2f>(sf::Mouse::getPosition(*scene->getWindow()));
 	}
 
 	static bool isInWindow( const sf::Vector2f& pos, const std::shared_ptr<Scene>& scene )

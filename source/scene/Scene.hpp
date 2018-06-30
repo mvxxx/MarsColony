@@ -16,6 +16,8 @@ https://github.com/mvxxx
 #include "renderer/renderer.hpp"
 #include "eventDock/EventDock.hpp"
 
+class SelectionManager;
+
 class Scene : public EventDock
 {
 	/* ===Objects=== */
@@ -43,6 +45,7 @@ private:
 	std::unique_ptr<State> state;
 
 	std::shared_ptr<sf::RenderWindow> window;
+	std::shared_ptr<SelectionManager> selectionManager;
 	std::unordered_map<viewType_t, std::shared_ptr<sf::View> > views;
 
 	enum class direction_t
@@ -71,6 +74,8 @@ public:
 	void zoom( const zoom_t& type );
 
 	void setView( viewType_t type );
+
+	void assignSelectionManager(std::shared_ptr<SelectionManager> manager);
 
 	std::shared_ptr<sf::RenderWindow> getWindow() const;
 
