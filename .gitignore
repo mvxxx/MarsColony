@@ -74,3 +74,5 @@ MV-Engine/data/textures/WY,eNAĆ ALTAS!.txt
 *.xcf
 *.xml
 *.lastcodeanalysissucceeded
+*.ipch
+*.lib

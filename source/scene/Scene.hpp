@@ -6,6 +6,7 @@ https://github.com/mvxxx
 #pragma once
 
 #include <memory>
+#include <unordered_map>
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/View.hpp>
@@ -14,7 +15,6 @@ https://github.com/mvxxx
 #include "states/State.hpp"
 #include "renderer/renderer.hpp"
 #include "eventDock/EventDock.hpp"
-#include <unordered_map>
 
 class Scene : public EventDock
 {
@@ -73,6 +73,8 @@ public:
 	void setView( viewType_t type );
 
 	std::shared_ptr<sf::RenderWindow> getWindow() const;
+
+	const std::unordered_map<viewType_t, std::shared_ptr<sf::View> >& getViews() { return views; }
 
 	void moveViewRight();
 	void moveViewLeft();

@@ -8,10 +8,10 @@ https://github.com/mvxxx
 #include "wrappers/FunctionPointerWrapper_t.hpp"
 #include "mapManager/mapManager.hpp"
 #include "renderer/renderer.hpp"
-#include "mapManager/SelectionManager.hpp"
 #include "wrappers/EventWrapper.hpp"
 #include "ecs/entity/Entity.hpp"
 #include "inputManager/InputManager.hpp"
+#include "mapManager/SelectionManager.hpp"
 
 
 class MainGameSubState :public SubState
@@ -21,13 +21,13 @@ public:
 protected:
 private:
   MapManager mapManager;
-  SelectionManager selectionManager;
   mv::InputManager<Scene> cameraControl;
+  std::shared_ptr<SelectionManager> selectionManager;
 
   /* ===Methods=== */
 public:
 
-  MainGameSubState(std::shared_ptr<Scene> scene);
+  MainGameSubState(std::shared_ptr<Scene> scene, std::shared_ptr<SelectionManager> selManager);
 
   virtual void onStart() override;
 

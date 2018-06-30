@@ -10,6 +10,7 @@ https://github.com/mvxxx
 #include "eventControl/EventControl.hpp"
 #include "mouse/Mouse.hpp"
 #include "LoopManager/LoopManager.hpp"
+#include "mapManager/SelectionManager.hpp"
 
 
 class GameState :public State
@@ -21,6 +22,7 @@ private:
 	std::shared_ptr<mv::EventControl> eventControl;
 	std::shared_ptr<Scene> scenePointer;
 	std::shared_ptr<Mouse> mouse;
+	std::shared_ptr<SelectionManager> selectionManager;
   LoopManager loopManager;
 	/* ===Methods=== */
 public:

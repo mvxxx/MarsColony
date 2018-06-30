@@ -8,6 +8,7 @@ Mouse::Mouse( std::shared_ptr<Scene> scene )
 
 	properBody->getAs<sf::Sprite>().setTexture( *textureAtlas.get( "data/textures/mouseAtlas.png" ) );
 	properBody->setCenter();
+	properBody->getAs<sf::Sprite>().setPosition(Math::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
 }
 
 void Mouse::update( std::shared_ptr<Scene> scene )
@@ -15,7 +16,7 @@ void Mouse::update( std::shared_ptr<Scene> scene )
 	auto mouseWindowPosition = Math::mouseWindowPosition( scene );
 	auto windowSize = scene->getWindow()->getSize();
 
-	this->getComponent<ProperBody>()->getAs<sf::Sprite>().setPosition( Math::mouseWorldPosition( scene ) );
+	this->getComponent<ProperBody>()->getAs<sf::Sprite>().setPosition( Math::mouseWorldPosition( scene, Scene::viewType_t::UI ) );
 
 	if ( Math::isInWindow( mouseWindowPosition, scene ) )
 	{

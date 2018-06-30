@@ -23,17 +23,17 @@ public:
 		return sf::Vector2i( pxPos.x / cellDim.x, pxPos.y / cellDim.y );
 	}
 
-	static sf::Vector2f mouseWorldPosition( std::shared_ptr<Scene> scene )
+	static sf::Vector2f mouseWorldPosition( const std::shared_ptr<Scene>& scene, const Scene::viewType_t& viewType )
 	{
-		return scene->getWindow()->mapPixelToCoords( sf::Mouse::getPosition( *scene->getWindow() ) );
+		return scene->getWindow()->mapPixelToCoords( sf::Mouse::getPosition( *scene->getWindow() ), *(scene->getViews().at(viewType)) );
 	}
 
-	static sf::Vector2f mouseWindowPosition( std::shared_ptr<Scene> scene )
+	static sf::Vector2f mouseWindowPosition( const std::shared_ptr<Scene>& scene )
 	{
 		return static_cast<sf::Vector2f>(sf::Mouse::getPosition( *scene->getWindow() ));
 	}
 
-	static bool isInWindow( sf::Vector2f pos, std::shared_ptr<Scene> scene )
+	static bool isInWindow( const sf::Vector2f& pos, const std::shared_ptr<Scene>& scene )
 	{
 		return  pos.x*pos.y > 0 && pos.x + pos.y > 0 &&
 			pos.x < scene->getWindow()->getSize().x  && pos.y < scene->getWindow()->getSize().y;

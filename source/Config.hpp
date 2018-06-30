@@ -68,7 +68,7 @@ namespace mv
 			constexpr auto EMPTY = "EMPTY";
 			constexpr auto EMPTY_STATE_NUMBER = 0;
 			constexpr auto UNNAMED = "unnamed";
-			const sf::Vector2f WINDOW_DIMENSIONS = { 600,600 };
+			const sf::Vector2f WINDOW_DIMENSIONS = { 1280,720 };
 			const sf::Vector2u BORDER_TOLERANCE = { 100,100 };
 			const sf::Vector2f MOUSE_DIMENSIONS = { 20,20 };
 		}

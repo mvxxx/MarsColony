@@ -6,9 +6,10 @@ https://github.com/mvxxx
 #include "mainGameSubState.hpp"
 
 
-MainGameSubState::MainGameSubState( std::shared_ptr<Scene> scene )
-	:selectionManager( scene )
+MainGameSubState::MainGameSubState( std::shared_ptr<Scene> scene, std::shared_ptr<SelectionManager> selManager)
+	:selectionManager(selManager)
 {
+
 	this->onStart();
 
 	cameraControl.addKeyToCheck( sf::Keyboard::A, std::function<void( Scene& )>( &Scene::moveViewLeft ), scene );
@@ -29,17 +30,17 @@ void MainGameSubState::onStop()
 void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
 	mapManager.manageAll();
-	selectionManager.handleEventTypes( eventTypes );
+	selectionManager->handleEventTypes( eventTypes );
 	cameraControl.update();
 }
 
 void MainGameSubState::fillRenderer( Renderer& renderer )
 {
   renderer.addCollection( mapManager.tilesManager.getTiles(), 0, DrawMap::renderType_t::DEFAULT );
-  renderer.addSingle(selectionManager.getFrame(), 1, DrawMap::renderType_t::UI);
+  renderer.addSingle(selectionManager->getFrame(), 1, DrawMap::renderType_t::DEFAULT);
 }
 
 std::shared_ptr<SelectionManager> MainGameSubState::getSelectionManager()
 {
-  return std::make_shared<SelectionManager>(selectionManager);
+  return selectionManager;
 }

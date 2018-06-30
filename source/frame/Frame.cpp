@@ -42,7 +42,7 @@ void Frame::updateSelection(const sf::Vector2f& coords)
 
 inline const sf::VertexArray& Frame::getFrame()
 {
-  return   this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
+  return this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
 }
 
 void Frame::setPoint(const sf::Vector2f& data, const PointType & status)
@@ -61,7 +61,7 @@ void Frame::initFrame(const std::shared_ptr<Scene>& scene)
   mv::Logger::Log(std::to_string(frame.getVertexCount()));
   for ( size_t i = 0; i <= ammountOfCorners; i++ )
   {
-    frame.append(sf::Vertex(Math::mouseWorldPosition(scene)));
+    frame.append(sf::Vertex(Math::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT)));
     frame[i].color = sf::Color::Yellow;
   }
   mv::Logger::Log(std::to_string(frame.getVertexCount()));

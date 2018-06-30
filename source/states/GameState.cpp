@@ -6,7 +6,8 @@ https://github.com/mvxxx
 #include "GameState.hpp"
 
 GameState::GameState(std::shared_ptr<Scene> scenePtr)
-  :scenePointer(scenePtr), loopManager(sf::seconds(mv::constants::loop::TIME_PER_FRAME))
+  :scenePointer(scenePtr),
+	loopManager(sf::seconds(mv::constants::loop::TIME_PER_FRAME))
 {
   this->onStart();
   eventControl = std::make_shared<mv::EventControl>(scenePointer);
@@ -15,15 +16,16 @@ GameState::GameState(std::shared_ptr<Scene> scenePtr)
 void GameState::onStart()
 {
   scenePointer->getWindow()->setMouseCursorVisible(false);
-
+  
   mouse = std::make_shared<Mouse>(scenePointer);
 
-  auto mainSubState = std::make_shared<MainGameSubState>(scenePointer);
+  selectionManager = std::make_shared<SelectionManager>(scenePointer);
+
+  auto mainSubState = std::make_shared<MainGameSubState>(scenePointer,selectionManager);
   mainSubState->fillRenderer(scenePointer->renderer);
 
   this->subStates.emplace(State::type_t::mainGame, mainSubState);
 
-  //scenePointer->renderer.addSingle( mainSubState->getSelectionManager()->getBorder(), 1, DrawMap::renderType_t::UI );
   scenePointer->renderer.addSingle(mouse, 1, DrawMap::renderType_t::UI);
 
 }
