@@ -5,7 +5,7 @@ https://github.com/mvxxx
 
 #include "EventControl.hpp"
 #include <iostream>
-#include "Math.hpp"
+#include "Utilities.hpp"
 
 namespace mv
 {
@@ -31,7 +31,7 @@ namespace mv
 			{
 			case sf::Event::MouseWheelMoved:
 			{
-				if ( Math::isInWindow( Math::mouseWindowPosition( scene ), scene ) )
+				if (Utilities::isInWindow(Utilities::mouseWindowPosition( scene ), scene ) )
 					if ( event.mouseWheel.delta < 0 )
 						scene->zoom( Scene::zoom_t::ZOOM );
 					else

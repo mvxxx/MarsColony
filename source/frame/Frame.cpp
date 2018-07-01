@@ -61,7 +61,7 @@ void Frame::initFrame(const std::shared_ptr<Scene>& scene)
   mv::Logger::Log(std::to_string(frame.getVertexCount()));
   for ( size_t i = 0; i <= ammountOfCorners; i++ )
   {
-    frame.append(sf::Vertex(Math::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT)));
+    frame.append(sf::Vertex(Utilities::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT)));
     frame[i].color = sf::Color::Yellow;
   }
   mv::Logger::Log(std::to_string(frame.getVertexCount()));

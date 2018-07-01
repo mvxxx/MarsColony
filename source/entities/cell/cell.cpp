@@ -16,5 +16,5 @@ Cell::Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& tex
 	this->getComponent<ProperBody>()->getAs<sf::Sprite>().setTexture( texture );
 	this->getComponent<ProperBody>()->getAs<sf::Sprite>().setTextureRect( sf::IntRect( static_cast<int>(id*cellDimensions.x), 0, static_cast<int>(cellDimensions.x), static_cast<int>(cellDimensions.y) ) );
 
-	this->getComponent<UnitPosition>()->setUnitPosition( Math::convertToUnitPosition( position, cellDimensions ) );
+	this->getComponent<UnitPosition>()->setUnitPosition(Utilities::convertToUnitPosition( position, cellDimensions ) );
 }

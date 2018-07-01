@@ -19,7 +19,7 @@ void SelectionManager::handleEventTypes(const eventWrapper_t& eventList)
 		{//TO DO: add right or left button click   
     case sf::Event::MouseButtonPressed:
 		{
-      frame->activateSelection(Math::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT));
+      frame->activateSelection(Utilities::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT));
 			break;
 		}
 		case sf::Event::MouseButtonReleased:
@@ -30,7 +30,7 @@ void SelectionManager::handleEventTypes(const eventWrapper_t& eventList)
 
     case sf::Event::MouseMoved:
     {
-      frame->updateSelection(Math::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
+      frame->updateSelection(Utilities::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
 	  break;
     }
 		}

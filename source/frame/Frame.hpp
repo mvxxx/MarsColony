@@ -9,7 +9,7 @@ https://github.com/mvxxx
 #include "ecs/component/Visible.hpp"
 #include "ecs/entity/Entity.hpp"
 #include "scene/Scene.hpp"
-#include "Math.hpp"
+#include "Utilities.hpp"
 
 /*not finished*/
 class Frame : public mv::Entity, public sf::Drawable

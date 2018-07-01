@@ -11,7 +11,7 @@ https://github.com/mvxxx
 #include "ecs/component/unitPosition.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-#include "Math.hpp"
+#include "Utilities.hpp"
 
 class Cell : public mv::Entity
 {

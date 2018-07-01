@@ -9,7 +9,7 @@ https://github.com/mvxxx
 #include "scene/Scene.hpp"
 #include "TilesManager.hpp"
 #include "frame/Frame.hpp"
-#include "Math.hpp"
+#include "Utilities.hpp"
 
 
 class Frame;

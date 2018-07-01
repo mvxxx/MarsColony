@@ -12,7 +12,7 @@ https://github.com/mvxxx
 
 #define UNUSED(x) (void)x;
 
-class Math
+class Utilities
 {
 	/* ===Objects=== */
 public:
