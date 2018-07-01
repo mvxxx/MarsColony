@@ -5,7 +5,7 @@ https://github.com/mvxxx
 
 #include "Velocity.hpp"
 
-Velocity::Velocity( int _x, int _y )
+Velocity::Velocity(float _x, float _y )
 	:x(_x),y(_y)
 {
 }

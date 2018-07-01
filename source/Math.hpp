@@ -10,6 +10,8 @@ https://github.com/mvxxx
 
 #include "scene/Scene.hpp"
 
+#define UNUSED(x) (void)x;
+
 class Math
 {
 	/* ===Objects=== */
@@ -20,7 +22,7 @@ private:
 public:
 	static sf::Vector2i convertToUnitPosition( const sf::Vector2f& pxPos, const sf::Vector2f& cellDim )
 	{
-		return sf::Vector2i( pxPos.x / cellDim.x, pxPos.y / cellDim.y );
+		return sf::Vector2i( static_cast<int>(pxPos.x / cellDim.x), static_cast<int>(pxPos.y / cellDim.y) );
 	}
 
 	static sf::Vector2f mouseWorldPosition( const std::shared_ptr<Scene>& scene, const Scene::viewType_t& viewType )

@@ -19,8 +19,8 @@ private:
 public:
 	void update(int x, int y, sf::Vector2f cellDimensions)
 	{
-		i = x / cellDimensions.x;
-		j = y / cellDimensions.y;
+		i = static_cast<int>(x / cellDimensions.x);
+		j = static_cast<int>(y / cellDimensions.y);
 	}
 
 	void setUnitPosition(sf::Vector2i pos)

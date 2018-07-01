@@ -17,7 +17,7 @@ protected:
 private:
 	/* ===Methods=== */
 public:
-	Velocity( int x = 0.f, int y = 0.f );
+	Velocity( float x = 0.f, float y = 0.f );
 
 	Velocity operator+( const Velocity& second );
 	Velocity operator-( const Velocity& second );
