@@ -5,6 +5,9 @@ https://github.com/mvxxx
 
 #pragma once
 
+/**
+* @brief basic class container with ID of types
+*/
 class ID
 {
 public:

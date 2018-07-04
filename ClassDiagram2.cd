@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="mv::Cache&lt;T&gt;" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\cache\Cache.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mv::InputManager&lt;T&gt;" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>source\inputManager\InputManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mv::Component" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>source\ecs\component\Component.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mv::Entity" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAgAAAAAAAECAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>source\ecs\entity\Entity.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mv::EventControl" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIBAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\eventControl\EventControl.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mv::Logger" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAABAAAAAAAAAAAAgAAgAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>source\logger\Logger.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Visible" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAABAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>source\ecs\component\Visible.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EventDock" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\eventDock\EventDock.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Frame" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAJIAAAAgAAJAAIAAgAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>source\frame\Frame.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProperBody" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAIAAAAAAQACIAAAAAACAAQAAAA=</HashCode>
+      <FileName>source\ecs\component\ProperBody.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnitPosition" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEACAAEAAA=</HashCode>
+      <FileName>source\ecs\component\unitPosition.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Velocity" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAABgAAAEAAA=</HashCode>
+      <FileName>source\ecs\component\Velocity.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cell" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\entities\cell\cell.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ID" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\entities\id.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAIAAAAAAAAIEAAAAAAAAAAA=</HashCode>
+      <FileName>source\game\Game.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoopManager" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABBAAABAAAAAAAIBAACAEAAAAA=</HashCode>
+      <FileName>source\LoopManager\LoopManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SelectionManager" Collapsed="true">
+    <Position X="1.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAABAAAAAAAAQAAYAIAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>source\mapManager\SelectionManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mouse" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgAAAEAAA=</HashCode>
+      <FileName>source\mouse\Mouse.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Point&lt;T&gt;" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>source\wrappers\point.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Loader" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\loader\Loader.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Manager&lt;T&gt;" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAIAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\mapManager\manager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapManager" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAEAQAAAIAAAAAAA=</HashCode>
+      <FileName>source\mapManager\mapManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TilesManager" Collapsed="true">
+    <Position X="1.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAQAIQAAAAAAQAAAgAAAAAAA=</HashCode>
+      <FileName>source\mapManager\TilesManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Utilities" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAEAAQAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\Utilities.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Renderer" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAgAAAAAAAAAABAAAAAAAAABAAEAAAAAAAA=</HashCode>
+      <FileName>source\renderer\renderer.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scene" Collapsed="true">
+    <Position X="7.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IMAAAAAAAEAAQAAAiAQABBgEAJEAAAINAOAAACIAgAA=</HashCode>
+      <FileName>source\scene\Scene.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameState" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAEAgAAAAAAgAAAAAAAAFAEQAAAQAAAAAAAAAAAIAA=</HashCode>
+      <FileName>source\states\GameState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="State" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAACAAAAAAAAABAAAAAAQEAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\states\State.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SubState" Collapsed="true">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAABAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\states\SubState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainGameSubState" Collapsed="true">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAABAQAAABAEAAAAwAAAAEAAAAAAAAA=</HashCode>
+      <FileName>source\states\subStates\mainGameSubState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="componentWrapper_t" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAQgA=</HashCode>
+      <FileName>source\wrappers\componentWrapper.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DrawMap" Collapsed="true">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAABAAA=</HashCode>
+      <FileName>source\wrappers\DrawMap.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="eventWrapper_t" Collapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\wrappers\EventWrapper.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="FunctionPointerWrapper_t&lt;T&gt;" Collapsed="true">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAgAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\wrappers\FunctionPointerWrapper_t.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="WorldWrapper_t" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAA=</HashCode>
+      <FileName>source\wrappers\WorldWrapper.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

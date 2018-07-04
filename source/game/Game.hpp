@@ -8,18 +8,31 @@ https://github.com/mvxxx
 #include "scene/Scene.hpp"
 #include "states/GameState.hpp"
 
+
+/**
+* @brief class that is responsible for starting game
+*/
 class Game
 {
 	/* ===Objects=== */
 public:
 protected:
 private:
+	//main scene
 	std::shared_ptr<Scene> scene;
+
+	//state of game
 	std::unique_ptr<State> state;
 	/* ===Methods=== */
 public:
+	/**
+	* @brief run game
+	*/
 	void run();
 protected:
 private:
+	/**
+	* @brief init game
+	*/
 	void init();
 };

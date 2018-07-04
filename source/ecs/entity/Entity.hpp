@@ -12,24 +12,47 @@ https://github.com/mvxxx
 
 namespace mv
 {
+	/**
+	* @brief Entity class
+	*/
 	class Entity
 	{
 		/* ===Objects=== */
 	public:
 	protected:
 	private:
+		//wrappers of components
 		std::vector<componentWrapper_t> componentWrappers;
 		/* ===Methods=== */
 	public:
+		/**
+		* @brief gets component
+		* @return component with given type
+		*/
 		template<class T>
 		std::shared_ptr<T> getComponent() const;
 
+		/**
+		* @brief adds component
+		* @return true if component with given type has been addded
+		* false otherwise
+		*/
 		template<class T>
 		bool addComponent();
 
+		/**
+		* @brief check if object has component
+		* @return true if component with given type exists
+		* false otherwise
+		*/
 		template<class T>
 		bool hasComponent();
 
+		/**
+		* @brief remove component
+		* @return true if component with given type has been removed
+		* false otherwise
+		*/
 		template<class T>
 		bool removeComponent();
 	protected:

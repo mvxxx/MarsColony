@@ -13,6 +13,9 @@ https://github.com/mvxxx
 
 #include "Utilities.hpp"
 
+/**
+* @brief cell class
+*/
 class Cell : public mv::Entity
 {
 	/* ===Objects=== */
@@ -21,6 +24,10 @@ protected:
 private:
 	/* ===Methods=== */
 public:
+
+	/**
+	* @brief cell ctor
+	*/
 	Cell::Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& texture, int id );
 protected:
 private:

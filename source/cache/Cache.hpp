@@ -13,8 +13,12 @@ https://github.com/mvxxx
 
 #include "logger/Logger.hpp"
 
+
 namespace mv
 {
+	/**
+	* @brief basic container of data
+	*/
 	template < typename T = typename std::enable_if< std::is_base_of<sf::Texture,T>::value,T>::type>
 	class Cache
 	{
@@ -22,9 +26,16 @@ namespace mv
 	public:
 	protected:
 	private:
+
+		//main struct for keep data
 		std::map<std::string, std::shared_ptr<T>> resources;
 		/* ===Methods=== */
 	public:
+		/**
+		* @brief gets currently loaded data or loads it to memory 
+		* @param path to data
+		  @return shared pointer to data
+		*/
 		std::shared_ptr<T> get(const std::string& path);
 	protected:
 	private:

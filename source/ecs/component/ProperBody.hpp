@@ -12,22 +12,34 @@ https://github.com/mvxxx
 
 #include <ecs/component/Visible.hpp>
 
+/**
+* @brief That is the basic physical body of  objects
+*/
 class ProperBody : public sf::Drawable, public Visible
 {
 	/* ===Objects=== */
 public:
+	// body which is able to been drawn
 	std::shared_ptr<sf::Drawable> body;
+
+	//inform us if object collide with others
 	bool collidable;
 protected:
 private:
 	/* ===Methods=== */
 public:
+	/**
+	* @brief ctor
+	*/
   ProperBody()
     :collidable(false)
 	{
     visible = true;
   }
 
+  /**
+  * @brief sets center of object
+  */
 	void setCenter()
 	{
 		if ( sf::Sprite* sprite = dynamic_cast< sf::Sprite* >(&*body) )
@@ -36,14 +48,27 @@ public:
 		}
 	}
 
+	/**
+	* @brief draws object
+	* @param window window where object will be drawn
+	*/
 	void draw( sf::RenderWindow& window );
 
+	/**
+	* @brief assign type
+	* @param T - type to assign
+	*/
 	template<class T>
 	void appendType()
 	{
 		body = std::make_shared<T>();
 	}
 
+	/**
+	* @brief gets object as T
+	* @param T - type to assign
+	* @return reference to Type
+	*/
 	template<class T>
 	T& getAs()
 	{
@@ -52,6 +77,11 @@ public:
 
 protected:
 private:
+	/**
+	* @brief draws object
+	* @param target from SFML
+	* @param states from SFML
+	*/
 	virtual void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
 };
 

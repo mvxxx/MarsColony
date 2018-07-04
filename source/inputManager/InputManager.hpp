@@ -10,6 +10,9 @@
 
 namespace mv
 {
+	/**
+	* @brief Class which manage keys' input
+	*/
 	template <class T>
 	class InputManager
 	{
@@ -17,13 +20,23 @@ namespace mv
 	public:
 	protected:
 	private:
+		//when you press KEY you execute FunctionWrapper
 		std::map < sf::Keyboard::Key, FunctionPointerWrapper_t<T>> keyData;
 		/* ===Methods=== */
 	public:
+		/**
+		* @brief Checks if keys have been clicked
+		*/
 		void update();
 
+		/**
+		* @bried adds key to database
+		*/
 		bool addKeyToCheck( sf::Keyboard::Key key, std::function<void( T& )> function, std::shared_ptr<T> object );
 
+		/**
+		* @brief remove key from database
+		*/
 		bool eraseKey( sf::Keyboard::Key key );
 	protected:
 	private:
@@ -52,16 +65,3 @@ namespace mv
 		return false;
 	}
 }
-
-/*=================
-Example of use:
-void a()
-{
-std::cout << "a";
-}
-
-inputManager.addKeyToCheck(sf::Keyboard::A, a);
-
-while(true)
-	inputManager.control();
-*/

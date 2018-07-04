@@ -19,17 +19,33 @@ https://github.com/mvxxx
 
 namespace mv
 {
+	/**
+	* @brief Event control class
+	* It supports evenDock
+	* You can implement there more advanced informations about SFML events
+	*/
 	class EventControl
 	{
 		/* ===Objects=== */
 	public:
 	protected:
 	private:
+		//pointer to scene
 		std::shared_ptr<Scene> scene;
 		/* ===Methods=== */
 	public:
+		/**
+		* @brief classic ctor
+		*/
+		EventControl(std::shared_ptr<Scene> scenePointer);
+
+		/**
+		* @brief checks events
+		* You can implement there more advanced informations about SFML events
+		* @param event - SFML's event container
+		* @return filled up wrapper of events
+		*/
 		eventWrapper_t checkEvent(sf::Event& event);
-		EventControl( std::shared_ptr<Scene> scenePointer );
 	protected:
 	private:
 	};

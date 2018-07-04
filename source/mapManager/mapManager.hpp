@@ -8,19 +8,33 @@ https://github.com/mvxxx
 #include "TilesManager.hpp"
 #include "manager.hpp"
 
+/**
+* @brief manager for map
+*/
 class MapManager
 {
 	/* ===Objects=== */
 public:
+	//manager of tiles
 	TilesManager tilesManager;
 protected:
 private:
 	/* ===Methods=== */
 public:
+	/**
+	* @brief classic ctor
+	*/
 	MapManager();
 
+	/**
+	* @brief creates world from path
+	* @param mapPath - path to resource
+	*/
 	void createWorld(const std::string& mapPath);
 
+	/**
+	* @brief manages all tiles
+	*/
 	void manageAll();
 protected:
 private:

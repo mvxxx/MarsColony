@@ -7,16 +7,25 @@ https://github.com/mvxxx
 
 #include <cmath>
 
+/**
+* @brief Velocity component
+*/
 class Velocity
 {
 	/* ===Objects=== */
 public:
-	float x;
+	//velocity x
+	float x; 
+
+	//velocity y
 	float y;
 protected:
 private:
 	/* ===Methods=== */
 public:
+	/**
+	* @brief Velocity ctor
+	*/
 	Velocity( float x = 0.f, float y = 0.f );
 
 	Velocity operator+( const Velocity& second );
@@ -29,6 +38,9 @@ public:
 	Velocity operator*( const float& second );
 	Velocity operator/( const float& second );
 
+	/**
+	* @brief returns value of velocity
+	*/
 	float getValue();
 protected:
 private:
