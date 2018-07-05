@@ -20,11 +20,56 @@ namespace mv
 		/* ===Objects=== */
 	public:
 	protected:
-	private:
+	private:	
 		//wrappers of components
 		std::vector<componentWrapper_t> componentWrappers;
 		/* ===Methods=== */
 	public:
+
+		/**
+		* @brief classic ctor
+		*/
+		Entity();
+
+		/**
+		* @brief copy ctor
+		* @param other object to copy
+		*/
+		Entity(const Entity& other);
+
+		/**
+		* @brief move ctor
+		* @param other object to move
+		*/
+		Entity(Entity&& other);
+
+		/**
+		* @brief destructor
+		*/
+		~Entity();
+
+		/**
+		* @brief comparison operator
+		* Objects are identical if they have the same:
+		* -component wrappers
+		* @param other - object to compare
+		* @return true if object are the same, false otherwise
+		*/
+		bool operator==(const Entity& other);
+
+		/**
+		* @brief copy assignment operator
+		* @param other object which will be used in assignment process
+		*/
+		mv::Entity& operator=(const Entity& other);
+
+		/**
+		* @brief move assignment operator
+		* @param other object which will be used in assignment process
+		*/
+		mv::Entity& operator=(Entity&& other);
+
+
 		/**
 		* @brief gets component
 		* @return component with given type
@@ -34,6 +79,7 @@ namespace mv
 
 		/**
 		* @brief adds component
+		* sort components in container by id
 		* @return true if component with given type has been addded
 		* false otherwise
 		*/
@@ -77,8 +123,12 @@ namespace mv
 				return false;
 
 		componentWrappers.push_back( componentWrapper_t( std::make_shared<T>(), typeid(T).hash_code() ) );
-
-		return true;
+		
+		std::sort(componentWrappers.begin(), componentWrappers.end(),
+			[](const componentWrapper_t & a, const componentWrapper_t & b) -> bool
+		{
+			return a.id > b.id;
+		});		return true;
 	}
 
 	template<class T>

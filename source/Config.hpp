@@ -61,6 +61,11 @@ namespace mv
 				constexpr auto ALREADY_EXIST = "Sound with given name already exists";
 				constexpr auto DOES_NOT_EXIST_IN_SYSTEM = "Sound with given doesn't exist in system";
 			}
+
+			namespace componentWrapper
+			{
+				constexpr auto CANNOT_BE_NULLPTR = "Pointer to component can't be nullptr!";
+			}
 		}
 
 		namespace defaults
