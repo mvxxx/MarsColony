@@ -1,4 +1,6 @@
 ﻿MarsColony/external/
+GTest/Debug/
+packages/
 
 # Windows image file caches
 Thumbs.db
@@ -76,3 +78,9 @@ MV-Engine/data/textures/WY,eNAĆ ALTAS!.txt
 *.lastcodeanalysissucceeded
 *.ipch
 *.lib
+*.db-shm
+*.db-wal
+*.json
+*.sqlite
+*.testdurations
+*.config

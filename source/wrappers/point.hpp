@@ -4,7 +4,7 @@
 * @brief Represents point
 */
 template <class T>
-class Point
+class Point_t
 {
 public:
 	//x
@@ -18,12 +18,12 @@ public:
   * @param x - given x-coordinate
   * @param y - given y-coordinate
   */
-  Point(const T& _x, const T& _y)
+  Point_t(const T& _x, const T& _y)
     :x(_x), y(_y){}
 
   /**
   * @brief classic ctor
   */
-  Point()
+  Point_t()
   {}
 };
