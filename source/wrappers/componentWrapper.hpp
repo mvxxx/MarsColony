@@ -8,7 +8,6 @@ https://github.com/mvxxx
 #include <memory>
 
 #include "logger/Logger.hpp"
-#include "Config.hpp"
 
 /**
 * @brief wrapper which contains ID and component
@@ -27,7 +26,7 @@ struct componentWrapper_t
 	* @param c - component
 	* @param _id - id
 	*/
-	componentWrapper_t( std::shared_ptr<void> c, uint64_t _id )
+	componentWrapper_t( std::shared_ptr<void> c, uint64_t _id)
 		:component( c ), id( _id )
 	{
 		if (component == nullptr)

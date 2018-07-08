@@ -47,6 +47,6 @@ mv::Entity& mv::Entity::operator=(Entity && other)
 	{
 		componentWrappers = other.componentWrappers;
 	}
-	
+
 	return *this;
 }

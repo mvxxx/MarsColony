@@ -128,7 +128,8 @@ namespace mv
 			[](const componentWrapper_t & a, const componentWrapper_t & b) -> bool
 		{
 			return a.id > b.id;
-		});		return true;
+		});		
+		return true;
 	}
 
 	template<class T>

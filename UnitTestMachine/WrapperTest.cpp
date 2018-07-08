@@ -1,13 +1,17 @@
+#pragma once
+
 #include <functional>
 #include <typeinfo>
+#include <memory>
 
 #include "pch.h"
-#include "wrappers/point.hpp"
-#include "wrappers/WorldWrapper.hpp"
-#include "wrappers/FunctionPointerWrapper_t.hpp"
-#include "wrappers/EventWrapper.hpp"
-#include "wrappers/DrawMap.hpp"
-#include "wrappers/componentWrapper.hpp"
+
+#include "../source/wrappers/point.hpp"
+#include "../source/wrappers/WorldWrapper.hpp"
+#include "../source/wrappers/FunctionPointerWrapper_t.hpp"
+#include "../source/wrappers/EventWrapper.hpp"
+#include "../source/wrappers/DrawMap.hpp"
+#include "../source/wrappers/componentWrapper.hpp"
 
 /**
 * @brief WrappersTest -> point.hpp test
@@ -101,14 +105,15 @@ TEST(WrapperTest, DrawMap)
 */
 TEST(WrapperTest, ComponentWrapper)
 {
-	componentWrapper_t c1(std::make_shared<PointerTest>(), 10);
-	componentWrapper_t c2(std::make_shared<PointerTest>(), 15);
-
-	EXPECT_EQ(c1.id, 10);
-	EXPECT_EQ(c2.id, 15);
+	componentWrapper_t c1(std::make_shared<int>(), typeid(int).hash_code());
+    componentWrapper_t c2(std::make_shared<int>(), typeid(int).hash_code()+10);
+	
+	
+	EXPECT_EQ(c1.id, typeid(int).hash_code());
+	EXPECT_EQ(c2.id, typeid(int).hash_code() + 10);
 	EXPECT_FALSE(c1==c2);
 
-	c2.id = 10;
+	c2.id = typeid(int).hash_code();
 
 	EXPECT_TRUE(c1 == c2);
 }

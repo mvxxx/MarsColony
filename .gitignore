@@ -84,3 +84,5 @@ MV-Engine/data/textures/WY,eNAĆ ALTAS!.txt
 *.sqlite
 *.testdurations
 *.config
+*.CopyComplete
+*.pch
