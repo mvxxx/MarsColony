@@ -39,6 +39,7 @@ public:
 
   /**
   * @brief sets center of object
+  * @warning this object must be type of sprite
   */
 	void setCenter()
 	{

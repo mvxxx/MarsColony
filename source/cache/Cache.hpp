@@ -58,7 +58,7 @@ namespace mv
 
 		{//Try to load it
 			T resource;
-
+			
 			if (!resource.loadFromFile(path))
 			{
 				Logger::Log("Cache can't find resource in this path.", Logger::STREAM::BOTH, Logger::TYPE::WARNING);
