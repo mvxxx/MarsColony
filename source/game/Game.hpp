@@ -26,13 +26,14 @@ private:
 	/* ===Methods=== */
 public:
 	/**
-	* @brief run game
-	*/
-	void run();
-protected:
-private:
-	/**
 	* @brief init game
 	*/
 	void init();
+
+	/**
+	* @brief run game
+	*/
+	void run();	
+protected:
+private:
 };

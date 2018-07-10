@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 
 #include "../source/ecs/entity/Entity.hpp"
@@ -68,6 +69,17 @@ TEST(EntityTest, copyCtor)
 */
 TEST(EntityTest, moveAssignmentOperator)
 {
+	mv::Entity first;
+
+	first.addComponent<int>();
+	*first.getComponent<int>() = 10;
+
+	EXPECT_EQ(*first.getComponent<int>(), 10);
+
+	mv::Entity second = std::move(first);
+
+	EXPECT_EQ(*second.getComponent<int>(), 10);
+	EXPECT_EQ(first.getComponent<int>(), nullptr);
 }
 
 /**
@@ -75,6 +87,18 @@ TEST(EntityTest, moveAssignmentOperator)
 */
 TEST(EntityTest, copyAssignmentOperator)
 {
+	mv::Entity first;
+
+	first.addComponent<int>();
+	*first.getComponent<int>() = 10;
+
+	EXPECT_EQ(*first.getComponent<int>(), 10);
+
+	mv::Entity second = first;
+
+	EXPECT_EQ(*second.getComponent<int>(), 10);
+	EXPECT_TRUE(first.getComponent<int>() != nullptr);
+	EXPECT_EQ(*first.getComponent<int>(), 10);
 }
 
 /**
@@ -82,6 +106,12 @@ TEST(EntityTest, copyAssignmentOperator)
 */
 TEST(EntityTest, getComponent)
 {
+	mv::Entity entity;
+	entity.addComponent<int>();
+	*entity.getComponent<int>() = 10;
+	EXPECT_EQ(*entity.getComponent<int>(), 10);
+	*entity.getComponent<int>() = 15;
+	EXPECT_EQ(*entity.getComponent<int>(), 15);
 }
 
 /**
@@ -89,6 +119,10 @@ TEST(EntityTest, getComponent)
 */
 TEST(EntityTest, addComponent)
 {
+	mv::Entity entity;
+	EXPECT_FALSE(entity.hasComponent<int>());
+	entity.addComponent<int>();
+	EXPECT_TRUE(entity.hasComponent<int>());
 }
 
 /**
@@ -96,6 +130,17 @@ TEST(EntityTest, addComponent)
 */
 TEST(EntityTest, removeComponent)
 {
+	mv::Entity entity;
+	EXPECT_FALSE(entity.hasComponent<int>());
+	EXPECT_EQ(entity.getComponent<int>(), nullptr);
+	entity.addComponent<int>();
+
+	EXPECT_TRUE(entity.hasComponent<int>());
+	EXPECT_FALSE(entity.getComponent<int>() == nullptr);
+
+	entity.removeComponent<int>();
+	EXPECT_FALSE(entity.hasComponent<int>());
+	EXPECT_EQ(entity.getComponent<int>(), nullptr);
 }
 
 /**
@@ -103,4 +148,11 @@ TEST(EntityTest, removeComponent)
 */
 TEST(EntityTest, hasComponent)
 {
+	mv::Entity entity;
+	EXPECT_FALSE(entity.hasComponent<int>());
+	EXPECT_EQ(entity.getComponent<int>(), nullptr);
+	entity.addComponent<int>();
+
+	EXPECT_TRUE(entity.hasComponent<int>());
+	EXPECT_FALSE(entity.getComponent<int>() == nullptr);
 }

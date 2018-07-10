@@ -8,8 +8,6 @@ https://github.com/mvxxx
 
 void Game::run()
 {
-	init();
-
 	while ( scene->isOpen() )
 	{
 		state->run();

@@ -62,7 +62,7 @@ public:
   void updateSelection(const sf::Vector2f& coords);
 
   /**
-  * @brief activates selection
+  * @brief  returns frame
   * @param coords - start position
   */
   const sf::VertexArray& getFrame();

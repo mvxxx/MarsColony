@@ -40,7 +40,7 @@ void Frame::updateSelection(const sf::Vector2f& coords)
   this->setPoint(coords, PointType::CURRENT);
 }
 
-inline const sf::VertexArray& Frame::getFrame()
+const sf::VertexArray& Frame::getFrame()
 {
   return this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
 }
@@ -58,13 +58,11 @@ void Frame::initFrame(const std::shared_ptr<Scene>& scene)
   constexpr int8_t ammountOfCorners = 7; /*it sums to 8*/
   sf::VertexArray& frame = this->getComponent<ProperBody>()->getAs<sf::VertexArray>();
   frame.setPrimitiveType(sf::Lines);
-  mv::Logger::Log(std::to_string(frame.getVertexCount()));
   for ( size_t i = 0; i <= ammountOfCorners; i++ )
   {
     frame.append(sf::Vertex(Utilities::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT)));
     frame[i].color = sf::Color::Yellow;
   }
-  mv::Logger::Log(std::to_string(frame.getVertexCount()));
 }
 
 void Frame::configureFrame()

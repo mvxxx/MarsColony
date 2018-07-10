@@ -1,3 +1,5 @@
+#pragma once
+
 #include "pch.h"
 
 #include "../source/ecs/component/Component.hpp"

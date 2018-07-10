@@ -2,10 +2,13 @@
 mvxxx 2017
 https://github.com/mvxxx
 */
+
 #include "game/Game.hpp"
-int main(int argc, char* argv[])
+
+int main()
 {
 	Game game;
+	game.init();
 	game.run();
 
 	return 0;

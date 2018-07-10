@@ -27,6 +27,10 @@ public:
 
 	/**
 	* @brief cell ctor
+	* @param position - position of cell
+	* @param cellDimension - dimensions of cell
+	* @param texture - reference to the texture
+	* @param id - id of texture
 	*/
 	Cell::Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& texture, int id );
 protected:
