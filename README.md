@@ -1,5 +1,5 @@
 <p align="center">
-<img src="http://r74.cooltext.com/rendered/cooltext292514535344936.png">
+<img src="http://r67.cooltext.com/rendered/cooltext292516052171269.png">
 </p>
 <img src="http://r70.cooltext.com/rendered/cooltext292515025120209.png">
 
