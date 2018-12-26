@@ -4,12 +4,14 @@ https://github.com/mvxxx
 */
 
 #pragma once
+#include <memory>
 
 #include "../../wrappers/FunctionPointerWrapper_t.hpp"
 #include "../../mapManager/mapManager.hpp"
 #include "../../renderer/renderer.hpp"
 #include "../../wrappers/EventWrapper.hpp"
 #include "../../ecs/entity/Entity.hpp"
+#include "../../entities/player/player.hpp"
 #include "../../inputManager/InputManager.hpp"
 #include "../../mapManager/SelectionManager.hpp"
 
@@ -30,6 +32,9 @@ private:
 
   //pointer to selection manager
   std::shared_ptr<SelectionManager> selectionManager;
+
+  //pointer to player
+  std::shared_ptr<Player> player;
 
   /* ===Methods=== */
 public:

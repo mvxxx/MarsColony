@@ -56,5 +56,7 @@ add_executable(MarsCombat
         source/wrappers/WorldWrapper.hpp
         source/Config.hpp
         source/main.cpp
-        source/Utilities.hpp)
+        source/Utilities.hpp
+        source/entities/player/player.cpp
+        source/entities/player/player.hpp)
 target_link_libraries(MarsCombat sfml-graphics sfml-audio)
