@@ -8,9 +8,9 @@ https://github.com/mvxxx
 
 int main()
 {
-    Game game;
-    game.init();
-    game.run();
+	Game game;
+	game.init();
+	game.run();
 
 	return 0;
 }

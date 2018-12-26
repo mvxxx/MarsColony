@@ -8,6 +8,7 @@ https://github.com/mvxxx
 #include "../scene/Scene.hpp"
 #include "../wrappers/EventWrapper.hpp"
 #include <memory>
+#include <queue>
 
 
 /*
@@ -48,5 +49,12 @@ namespace mv
 		eventWrapper_t checkEvent(sf::Event& event);
 	protected:
 	private:
+		/**
+		* @brief checks extraordinary events
+		* You can implement there more advanced informations about SFML events
+		* @param event - SFML's event container
+		* @return true if this method added event to list, false otherwise
+		*/
+		bool extraordinary(sf::Event& event,eventWrapper_t& eventTypes);
 	};
 }

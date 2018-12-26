@@ -67,13 +67,30 @@ void Scene::handleEventTypes( const eventWrapper_t& eventList )
 {
 	for ( auto&type : eventList.list )
 	{
-		switch ( type )
+		switch ( type.eventInfo )
 		{
-		case sf::Event::Closed:
-		{
-			this->close();
-			break;
-		}
+			case sf::Event::Closed:
+			{
+				this->close();
+				break;
+			}
+
+			case sf::Event::MouseWheelMoved:
+			{
+				for(auto& add :type.additionals)
+				{
+					if(add == "-z")
+					{
+						this->zoom( Scene::zoom_t::ZOOM );
+					}
+					else if(add == "-d")
+					{
+						this->zoom( Scene::zoom_t::DECREASE );
+					}
+				}
+
+				break;
+			}
 		}
 	}
 }

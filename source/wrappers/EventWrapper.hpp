@@ -8,11 +8,20 @@ https://github.com/mvxxx
 #include "../../external/SFML/include/SFML/Window/Event.hpp"
 #include <vector>
 
+struct eventData_t
+{
+	sf::Event::EventType eventInfo;
+	std::vector<std::string> additionals;
+
+	eventData_t(sf::Event::EventType& ev, const std::vector<std::string>& add)
+	:eventInfo(ev),additionals(add){}
+};
+
 /**
 * @brief eventWrapper
 */
 struct eventWrapper_t
 {
 	//list of SFML event types
-	std::vector<sf::Event::EventType> list;
+	std::vector<eventData_t> list;
 };

@@ -8,31 +8,31 @@ SelectionManager::SelectionManager( std::shared_ptr<Scene> _scene )
 
 void SelectionManager::addEntityToManage( std::shared_ptr<mv::Entity> entity )
 {
-	this->addEntityToManage( entity );
+	(void)entity;
 }
 
 void SelectionManager::handleEventTypes(const eventWrapper_t& eventList)
 {
-	for ( auto&type : eventList.list )
+	for ( auto&data : eventList.list )
 	{
-		switch ( type )
+		switch ( data.eventInfo )
 		{//TO DO: add right or left button click   
-    case sf::Event::MouseButtonPressed:
-		{
-      frame->activateSelection(Utilities::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT));
-			break;
-		}
-		case sf::Event::MouseButtonReleased:
-		{
-      frame->deactivateSelection();
-      break;
-		}
+    		case sf::Event::MouseButtonPressed:
+			{
+      			frame->activateSelection(Utilities::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT));
+				break;
+			}
+			case sf::Event::MouseButtonReleased:
+			{
+      			frame->deactivateSelection();
+      			break;
+			}
 
-    case sf::Event::MouseMoved:
-    {
-      frame->updateSelection(Utilities::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
-	  break;
-    }
+    		case sf::Event::MouseMoved:
+    		{
+      			frame->updateSelection(Utilities::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
+	  			break;
+    		}
 		}
 	}
 }
