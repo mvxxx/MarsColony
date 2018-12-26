@@ -1,6 +1,7 @@
 ﻿MarsColony/external/
 GTest/Debug/
 packages/
+external/
 
 # Windows image file caches
 Thumbs.db
@@ -86,3 +87,5 @@ MV-Engine/data/textures/WY,eNAĆ ALTAS!.txt
 *.config
 *.CopyComplete
 *.pch
+
+cmake-build-debug/

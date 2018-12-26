@@ -6,9 +6,8 @@ https://github.com/mvxxx
 #pragma once
 
 #include <memory>
-
-#include "logger/Logger.hpp"
-
+#include "../logger/Logger.hpp"
+#include "../Config.hpp"
 /**
 * @brief wrapper which contains ID and component
 * It is used for ECS
@@ -27,8 +26,7 @@ struct componentWrapper_t
 	* @param _id - id
 	*/
 	componentWrapper_t( std::shared_ptr<void> c, uint64_t _id)
-		:component( c ), id( _id )
-	{
+		:component( c ), id( _id ) {
 		if (component == nullptr)
 		{
 			mv::Logger::Log(mv::constants::error::componentWrapper::CANNOT_BE_NULLPTR);

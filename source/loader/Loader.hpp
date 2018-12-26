@@ -10,7 +10,7 @@ https://github.com/mvxxx
 #include <fstream>
 #include <memory>
 
-#include "wrappers/WorldWrapper.hpp"
+#include "../wrappers/WorldWrapper.hpp"
 /**
 * @brief Loader - class currently used for loading map
 */

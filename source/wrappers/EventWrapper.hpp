@@ -5,7 +5,7 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <SFML/Window/Event.hpp>
+#include "../../external/SFML/include/SFML/Window/Event.hpp"
 #include <vector>
 
 /**

@@ -5,8 +5,8 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <SFML/System/Vector2.hpp>
-#include <SFML/Window/Mouse.hpp>
+#include "../external/SFML/include/SFML/System/Vector2.hpp"
+#include "../external/SFML/include/SFML/Window/Mouse.hpp"
 
 #include "scene/Scene.hpp"
 

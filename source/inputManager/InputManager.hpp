@@ -3,10 +3,10 @@
 #include <map>
 #include <functional>
 
-#include "scene/Scene.hpp"
-#include "wrappers/FunctionPointerWrapper_t.hpp"
+#include "../../external/SFML/include/SFML/Window/Keyboard.hpp"
 
-#include "SFML/Window/Keyboard.hpp"
+#include "../scene/Scene.hpp"
+#include "../wrappers/FunctionPointerWrapper_t.hpp"
 
 namespace mv
 {

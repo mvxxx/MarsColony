@@ -5,7 +5,7 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include "wrappers/EventWrapper.hpp"
+#include "../wrappers/EventWrapper.hpp"
 
 /**
 * @brief represents single substate

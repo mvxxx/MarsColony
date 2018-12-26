@@ -5,7 +5,7 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <SFML/System/Vector2.hpp>
+#include "../../../external/SFML/include/SFML/System/Vector2.hpp"
 
 /**
 * @brief class to represents unit position

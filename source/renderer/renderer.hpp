@@ -9,11 +9,12 @@ https://github.com/mvxxx
 #include <vector>
 #include <map>
 
-#include <SFML/Graphics/Drawable.hpp>
-#include "ecs/entity/Entity.hpp"
-#include "ecs/component/ProperBody.hpp"
-#include "wrappers/DrawMap.hpp"
-#include "logger/Logger.hpp"
+#include "../../external/SFML/include/SFML/Graphics/Drawable.hpp"
+
+#include "../ecs/entity/Entity.hpp"
+#include "../ecs/component/ProperBody.hpp"
+#include "../wrappers/DrawMap.hpp"
+#include "../logger/Logger.hpp"
 
 /**
 * @brief class for rendering layers of textures

@@ -11,7 +11,7 @@ https://github.com/mvxxx
 #include <chrono>
 #include <ctime>
 
-#include "Config.hpp"
+#include "../Config.hpp"
 
 
 namespace mv

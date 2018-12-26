@@ -5,12 +5,12 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include "states/State.hpp"
+#include "../states/State.hpp"
 #include "subStates/mainGameSubState.hpp"
-#include "eventControl/EventControl.hpp"
-#include "mouse/Mouse.hpp"
-#include "LoopManager/LoopManager.hpp"
-#include "mapManager/SelectionManager.hpp"
+#include "../eventControl/EventControl.hpp"
+#include "../mouse/Mouse.hpp"
+#include "../LoopManager/LoopManager.hpp"
+#include "../mapManager/SelectionManager.hpp"
 
 /**
 * @brief state of game

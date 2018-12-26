@@ -7,12 +7,11 @@ https://github.com/mvxxx
 
 #include <memory>
 
-#include "loader/Loader.hpp"
-#include "entities/cell/cell.hpp"
-#include "wrappers/WorldWrapper.hpp"
-#include "cache/Cache.hpp"
-#include "ecs/entity/entity.hpp"
-
+#include "../loader/Loader.hpp"
+#include "../entities/cell/cell.hpp"
+#include "../wrappers/WorldWrapper.hpp"
+#include "../cache/Cache.hpp"
+#include "../ecs/entity/Entity.hpp"
 #include "manager.hpp"
 
 /**

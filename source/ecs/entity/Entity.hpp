@@ -7,8 +7,9 @@ https://github.com/mvxxx
 
 #include <vector>
 #include <memory>
+#include <algorithm>
 
-#include "wrappers/componentWrapper.hpp"
+#include "../../wrappers/componentWrapper.hpp"
 
 namespace mv
 {

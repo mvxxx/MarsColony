@@ -5,11 +5,11 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include "ecs/entity/Entity.hpp"
-#include "scene/Scene.hpp"
+#include "../ecs/entity/Entity.hpp"
+#include "../scene/Scene.hpp"
 #include "TilesManager.hpp"
-#include "frame/Frame.hpp"
-#include "Utilities.hpp"
+#include "../frame/Frame.hpp"
+#include "../Utilities.hpp"
 
 
 class Frame;

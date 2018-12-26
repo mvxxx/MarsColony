@@ -7,7 +7,7 @@ https://github.com/mvxxx
 #include <map>
 #include <vector>
 #include <memory>
-#include "ecs/entity/Entity.hpp"
+#include "../ecs/entity/Entity.hpp"
 
 /**
 * @brief draw map wrapper

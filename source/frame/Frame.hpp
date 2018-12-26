@@ -4,12 +4,11 @@ https://github.com/mvxxx
 */
 
 #pragma once
-
-#include <sfml/Graphics/VertexArray.hpp>
-#include "ecs/component/Visible.hpp"
-#include "ecs/entity/Entity.hpp"
-#include "scene/Scene.hpp"
-#include "Utilities.hpp"
+#include "../../external/SFML/include/SFML/Graphics/VertexArray.hpp"
+#include "../ecs/component/Visible.hpp"
+#include "../ecs/entity/Entity.hpp"
+#include "../scene/Scene.hpp"
+#include "../Utilities.hpp"
 
 /**
 * @brief Represents frame on the scene

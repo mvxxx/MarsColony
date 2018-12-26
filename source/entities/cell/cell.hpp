@@ -5,13 +5,12 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include "ecs/entity/Entity.hpp"
+#include "../../../external/SFML/include/SFML/Graphics/RenderTarget.hpp"
 
-#include "ecs/component/ProperBody.hpp"
-#include "ecs/component/unitPosition.hpp"
-#include <SFML/Graphics/RenderTarget.hpp>
-
-#include "Utilities.hpp"
+#include "../../ecs/entity/Entity.hpp"
+#include "../../ecs/component/ProperBody.hpp"
+#include "../../ecs/component/unitPosition.hpp"
+#include "../../Utilities.hpp"
 
 /**
 * @brief cell class
@@ -32,7 +31,7 @@ public:
 	* @param texture - reference to the texture
 	* @param id - id of texture
 	*/
-	Cell::Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& texture, int id );
+	Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& texture, int id );
 protected:
 private:
 };

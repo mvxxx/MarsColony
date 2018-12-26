@@ -8,10 +8,10 @@ https://github.com/mvxxx
 #include <vector>
 #include <map>
 #include <memory>
+#include <type_traits>
 
-#include <SFML/Graphics/Texture.hpp>
-
-#include "logger/Logger.hpp"
+#include "../../external/SFML/include/SFML/Graphics/Texture.hpp"
+#include "../logger/Logger.hpp"
 
 
 namespace mv
@@ -19,7 +19,7 @@ namespace mv
 	/**
 	* @brief basic container of data
 	*/
-	template < typename T = typename std::enable_if< std::is_base_of<sf::Texture,T>::value,T>::type>
+	template <typename T,typename = typename std::enable_if<std::is_base_of<sf::Texture, T>::value>::type>
 	class Cache
 	{
 		/* ===Objects=== */
@@ -36,37 +36,33 @@ namespace mv
 		* @param path to data
 		  @return shared pointer to data
 		*/
-		std::shared_ptr<T> get(const std::string& path);
+		std::shared_ptr<T> get(const std::string& path)
+        {
+            if (path.empty())
+            {
+                Logger::Log("Cache can't find resource in empty path.", Logger::STREAM::BOTH, Logger::TYPE::WARNING);
+            }
+
+            {//Try find resource
+                auto result = resources.find(path);
+                if (result != resources.end())
+                    return result->second;
+            }
+
+            {//Try to load it
+                T resource;
+
+                if (!resource.loadFromFile(path))
+                {
+                    Logger::Log("Cache can't find resource in this path.", Logger::STREAM::BOTH, Logger::TYPE::WARNING);
+                }
+
+                resources.emplace(path, std::make_shared<T>(resource));
+
+                return resources[path];
+            }
+        }
 	protected:
 	private:
 	};
-
-	template<typename T>
-	inline std::shared_ptr<T> Cache<T>::get(const std::string & path)
-	{
-
-		if (path.empty())
-		{
-			Logger::Log("Cache can't find resource in empty path.", Logger::STREAM::BOTH, Logger::TYPE::WARNING);
-		}
-
-		{//Try find resource
-			auto result = resources.find(path);
-			if (result != resources.end())
-				return result->second;
-		}
-
-		{//Try to load it
-			T resource;
-			
-			if (!resource.loadFromFile(path))
-			{
-				Logger::Log("Cache can't find resource in this path.", Logger::STREAM::BOTH, Logger::TYPE::WARNING);
-			}
-
-			resources.emplace(path, std::make_shared<T>(resource));
-
-			return resources[path];
-		}
-	}
 }

@@ -5,8 +5,8 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include "scene/Scene.hpp"
-#include "wrappers/EventWrapper.hpp"
+#include "../scene/Scene.hpp"
+#include "../wrappers/EventWrapper.hpp"
 #include <memory>
 
 

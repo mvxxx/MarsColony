@@ -5,12 +5,14 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
+#include "../../../external/SFML/include/SFML/Graphics/Sprite.hpp"
+#include "../../../external/SFML/include/SFML/Graphics/Drawable.hpp"
+#include "../../../external/SFML/include/SFML/Graphics/RenderTarget.hpp"
+#include "../../../external/SFML/include/SFML/Graphics/RenderWindow.hpp"
 
-#include <ecs/component/Visible.hpp>
+#include "Visible.hpp"
+
+#include <memory>
 
 /**
 * @brief That is the basic physical body of  objects

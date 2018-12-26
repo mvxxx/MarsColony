@@ -5,13 +5,13 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include "wrappers/FunctionPointerWrapper_t.hpp"
-#include "mapManager/mapManager.hpp"
-#include "renderer/renderer.hpp"
-#include "wrappers/EventWrapper.hpp"
-#include "ecs/entity/Entity.hpp"
-#include "inputManager/InputManager.hpp"
-#include "mapManager/SelectionManager.hpp"
+#include "../../wrappers/FunctionPointerWrapper_t.hpp"
+#include "../../mapManager/mapManager.hpp"
+#include "../../renderer/renderer.hpp"
+#include "../../wrappers/EventWrapper.hpp"
+#include "../../ecs/entity/Entity.hpp"
+#include "../../inputManager/InputManager.hpp"
+#include "../../mapManager/SelectionManager.hpp"
 
 /**
 * @brief main substate

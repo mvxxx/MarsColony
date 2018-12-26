@@ -6,7 +6,7 @@ https://github.com/mvxxx
 #pragma once
 
 #include <memory>
-#include "ecs/entity/Entity.hpp"
+#include "../entity/Entity.hpp"
 
 
 

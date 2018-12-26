@@ -2,7 +2,7 @@
 
 #include "pch.h"
 
-#include <sfml/Graphics/VertexArray.hpp>
+#include <../external/include/SFML/Graphics/VertexArray.hpp>
 
 #include "../source/frame/Frame.hpp"
 #include "../source/scene/Scene.hpp"

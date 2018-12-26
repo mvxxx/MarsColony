@@ -5,7 +5,7 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <SFML/System/Clock.hpp>
+#include "../../external/SFML/include/SFML/System/Clock.hpp"
 
 /**
 * @brief manager for const-step loop

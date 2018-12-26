@@ -5,8 +5,8 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/System/Vector2.hpp>
+#include "../external/SFML/include/SFML/Graphics/Color.hpp"
+#include "../external/SFML/include/SFML/System/Vector2.hpp"
 
 namespace mv
 {
@@ -26,14 +26,13 @@ namespace mv
 		{
 			constexpr auto FREQUENCY = 0.2f;
 		}
-
 		namespace error
-    {
+    	{
 
-      namespace renderer
-      {
-        constexpr auto T_CAN_NOT_BE_DRAWN = "RENDERER: T can't be drawn. Check details of given class";
-      }
+     	 namespace renderer
+      	{
+      	  	constexpr auto T_CAN_NOT_BE_DRAWN = "RENDERER: T can't be drawn. Check details of given class";
+      	}
 
 			namespace scene
 			{

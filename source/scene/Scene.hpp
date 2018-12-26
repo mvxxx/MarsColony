@@ -8,13 +8,13 @@ https://github.com/mvxxx
 #include <memory>
 #include <unordered_map>
 
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Graphics/View.hpp>
-#include <SFML/System/Vector2.hpp>
+#include "../../external/SFML/include/SFML/Graphics/RenderWindow.hpp"
+#include "../../external/SFML/include/SFML/Graphics/View.hpp"
+#include "../../external/SFML/include/SFML/System/Vector2.hpp"
 
-#include "states/State.hpp"
-#include "renderer/renderer.hpp"
-#include "eventDock/EventDock.hpp"
+#include "../states/State.hpp"
+#include "../renderer/renderer.hpp"
+#include "../eventDock/EventDock.hpp"
 
 class SelectionManager;
 

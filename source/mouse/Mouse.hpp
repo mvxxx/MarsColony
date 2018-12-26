@@ -4,12 +4,12 @@ https://github.com/mvxxx
 */
 #pragma once
 
-#include <SFML/Window/Mouse.hpp>
-#include "ecs/entity/Entity.hpp"
-#include "ecs/component/ProperBody.hpp"
-#include "cache/Cache.hpp"
-#include "scene/Scene.hpp"
-#include "Utilities.hpp"
+#include "../../external/SFML/include/SFML/Window/Mouse.hpp"
+#include "../ecs/entity/Entity.hpp"
+#include "../ecs/component/ProperBody.hpp"
+#include "../cache/Cache.hpp"
+#include "../scene/Scene.hpp"
+#include "../Utilities.hpp"
 
 /**
 * @brief class which represents mouse
