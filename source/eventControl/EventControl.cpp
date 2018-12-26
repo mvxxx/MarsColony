@@ -50,6 +50,25 @@ namespace mv
                     break;
                 }
             }
+            case sf::Event::MouseButtonPressed:
+            {
+                if(event.mouseButton.button == sf::Mouse::Left)
+                {
+                    eventTypes.list.push_back({event.type, {"-lmb"}});
+                    return true;
+                }
+                break;
+            }
+
+            case sf::Event::MouseButtonReleased:
+            {
+                if(event.mouseButton.button == sf::Mouse::Left)
+                {
+                    eventTypes.list.push_back({event.type, {"-lmb"}});
+                    return true;
+                }
+                break;
+            }
             default: return false;
         }
     }
