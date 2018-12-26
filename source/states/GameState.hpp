@@ -30,9 +30,6 @@ private:
 	//pointer to mouse
 	std::shared_ptr<Mouse> mouse;
 
-	//pointer to selection manager
-	std::shared_ptr<SelectionManager> selectionManager;
-
 	//manager's loop
     LoopManager loopManager;
 	/* ===Methods=== */

@@ -19,10 +19,7 @@ void GameState::onStart()
   
   mouse = std::make_shared<Mouse>(scenePointer);
 
-  selectionManager = std::make_shared<SelectionManager>(scenePointer);
-  scenePointer->assignSelectionManager(selectionManager);
-
-  auto mainSubState = std::make_shared<MainGameSubState>(scenePointer,selectionManager);
+  auto mainSubState = std::make_shared<MainGameSubState>(scenePointer);
   mainSubState->fillRenderer(scenePointer->renderer);
 
   this->subStates.emplace(State::type_t::mainGame, mainSubState);

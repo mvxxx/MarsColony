@@ -27,11 +27,6 @@ private:
   //manager of map
   MapManager mapManager;
 
-  //camera control
-  mv::InputManager<Scene> cameraControl;
-
-  //pointer to selection manager
-  std::shared_ptr<SelectionManager> selectionManager;
 
   //pointer to player
   std::shared_ptr<Player> player;
@@ -44,7 +39,7 @@ public:
 	* @param selManager selection manager's pointer
 	* 
 	*/
-  MainGameSubState(std::shared_ptr<Scene> scene, std::shared_ptr<SelectionManager> selManager);
+  MainGameSubState(std::shared_ptr<Scene> scene);
 
   /**
   * @brief onStart method
@@ -67,12 +62,6 @@ public:
   * @param renderer
   */
   void fillRenderer(Renderer& renderer);
-
-  /**
-  * @brief selectionManager getter
-  * @return shared_ptr to selection manager
-  */
-  std::shared_ptr<SelectionManager> getSelectionManager();
 
 protected:
 private:

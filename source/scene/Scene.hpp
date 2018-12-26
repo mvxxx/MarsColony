@@ -63,9 +63,6 @@ private:
 	//pointer to SFML window
 	std::shared_ptr<sf::RenderWindow> window;
 
-	//pointer to selection manager
-	std::shared_ptr<SelectionManager> selectionManager;
-
 	//database of all views
 	std::unordered_map<viewType_t, std::shared_ptr<sf::View> > views;
 

@@ -122,15 +122,10 @@ void Scene::setView(viewType_t type)
 	window->setView( *views[type] );
 }
 
-void Scene::assignSelectionManager(std::shared_ptr<SelectionManager> manager)
-{
-	selectionManager = manager;
-}
 
 void Scene::moveView( direction_t direction )
 {
 	window->setView( *views[viewType_t::DEFAULT] );
-	selectionManager->getFrame()->updateSelection(Utilities::mouseWorldPosition(this, Scene::viewType_t::DEFAULT));
 	switch ( direction )
 	{
 	case direction_t::TOP:
