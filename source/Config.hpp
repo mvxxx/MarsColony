@@ -17,6 +17,11 @@ namespace mv
 			constexpr auto ZOOM_SPEED = 0.05f;
 		}
 
+		namespace mob
+		{
+			constexpr auto DEFAULT_SPEED = 1.f;
+		}
+
     namespace loop
     {
       const auto TIME_PER_FRAME = 1.f / 60.f;

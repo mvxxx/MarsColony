@@ -15,7 +15,7 @@ MainGameSubState::MainGameSubState( std::shared_ptr<Scene> scene)
 void MainGameSubState::onStart()
 {
 	mapManager.createWorld( "data/defaultMaps/map0.txt" );
-	player = std::make_shared<Player>(sf::Vector2f{100.f,100.f},1,0);
+	player = std::make_shared<Player>(sf::Vector2f{100.f,100.f},1,0,mv::constants::mob::DEFAULT_SPEED);
 }
 
 void MainGameSubState::onStop()
@@ -25,7 +25,7 @@ void MainGameSubState::onStop()
 void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
 	mapManager.manageAll();
-	cameraControl.update();
+	player->update();
 }
 
 void MainGameSubState::fillRenderer( Renderer& renderer )

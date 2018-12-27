@@ -4,6 +4,8 @@
 #include "../../ecs/entity/Entity.hpp"
 #include "../../ecs/component/ProperBody.hpp"
 #include "../../ecs/component/unitPosition.hpp"
+#include "../../ecs/component/Velocity.hpp"
+#include "../../inputManager/InputManager.hpp"
 #include "../../Utilities.hpp"
 
 
@@ -21,8 +23,10 @@ private:
 
     int16_t level;
     int64_t exp;
+    float speed;
     mv::Cache<sf::Texture> textureCache;
     state_t state;
+    mv::InputManager<Player> inputControl;
     /* ===Methods=== */
 public:
 
@@ -32,11 +36,36 @@ public:
     * @param lev - current level
     * @param experience - current experience
     */
-    Player(const sf::Vector2f& position,int16_t lev, int64_t experience);
+    Player(const sf::Vector2f& position,int16_t lev, int64_t experience, float speedValue);
+
+    /**
+     * @brief updates player's behavior
+     */
+    void update();
 protected:
 private:
     /**
      * @brief sets default texture options
      */
      void setTextureOptions();
+
+    /**
+     * @brief move player top
+     */
+     void moveTop();
+
+    /**
+    * @brief move view right
+    */
+     void moveRight();
+
+    /**
+    * @brief move view down
+    */
+     void moveDown();
+
+    /**
+    * @brief move view left
+    */
+     void moveLeft();
 };
