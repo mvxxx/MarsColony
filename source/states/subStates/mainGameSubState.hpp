@@ -31,6 +31,9 @@ private:
   //pointer to player
   std::shared_ptr<Player> player;
 
+  //pointer to scene
+  std::shared_ptr<Scene> scene;
+
   /* ===Methods=== */
 public:
 	/**

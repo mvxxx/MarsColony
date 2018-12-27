@@ -17,19 +17,6 @@ void Mouse::update( std::shared_ptr<Scene> scene )
 	auto windowSize = scene->getWindow()->getSize();
 
 	this->getComponent<ProperBody>()->getAs<sf::Sprite>().setPosition(Utilities::mouseWorldPosition( scene, Scene::viewType_t::UI ) );
-
-	if (Utilities::isInWindow( mouseWindowPosition, scene ) )
-	{
-		if ( mouseWindowPosition.x > windowSize.x - scene->motionSensitivity )
-			scene->moveViewRight();
-		else if ( mouseWindowPosition.x < scene->motionSensitivity )
-			scene->moveViewLeft();
-
-		if ( mouseWindowPosition.y > windowSize.y - scene->motionSensitivity )
-			scene->moveViewDown();
-		else if ( mouseWindowPosition.y < scene->motionSensitivity )
-			scene->moveViewTop();
-	}
 }
 
 

@@ -6,7 +6,8 @@ https://github.com/mvxxx
 #include "mainGameSubState.hpp"
 
 
-MainGameSubState::MainGameSubState( std::shared_ptr<Scene> scene)
+MainGameSubState::MainGameSubState( std::shared_ptr<Scene> sceneptr)
+	:scene(sceneptr)
 {
 
 	this->onStart();
@@ -25,7 +26,7 @@ void MainGameSubState::onStop()
 void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
 	mapManager.manageAll();
-	player->update();
+	player->update(scene);
 }
 
 void MainGameSubState::fillRenderer( Renderer& renderer )

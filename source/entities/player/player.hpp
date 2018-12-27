@@ -41,7 +41,7 @@ public:
     /**
      * @brief updates player's behavior
      */
-    void update();
+    void update(const std::shared_ptr<Scene>& scene);
 protected:
 private:
     /**
@@ -68,4 +68,24 @@ private:
     * @brief move view left
     */
      void moveLeft();
+
+    /**
+    * @brief moves player in use of velocity data
+    */
+     void accelerateMotion();
+
+    /**
+    * @brief fits texture to actual state of motion
+    */
+     void fitTexture();
+
+    /**
+    * @brief Updates position of view
+    */
+     void adaptView(const std::shared_ptr<Scene>& scene);
+
+    /**
+    * @brief Reduces velocity after move
+    */
+     void reduceVelocity();
 };

@@ -145,6 +145,18 @@ public:
 	*/
 	const std::unordered_map<viewType_t, std::shared_ptr<sf::View> >& getViews() { return views; }
 
+    /**
+    * @brief move view
+    * @param vec - direction in which view should move
+    */
+    void moveDefaultView( const sf::Vector2f& vec );
+
+    /**
+    * @brief move view
+    * @param direction of moving
+    */
+    void moveDefaultView( direction_t direction );
+
 	/**
 	* @brief move view right 
 	*/
@@ -173,9 +185,4 @@ public:
 
 protected:
 private:
-	/**
-	* @brief move view
-	* @param direction of moving
-	*/
-	void moveView( direction_t direction );
 };

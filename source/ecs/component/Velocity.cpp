@@ -54,3 +54,8 @@ float Velocity::getValue()
 {
 	return sqrt( pow( x, 2 ) + pow( y, 2 ) );
 }
+
+sf::Vector2f Velocity::getAsVector()
+{
+    return {this->x,this->y};
+}

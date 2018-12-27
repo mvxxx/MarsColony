@@ -28,27 +28,54 @@ void Player::setTextureOptions()
     (*textureCache.get("data/textures/player.png"));
 }
 
-void Player::update()
+void Player::update(const std::shared_ptr<Scene>& scene)
 {
     inputControl.update();
+    this->accelerateMotion();
+    this->fitTexture();
+    this->adaptView(scene);
+    this->reduceVelocity();
 }
 
 void Player::moveTop()
 {
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>().move( 0.f ,-mv::constants::mob::DEFAULT_SPEED * this->speed );
+    this->getComponent<Velocity>()->y -= speed * mv::constants::mob::DEFAULT_SPEED;
 }
 
 void Player::moveRight()
 {
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>().move( mv::constants::mob::DEFAULT_SPEED * this->speed, 0.f );
+    this->getComponent<Velocity>()->x += speed * mv::constants::mob::DEFAULT_SPEED;
 }
 
 void Player::moveDown()
 {
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>().move( 0.f , mv::constants::mob::DEFAULT_SPEED * this->speed );
+    this->getComponent<Velocity>()->y += speed * mv::constants::mob::DEFAULT_SPEED;
 }
 
 void Player::moveLeft()
 {
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>().move( -mv::constants::mob::DEFAULT_SPEED * this->speed, 0.f );
+    this->getComponent<Velocity>()->x -= speed * mv::constants::mob::DEFAULT_SPEED;
+}
+
+void Player::accelerateMotion()
+{
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>().move
+            (this->getComponent<Velocity>()->getAsVector());
+}
+
+void Player::fitTexture()
+{
+    //todo
+}
+
+void Player::adaptView(const std::shared_ptr<Scene>& scene)
+{
+    scene->moveDefaultView(this->getComponent<Velocity>()->getAsVector());
+}
+
+void Player::reduceVelocity()
+{
+    auto velocity = this->getComponent<Velocity>();
+    velocity->x = 0;
+    velocity->y = 0;
 }
