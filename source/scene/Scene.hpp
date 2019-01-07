@@ -151,32 +151,6 @@ public:
     */
     void moveDefaultView( const sf::Vector2f& vec );
 
-    /**
-    * @brief move view
-    * @param direction of moving
-    */
-    void moveDefaultView( direction_t direction );
-
-	/**
-	* @brief move view right 
-	*/
-	void moveViewRight();
-
-	/**
-	* @brief move view left
-	*/
-	void moveViewLeft();
-
-	/**
-	* @brief move view top
-	*/
-	void moveViewTop();
-
-	/**
-	* @brief move view down
-	*/
-	void moveViewDown();
-
 	/**
 	* @brief handles event types
 	* @param eventList - list of events which are needed to be checked

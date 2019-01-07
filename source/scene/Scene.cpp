@@ -43,26 +43,6 @@ std::shared_ptr<sf::RenderWindow> Scene::getWindow() const
 	return window;
 }
 
-void Scene::moveViewRight()
-{
-	moveDefaultView( direction_t::RIGHT );
-}
-
-void Scene::moveViewLeft()
-{
-	moveDefaultView( direction_t::LEFT );
-}
-
-void Scene::moveViewTop()
-{
-	moveDefaultView( direction_t::TOP );
-}
-
-void Scene::moveViewDown()
-{
-	moveDefaultView( direction_t::DOWN );
-}
-
 void Scene::handleEventTypes( const eventWrapper_t& eventList )
 {
 	for ( auto&type : eventList.list )
@@ -123,34 +103,6 @@ void Scene::setView(viewType_t type)
 }
 
 
-void Scene::moveDefaultView( direction_t direction )
-{
-	window->setView( *views[viewType_t::DEFAULT] );
-	switch ( direction )
-	{
-	case direction_t::TOP:
-	{
-		views[viewType_t::DEFAULT]->move( 0, -viewSpeed );
-		break;
-	}
-	case direction_t::RIGHT:
-	{
-		views[viewType_t::DEFAULT]->move( viewSpeed, 0 );
-		break;
-	}
-	case direction_t::DOWN:
-	{
-		views[viewType_t::DEFAULT]->move( 0, viewSpeed );
-		break;
-	}
-	case direction_t::LEFT:
-	{
-		views[viewType_t::DEFAULT]->move( -viewSpeed, 0 );
-		break;
-	}
-	}
-	window->setView( *views[viewType_t::UI] );
-}
 
 void Scene::moveDefaultView(const sf::Vector2f &vec)
 {
