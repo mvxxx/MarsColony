@@ -1,8 +1,3 @@
-/*
-mvxxx 2017
-https://github.com/mvxxx
-*/
-
 #include "Logger.hpp"
 
 #pragma warning(disable : 4996) //_CRT_SECURE_NO_WARNINGS

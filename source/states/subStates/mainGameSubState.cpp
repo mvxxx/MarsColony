@@ -1,10 +1,4 @@
-/*
-mvxxx 2017
-https://github.com/mvxxx
-*/
-
 #include "mainGameSubState.hpp"
-
 
 MainGameSubState::MainGameSubState( std::shared_ptr<Scene> sceneptr)
 	:scene(sceneptr)

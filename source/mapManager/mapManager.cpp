@@ -1,8 +1,3 @@
-/*
-mvxxx 2017
-https://github.com/mvxxx
-*/
-
 #include "mapManager.hpp"
 
 #include <iostream>

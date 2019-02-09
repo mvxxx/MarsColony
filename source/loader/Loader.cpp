@@ -1,8 +1,3 @@
-/*
-mvxxx 2017
-https://github.com/mvxxx
-*/
-
 #include "Loader.hpp"
 
 std::unique_ptr<WorldWrapper_t> Loader::loadMap( const std::string& path )

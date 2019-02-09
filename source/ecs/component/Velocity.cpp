@@ -1,8 +1,3 @@
-/*
-mvxxx 2017
-https://github.com/mvxxx
-*/
-
 #include "Velocity.hpp"
 
 Velocity::Velocity(float _x, float _y )

@@ -1,8 +1,7 @@
 /*
-mvxxx 2017
+mvxxx 2019
 https://github.com/mvxxx
 */
-
 #include "EventControl.hpp"
 #include <iostream>
 #include "../Utilities.hpp"
@@ -43,9 +42,9 @@ namespace mv
                 if (Utilities::isInWindow(Utilities::mouseWindowPosition( scene ), scene ) )
                 {
                     if (event.mouseWheel.delta < 0)
-                        eventTypes.list.push_back({event.type, {"-z"}}); //zoom
+                        eventTypes.list.push_back({event.type, {mv::constants::event_flags::ZOOM_MODE}});
                     else
-                        eventTypes.list.push_back({event.type, {"-d"}}); //decrease
+                        eventTypes.list.push_back({event.type, {mv::constants::event_flags::DECREASE_MODE}});
                     return true;
                     break;
                 }
@@ -54,7 +53,7 @@ namespace mv
             {
                 if(event.mouseButton.button == sf::Mouse::Left)
                 {
-                    eventTypes.list.push_back({event.type, {"-lmb"}});
+                    eventTypes.list.push_back({event.type, {mv::constants::event_flags::LEFT_MOUSE_BUTTON}});
                     return true;
                 }
                 break;
@@ -64,7 +63,7 @@ namespace mv
             {
                 if(event.mouseButton.button == sf::Mouse::Left)
                 {
-                    eventTypes.list.push_back({event.type, {"-lmb"}});
+                    eventTypes.list.push_back({event.type, {mv::constants::event_flags::LEFT_MOUSE_BUTTON}});
                     return true;
                 }
                 break;

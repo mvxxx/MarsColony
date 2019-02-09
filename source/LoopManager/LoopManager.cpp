@@ -1,8 +1,3 @@
-/*
-mvxxx 2018
-https://github.com/mvxxx
-*/
-
 #include "LoopManager.hpp"
 
 LoopManager::LoopManager(const sf::Time & _timePerFrame)

@@ -1,3 +1,8 @@
+/*
+mvxxx 2019
+https://github.com/mvxxx
+*/
+
 #pragma once
 
 #include <map>
