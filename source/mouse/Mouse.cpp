@@ -6,7 +6,7 @@ Mouse::Mouse( std::shared_ptr<Scene> scene )
 	auto properBody = this->getComponent<ProperBody>();
 	properBody->appendType<sf::Sprite>();
 
-	properBody->getAs<sf::Sprite>().setTexture( *textureAtlas.get( "data/textures/mouseAtlas.png" ) );
+	properBody->getAs<sf::Sprite>().setTexture( *textureAtlas.get( "../data/textures/mouseAtlas.png" ) );
 	properBody->setCenter();
 	properBody->getAs<sf::Sprite>().setPosition(Utilities::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
 }

@@ -15,7 +15,7 @@ MainGameSubState::MainGameSubState( std::shared_ptr<Scene> sceneptr)
 
 void MainGameSubState::onStart()
 {
-	mapManager.createWorld( "data/defaultMaps/map0.txt" );
+	mapManager.createWorld( "../data/defaultMaps/map0.txt" );
 	player = std::make_shared<Player>(sf::Vector2f{100.f,100.f},1,0,mv::constants::mob::DEFAULT_SPEED);
 }
 

@@ -54,7 +54,7 @@ namespace mv
 
                 if (!resource.loadFromFile(path))
                 {
-                    Logger::Log("Cache can't find resource in this path.", Logger::STREAM::BOTH, Logger::TYPE::WARNING);
+                    Logger::Log("Cache can't find resource in this path.", Logger::STREAM::BOTH, Logger::TYPE::ERROR);
                 }
 
                 resources.emplace(path, std::make_shared<T>(resource));

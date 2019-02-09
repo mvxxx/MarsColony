@@ -1,9 +1,4 @@
-﻿MarsColony/external/
-GTest/Debug/
-packages/
-external/
-
-# Windows image file caches
+﻿# Windows image file caches
 Thumbs.db
 ehthumbs.db
 

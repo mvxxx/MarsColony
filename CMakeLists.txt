@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 project(MarsCombat)
 set(SFML_DIR "external/SFML/lib/cmake/SFML")
-find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
+find_package(SFML 2.5.1 COMPONENTS graphics audio REQUIRED)
 add_executable(MarsCombat
         source/cache/Cache.hpp
         source/ecs/component/Component.hpp

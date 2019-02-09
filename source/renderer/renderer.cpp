@@ -60,6 +60,7 @@ bool Renderer::addSingle( const std::shared_ptr<mv::Entity>& entity, DrawMap::la
 
 bool Renderer::addCollection( std::shared_ptr<std::vector<std::shared_ptr<mv::Entity>>> collection, DrawMap::layerID_t numberOfLayer, DrawMap::renderType_t renderType )
 {
+	mv::Logger::Log(std::to_string(collection->size()));
 	if ( isAbleToDraw( collection ) )
 		drawMap.layerPackData[renderType][numberOfLayer].push_back( collection );
 
