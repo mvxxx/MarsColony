@@ -6,8 +6,10 @@ Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, flo
     this->addComponent<ProperBody>();
     this->addComponent<UnitPosition>();
     this->addComponent<Velocity>();
-    this->getComponent<ProperBody>()->appendType<sf::Sprite>();
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>().setPosition( position );
+    this->getComponent<ProperBody>()->appendType<sf::Sprite>("top");
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").setPosition( position );
+    this->getComponent<ProperBody>()->appendType<sf::Sprite>("bottom");
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").setPosition( position );
     this->setTextureOptions();
 
     auto own_pointer = std::make_shared<Player>(*this);
@@ -15,17 +17,15 @@ Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, flo
     inputControl.addKeyToCheck( sf::Keyboard::D, std::function<void( Player& )>( &Player::moveRight ), own_pointer );
     inputControl.addKeyToCheck( sf::Keyboard::S, std::function<void( Player& )>( &Player::moveDown ), own_pointer );
     inputControl.addKeyToCheck( sf::Keyboard::W, std::function<void( Player& )>( &Player::moveTop ), own_pointer );
-
-    //loading standby texture atlas
-    textureCache.get( mv::constants::path::PLAYER_TEXTURE );
-
-    //loading fighting texture atlas
 }
 
 void Player::setTextureOptions()
 {
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>().setTexture
-    (*textureCache.get( mv::constants::path::PLAYER_TEXTURE ));
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").setTexture
+    (*textureCache.get( mv::constants::path::PLAYER_TEXTURE_TOP ));
+
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").setTexture
+    (*textureCache.get( mv::constants::path::PLAYER_TEXTURE_BOTTOM ));
 }
 
 void Player::update(const std::shared_ptr<Scene>& scene)
@@ -59,8 +59,12 @@ void Player::moveLeft()
 
 void Player::accelerateMotion()
 {
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>().move
-            (this->getComponent<Velocity>()->getAsVector());
+    std::vector<sf::Sprite*> sprites = this->getComponent<ProperBody>()->getAllElementsAs<sf::Sprite>();
+
+    for(auto& spritesPtr: sprites)
+    {
+        spritesPtr->move(this->getComponent<Velocity>()->getAsVector());
+    }
 }
 
 void Player::fitTexture()
