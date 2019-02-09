@@ -17,7 +17,7 @@ Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, flo
     inputControl.addKeyToCheck( sf::Keyboard::W, std::function<void( Player& )>( &Player::moveTop ), own_pointer );
 
     //loading standby texture atlas
-    textureCache.get("../data/textures/player.png");
+    textureCache.get( mv::constants::path::PLAYER_TEXTURE );
 
     //loading fighting texture atlas
 }
@@ -25,7 +25,7 @@ Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, flo
 void Player::setTextureOptions()
 {
     this->getComponent<ProperBody>()->getAs<sf::Sprite>().setTexture
-    (*textureCache.get("../data/textures/player.png"));
+    (*textureCache.get( mv::constants::path::PLAYER_TEXTURE ));
 }
 
 void Player::update(const std::shared_ptr<Scene>& scene)

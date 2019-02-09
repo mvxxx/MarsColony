@@ -7,7 +7,7 @@ https://github.com/mvxxx
 
 TilesManager::TilesManager()
 {
-	cache.get( "../data/textures/cellTexture.png" );
+	cache.get( mv::constants::path::CELL_TEXTURE_ATLAS );
 }
 
 void TilesManager::manage()
@@ -33,7 +33,7 @@ void TilesManager::createWorld( const std::string& mapPath )
 	{
 		for ( int j = 0; j < mapPack->unitDimensions_y; j++ )
 		{
-			addEntityToManage( std::make_shared<Cell>( sf::Vector2f(i * 64.f, j * 64.f ), sf::Vector2f( 64.f, 64.f ), *cache.get( "../data/textures/cellTexture.png" ), mapPack->map[j*mapPack->unitDimensions_x + i] ) );
+			addEntityToManage( std::make_shared<Cell>( sf::Vector2f(i * 64.f, j * 64.f ), sf::Vector2f( 64.f, 64.f ), *cache.get( mv::constants::path::CELL_TEXTURE_ATLAS ), mapPack->map[j*mapPack->unitDimensions_x + i] ) );
 		}
 	}
 }
