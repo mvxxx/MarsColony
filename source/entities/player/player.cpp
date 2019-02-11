@@ -21,11 +21,15 @@ Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, flo
 
 void Player::setTextureOptions()
 {
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").setTexture
-    (*textureCache.get( mv::constants::path::PLAYER_TEXTURE_TOP ));
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("top")
+            .setTexture(*textureCache.get( mv::constants::path::PLAYER_TEXTURE_TOP ));
+    this->getComponent<ProperBody>()->setCenter("top");
 
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").setTexture
-    (*textureCache.get( mv::constants::path::PLAYER_TEXTURE_BOTTOM ));
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom")
+            .setTexture(*textureCache.get( mv::constants::path::PLAYER_TEXTURE_BOTTOM ));
+    this->getComponent<ProperBody>()->setCenter("bottom");
+
+
 }
 
 void Player::update(const std::shared_ptr<Scene>& scene)
@@ -69,7 +73,14 @@ void Player::accelerateMotion()
 
 void Player::fitTexture()
 {
-    //todo
+    auto velocity = this->getComponent<Velocity>();
+    if(velocity->getValue() != 0)
+    {
+        int sign = velocity->x < 0 ? -1 : 1;
+        std::cout<<sign*Utilities::angleBetweenVectors({0.f,-1.f},velocity->getAsVector())<<std::endl;
+        this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom")
+         .setRotation(sign*Utilities::angleBetweenVectors({0.f,-1.f},velocity->getAsVector()));
+    }
 }
 
 void Player::adaptView(const std::shared_ptr<Scene>& scene)

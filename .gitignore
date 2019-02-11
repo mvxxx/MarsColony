@@ -84,3 +84,5 @@ MV-Engine/data/textures/WY,eNAĆ ALTAS!.txt
 *.pch
 
 cmake-build-debug/
+
+external/include/gtest/

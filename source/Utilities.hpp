@@ -105,7 +105,7 @@ public:
 	 * @warning uses standard scalar product
 	 * @return length as float
 	 */
-	static float lenghtOfVector(const sf::Vector2f& vec)
+	static float lengthOfVector(const sf::Vector2f& vec)
 	{
 		return std::sqrt(vec.x*vec.x + vec.y*vec.y);
 	}
@@ -119,7 +119,7 @@ public:
 	 */
 	static float angleBetweenVectors(const sf::Vector2f& first, const sf::Vector2f& second)
 	{
-		return radianToDegree((first.x*second.x + first.y*second.y)/(lenghtOfVector(first)*lenghtOfVector(second)));
+		return radianToDegree(std::acos(first.x*second.x + first.y*second.y/(lengthOfVector(first)*lengthOfVector(second))));
 	}
 protected:
 private:
