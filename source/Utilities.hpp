@@ -10,6 +10,8 @@ https://github.com/mvxxx
 
 #include "scene/Scene.hpp"
 
+#include <cmath>
+
 #define UNUSED(x) (void)x;
 
 /**
@@ -86,6 +88,38 @@ public:
 	{
 		return  pos.x*pos.y > 0 && pos.x + pos.y > 0 &&
 			pos.x < scene->getWindow()->getSize().x  && pos.y < scene->getWindow()->getSize().y;
+	}
+
+	/**
+	 * @brief converts radian to
+	 * @param radian - angle in radians
+	 * @return angle in degrees
+	 */
+	static float radianToDegree(float radian)
+	{
+	 	return radian * (180.f/static_cast<float>(M_PI));
+	}
+
+	/**
+	 * @brief Calculate length of given vector
+	 * @warning uses standard scalar product
+	 * @return length as float
+	 */
+	static float lenghtOfVector(const sf::Vector2f& vec)
+	{
+		return std::sqrt(vec.x*vec.x + vec.y*vec.y);
+	}
+
+	/**
+	 * @brief Calculate angle between vectors
+	 * @param first vector to calculation
+	 * @param second vector to calculation
+	 * @warning uses standard scalar product
+	 * @return angle as degrees
+	 */
+	static float angleBetweenVectors(const sf::Vector2f& first, const sf::Vector2f& second)
+	{
+		return radianToDegree((first.x*second.x + first.y*second.y)/(lenghtOfVector(first)*lenghtOfVector(second)));
 	}
 protected:
 private:
