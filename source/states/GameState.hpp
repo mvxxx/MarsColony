@@ -8,7 +8,6 @@ https://github.com/mvxxx
 #include "../states/State.hpp"
 #include "subStates/mainGameSubState.hpp"
 #include "../eventControl/EventControl.hpp"
-#include "../mouse/Mouse.hpp"
 #include "../LoopManager/LoopManager.hpp"
 #include "../mapManager/SelectionManager.hpp"
 
@@ -26,9 +25,6 @@ private:
 
 	// pointer to scene
 	std::shared_ptr<Scene> scenePointer;
-
-	//pointer to mouse
-	std::shared_ptr<Mouse> mouse;
 
 	//manager's loop
     LoopManager loopManager;

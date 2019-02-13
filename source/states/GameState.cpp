@@ -11,16 +11,11 @@ GameState::GameState(std::shared_ptr<Scene> scenePtr)
 void GameState::onStart()
 {
   scenePointer->getWindow()->setMouseCursorVisible(false);
-  
-  mouse = std::make_shared<Mouse>(scenePointer);
 
   auto mainSubState = std::make_shared<MainGameSubState>(scenePointer);
   mainSubState->fillRenderer(scenePointer->renderer);
 
   this->subStates.emplace(State::type_t::mainGame, mainSubState);
-
-  scenePointer->renderer.addSingle(mouse, 1, DrawMap::renderType_t::UI);
-
 }
 
 void GameState::onStop()
@@ -45,7 +40,6 @@ void GameState::logicProcessing()
   sf::Event event;
   auto eventTypes = eventControl->checkEvent(event);
   this->loopSubStates(eventTypes);
-  mouse->update(scenePointer);
   scenePointer->handleEventTypes(eventTypes);
 }
 

@@ -14,6 +14,8 @@ https://github.com/mvxxx
 #include "../../entities/player/player.hpp"
 #include "../../inputManager/InputManager.hpp"
 #include "../../mapManager/SelectionManager.hpp"
+#include "../../mouse/Mouse.hpp"
+
 
 /**
 * @brief main substate
@@ -27,6 +29,8 @@ private:
   //manager of map
   MapManager mapManager;
 
+  //pointer to mouse
+  std::shared_ptr<Mouse> mouse;
 
   //pointer to player
   std::shared_ptr<Player> player;
@@ -42,7 +46,7 @@ public:
 	* @param selManager selection manager's pointer
 	* 
 	*/
-  MainGameSubState(std::shared_ptr<Scene> scene);
+  MainGameSubState(const std::shared_ptr<Scene>& sceneptr);
 
   /**
   * @brief onStart method

@@ -67,7 +67,6 @@ void Player::fitTexture()
     if(velocity->getValue() != 0)
     {
         int sign = velocity->x < 0 ? -1 : 1;
-        std::cout<<sign*Utilities::angleBetweenVectors({0.f,-1.f},velocity->getAsVector())<<std::endl;
         this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom")
          .setRotation(sign*Utilities::angleBetweenVectors({0.f,-1.f},velocity->getAsVector()));
     }
