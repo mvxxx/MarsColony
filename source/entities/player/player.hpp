@@ -93,4 +93,14 @@ private:
     * @brief Reduces velocity after move
     */
      void reduceVelocity();
+
+     /**
+     * @brief Installs components required for player
+     */
+     void installComponents(const sf::Vector2f& position);
+
+    /**
+    * @brief Assigns inputs required for player
+    */
+     void assignInputs();
 };

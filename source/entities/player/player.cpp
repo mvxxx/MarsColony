@@ -3,20 +3,10 @@
 Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, float speedValue)
     :state(state_t::STANDBY),level(lev),exp(experience),speed(speedValue)
 {
-    this->addComponent<ProperBody>();
-    this->addComponent<UnitPosition>();
-    this->addComponent<Velocity>();
-    this->getComponent<ProperBody>()->appendType<sf::Sprite>("top");
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").setPosition( position );
-    this->getComponent<ProperBody>()->appendType<sf::Sprite>("bottom");
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").setPosition( position );
+    this->installComponents(position);
     this->setTextureOptions();
+    this->assignInputs();
 
-    auto own_pointer = std::make_shared<Player>(*this);
-    inputControl.addKeyToCheck( sf::Keyboard::A, std::function<void( Player& )>( &Player::moveLeft ),own_pointer );
-    inputControl.addKeyToCheck( sf::Keyboard::D, std::function<void( Player& )>( &Player::moveRight ), own_pointer );
-    inputControl.addKeyToCheck( sf::Keyboard::S, std::function<void( Player& )>( &Player::moveDown ), own_pointer );
-    inputControl.addKeyToCheck( sf::Keyboard::W, std::function<void( Player& )>( &Player::moveTop ), own_pointer );
 }
 
 void Player::setTextureOptions()
@@ -93,4 +83,24 @@ void Player::reduceVelocity()
     auto velocity = this->getComponent<Velocity>();
     velocity->x = 0;
     velocity->y = 0;
+}
+
+void Player::installComponents(const sf::Vector2f& position)
+{
+    this->addComponent<ProperBody>();
+    this->addComponent<UnitPosition>();
+    this->addComponent<Velocity>();
+    this->getComponent<ProperBody>()->appendType<sf::Sprite>("top");
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").setPosition( position );
+    this->getComponent<ProperBody>()->appendType<sf::Sprite>("bottom");
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").setPosition( position );
+}
+
+void Player::assignInputs()
+{
+    auto own_pointer = std::make_shared<Player>(*this);
+    inputControl.addKeyToCheck( sf::Keyboard::A, std::function<void( Player& )>( &Player::moveLeft ),own_pointer );
+    inputControl.addKeyToCheck( sf::Keyboard::D, std::function<void( Player& )>( &Player::moveRight ), own_pointer );
+    inputControl.addKeyToCheck( sf::Keyboard::S, std::function<void( Player& )>( &Player::moveDown ), own_pointer );
+    inputControl.addKeyToCheck( sf::Keyboard::W, std::function<void( Player& )>( &Player::moveTop ), own_pointer );
 }
