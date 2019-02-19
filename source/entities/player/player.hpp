@@ -12,6 +12,7 @@ https://github.com/mvxxx
 #include "../../ecs/component/Velocity.hpp"
 #include "../../inputManager/InputManager.hpp"
 #include "../../Utilities.hpp"
+#include "../../mouse/Mouse.hpp"
 
 
 class Player : public mv::Entity
@@ -46,7 +47,7 @@ public:
     /**
      * @brief updates player's behavior
      */
-    void update(const std::shared_ptr<Scene>& scene);
+    void update(const std::shared_ptr<Scene>& scene, const std::shared_ptr<Mouse>& mouse);
 protected:
 private:
     /**
@@ -81,8 +82,10 @@ private:
 
     /**
     * @brief fits texture to actual state of motion
+    * @param position - postion of mouse
+    * @param velocity - velocity component of player
     */
-     void fitTexture();
+     void fitTexture(const sf::Vector2f& position);
 
     /**
     * @brief Updates position of view
@@ -103,4 +106,17 @@ private:
     * @brief Assigns inputs required for player
     */
      void assignInputs();
+
+     /**
+     * @brief fits bottom texture
+     * @param velocity - velocity component of player
+     */
+     void fitBottom(const std::shared_ptr<Velocity>& velocity);
+
+    /**
+    * @brief fits top texture
+    * @param position - postion of mouse
+    * @param velocity - velocity component of player
+    */
+    void fitTop(const sf::Vector2f& position, const std::shared_ptr<Velocity>& velocity);
 };

@@ -86,3 +86,5 @@ MV-Engine/data/textures/WY,eNAĆ ALTAS!.txt
 cmake-build-debug/
 
 external/include/gtest/
+
+*.iml

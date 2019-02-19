@@ -22,11 +22,11 @@ void Player::setTextureOptions()
 
 }
 
-void Player::update(const std::shared_ptr<Scene>& scene)
+void Player::update(const std::shared_ptr<Scene>& scene, const std::shared_ptr<Mouse>& mouse)
 {
     inputControl.update();
     this->accelerateMotion();
-    this->fitTexture();
+    this->fitTexture(mouse->getComponent<ProperBody>()->getAs<sf::Sprite>().getPosition());
     this->adaptView(scene);
     this->reduceVelocity();
 }
@@ -61,15 +61,11 @@ void Player::accelerateMotion()
     }
 }
 
-void Player::fitTexture()
+void Player::fitTexture(const sf::Vector2f& position)
 {
     auto velocity = this->getComponent<Velocity>();
-    if(velocity->getValue() != 0)
-    {
-        int sign = velocity->x < 0 ? -1 : 1;
-        this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom")
-         .setRotation(sign*Utilities::angleBetweenVectors({0.f,-1.f},velocity->getAsVector()));
-    }
+    this->fitBottom(velocity);
+    this->fitTop(position, velocity);
 }
 
 void Player::adaptView(const std::shared_ptr<Scene>& scene)
@@ -102,4 +98,27 @@ void Player::assignInputs()
     inputControl.addKeyToCheck( sf::Keyboard::D, std::function<void( Player& )>( &Player::moveRight ), own_pointer );
     inputControl.addKeyToCheck( sf::Keyboard::S, std::function<void( Player& )>( &Player::moveDown ), own_pointer );
     inputControl.addKeyToCheck( sf::Keyboard::W, std::function<void( Player& )>( &Player::moveTop ), own_pointer );
+}
+
+void Player::fitBottom(const std::shared_ptr<Velocity>& velocity)
+{
+    if(velocity->getValue() != 0)
+    {
+        int sign = velocity->x < 0 ? -1 : 1;
+        this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom")
+                .setRotation(sign*Utilities::angleBetweenVectors({0.f,-1.f},velocity->getAsVector()));
+    }
+}
+
+void Player::fitTop(const sf::Vector2f& position, const std::shared_ptr<Velocity>& velocity)
+{
+    auto selfPosition = this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").getPosition();
+
+    float angle = Utilities::angleBetweenVectors(
+            {0.f,-1.f},
+            sf::Vector2f{position.x-selfPosition.x,position.y-selfPosition.y});
+
+    angle = position.x - selfPosition.x >= 0 ? angle : 360.f - angle;
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("top")
+         .setRotation(angle);
 }

@@ -21,7 +21,7 @@ void MainGameSubState::onStop()
 void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
 	mapManager.manageAll();
-	player->update(scene);
+	player->update(scene, mouse);
 	mouse->update(this->scene);
 }
 
