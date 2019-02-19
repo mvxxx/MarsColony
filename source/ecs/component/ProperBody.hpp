@@ -94,7 +94,13 @@ public:
 	template<class T>
 	T& getAs( const std::string& label )
 	{
-		return *dynamic_cast<T*>(&*(body[label]));
+	    if(body.find(label) != body.end())
+        {
+            return *dynamic_cast<T*>(&*(body[label]));
+        }
+
+	    mv::Logger::Log(mv::constants::error::ecs::BODY_DOES_NOT_CONTAIN_EL, mv::Logger::STREAM::BOTH);
+	    return *dynamic_cast<T*>(&*(body.begin()->second));
 	}
 
 	template<class T>

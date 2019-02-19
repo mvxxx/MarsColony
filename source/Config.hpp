@@ -33,6 +33,10 @@ namespace mv
 		}
 		namespace error
 		{
+		    namespace ecs
+            {
+		        constexpr auto BODY_DOES_NOT_CONTAIN_EL = "Body doesn't contain element with given label!";
+            }
 
 			namespace renderer
 			{
@@ -80,6 +84,7 @@ namespace mv
 			const sf::Vector2f WINDOW_DIMENSIONS = {1280, 720};
 			const sf::Vector2u BORDER_TOLERANCE = {100, 100};
 			const sf::Vector2f MOUSE_DIMENSIONS = {20, 20};
+			const sf::Vector2f CELL_DIMENSION = {64,64};
 		}
 
 		namespace event_flags
