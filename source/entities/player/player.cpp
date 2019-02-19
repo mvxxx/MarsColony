@@ -120,6 +120,7 @@ void Player::fitTop(const sf::Vector2f& position, const std::shared_ptr<Velocity
             sf::Vector2f{position.x-selfPosition.x,position.y-selfPosition.y});
 
     angle = position.x - selfPosition.x >= 0 ? angle : 360.f - angle;
+
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("top")
          .setRotation(angle);
 }

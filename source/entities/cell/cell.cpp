@@ -4,6 +4,7 @@ Cell::Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& tex
 {
 	this->addComponent<ProperBody>();
 	this->addComponent<UnitPosition>();
+	this->addComponent<Collidable>();
 
 	this->getComponent<ProperBody>()->appendType<sf::Sprite>();
 
@@ -12,4 +13,9 @@ Cell::Cell( sf::Vector2f position, sf::Vector2f cellDimensions, sf::Texture& tex
 	this->getComponent<ProperBody>()->getAs<sf::Sprite>().setTextureRect( sf::IntRect( static_cast<int>(id*cellDimensions.x), 0, static_cast<int>(cellDimensions.x), static_cast<int>(cellDimensions.y) ) );
 
 	this->getComponent<UnitPosition>()->setUnitPosition(Utilities::convertToUnitPosition( position, cellDimensions ) );
+
+	if(id == mv::constants::id::stone)
+	{
+		this->getComponent<Collidable>()->setStatus(true);
+	}
 }

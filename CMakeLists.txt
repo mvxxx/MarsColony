@@ -10,11 +10,11 @@ add_executable(MarsCombat
         source/ecs/component/Velocity.cpp
         source/ecs/component/Velocity.hpp
         source/ecs/component/Visible.hpp
+        source/ecs/component/Collidable.hpp
         source/ecs/entity/Entity.cpp
         source/ecs/entity/Entity.hpp
         source/entities/cell/cell.cpp
         source/entities/cell/cell.hpp
-        source/entities/id.hpp
         source/eventControl/EventControl.cpp
         source/eventControl/EventControl.hpp
         source/eventDock/EventDock.hpp

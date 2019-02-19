@@ -103,5 +103,12 @@ namespace mv
 			constexpr auto PLAYER_TEXTURE_BOTTOM = "data/textures/player_bottom.png";
 			constexpr auto MOUSE_TEXTURE_ATLAS = "data/textures/mouseAtlas.png";
 		}
+
+		namespace id
+		{
+			constexpr auto sand_red = 0;
+			constexpr auto sand_yellow = 1;
+			constexpr auto stone = 2;
+		}
 	}
 }

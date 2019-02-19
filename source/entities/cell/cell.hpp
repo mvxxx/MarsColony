@@ -10,6 +10,7 @@ https://github.com/mvxxx
 #include "../../ecs/entity/Entity.hpp"
 #include "../../ecs/component/ProperBody.hpp"
 #include "../../ecs/component/unitPosition.hpp"
+#include "../../ecs/component/Collidable.hpp"
 #include "../../Utilities.hpp"
 
 /**
