@@ -25,6 +25,7 @@ void Player::setTextureOptions()
 void Player::update(const std::shared_ptr<Scene>& scene, const std::shared_ptr<Mouse>& mouse)
 {
     inputControl.update();
+    this->getComponent<UnitPosition>()->update(this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").getPosition());
     this->accelerateMotion();
     this->fitTexture(mouse->getComponent<ProperBody>()->getAs<sf::Sprite>().getPosition());
     this->adaptView(scene);

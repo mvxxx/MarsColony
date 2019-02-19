@@ -29,10 +29,16 @@ public:
 	* @param y - y coordinate
 	* @param cellDimensions cell dimensions
 	*/
-	void update(int x, int y, sf::Vector2f cellDimensions)
+	void update(int x, int y)
 	{
-		i = static_cast<int>(x / cellDimensions.x);
-		j = static_cast<int>(y / cellDimensions.y);
+		i = static_cast<int>(x / mv::constants::defaults::CELL_DIMENSION.x);
+		j = static_cast<int>(y / mv::constants::defaults::CELL_DIMENSION.y);
+	}
+
+	void update(const sf::Vector2f& position)
+	{
+		i = static_cast<int>(position.x / mv::constants::defaults::CELL_DIMENSION.x);
+		j = static_cast<int>(position.y / mv::constants::defaults::CELL_DIMENSION.y);
 	}
 
 	/**
