@@ -31,9 +31,10 @@ public:
 	* @param cellDim - cell dimensions
 	* @return Vector2 with unit position
 	*/
-	static sf::Vector2i convertToUnitPosition( const sf::Vector2f& pxPos, const sf::Vector2f& cellDim )
+	static sf::Vector2i convertToUnitPosition( const sf::Vector2f& pxPos)
 	{
-		return sf::Vector2i( static_cast<int>(pxPos.x / cellDim.x), static_cast<int>(pxPos.y / cellDim.y) );
+		return sf::Vector2i( static_cast<int>(pxPos.x / mv::constants::defaults::CELL_DIMENSION.x),
+				             static_cast<int>(pxPos.y / mv::constants::defaults::CELL_DIMENSION.y));
 	}
 
 	/**
@@ -120,6 +121,16 @@ public:
 	static float angleBetweenVectors(const sf::Vector2f& first, const sf::Vector2f& second)
 	{
 		return radianToDegree(std::acos(first.x*second.x + first.y*second.y/(lengthOfVector(first)*lengthOfVector(second))));
+	}
+
+	/**
+	 * @param p - first logical value
+	 * @param q - second logical value
+	 * @return p --> q
+	 */
+	static bool logicalImplication(bool p, bool q)
+	{
+		return !p || q;
 	}
 protected:
 private:

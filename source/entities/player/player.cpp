@@ -18,26 +18,27 @@ void Player::setTextureOptions()
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom")
             .setTexture(*textureCache.get( mv::constants::path::PLAYER_TEXTURE_BOTTOM ));
     this->getComponent<ProperBody>()->setCenter("bottom");
-
-
 }
 
-void Player::update(const std::shared_ptr<Scene>& scene)
+void Player::update(const std::shared_ptr<Scene>& scene, const CollisionManager& colManager)
 {
     inputControl.update();
     this->getComponent<UnitPosition>()->update(this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").getPosition());
 
-    this->accelerateMotion();
+    if(this->isAbleToMove(colManager))
+    {
+        this->accelerateMotion();
+        this->fitTexture(Utilities::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
+        this->adaptView(scene);
+    }
 
-    this->fitTexture(Utilities::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT));
-    this->adaptView(scene);
     this->reduceVelocity();
 }
 
 void Player::moveTop()
 {
     this->getComponent<Velocity>()->y -= speed * mv::constants::mob::DEFAULT_SPEED;
-}a
+}
 
 void Player::moveRight()
 {
@@ -57,10 +58,10 @@ void Player::moveLeft()
 void Player::accelerateMotion()
 {
     std::vector<sf::Sprite*> sprites = this->getComponent<ProperBody>()->getAllElementsAs<sf::Sprite>();
-
+    auto velocity = this->getComponent<Velocity>()->getAsVector();
     for(auto& spritesPtr: sprites)
     {
-        spritesPtr->move(this->getComponent<Velocity>()->getAsVector());
+        spritesPtr->move(velocity);
     }
 }
 
@@ -115,7 +116,6 @@ void Player::fitBottom(const std::shared_ptr<Velocity>& velocity)
 
 void Player::fitTop(const sf::Vector2f& position, const std::shared_ptr<Velocity>& velocity)
 {
-    std::cout<<position.x<<" "<<position.y<<std::endl;
     auto selfPosition = this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").getPosition();
 
     float angle = Utilities::angleBetweenVectors(
@@ -126,4 +126,28 @@ void Player::fitTop(const sf::Vector2f& position, const std::shared_ptr<Velocity
 
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("top")
          .setRotation(angle);
+}
+
+bool Player::isAbleToMove(const CollisionManager &colManager)
+{
+    //Positions in unit system (i,j)
+    sf::Vector2i nextPos =
+            Utilities::convertToUnitPosition(this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").getPosition() +
+                                             this->getComponent<Velocity>()->getAsVector());
+
+    sf::Vector2i currentPos= {this->getComponent<UnitPosition>()->i,this->getComponent<UnitPosition>()->j};
+
+    //assumption: velocity is bounded so T(n) = O(1) (n-number of considered tiles)
+    //assumption: velocity.x < Tile.x
+    for(int i = std::min(currentPos.x,nextPos.x); i <= std::max(currentPos.x,nextPos.x); i++)
+    {
+        for(int j = std::min(currentPos.y,nextPos.y); j <= std::max(currentPos.y,nextPos.y); j++)
+        {
+            if(colManager.checkCollsionStatus(i,j))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }

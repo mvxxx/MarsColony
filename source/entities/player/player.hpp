@@ -11,6 +11,7 @@ https://github.com/mvxxx
 #include "../../ecs/component/unitPosition.hpp"
 #include "../../ecs/component/Velocity.hpp"
 #include "../../inputManager/InputManager.hpp"
+#include "../../mapManager/CollisionManager.hpp"
 #include "../../Utilities.hpp"
 #include "../../mouse/Mouse.hpp"
 
@@ -47,8 +48,9 @@ public:
     /**
      * @brief updates player's behavior
      * @param scene - pointer for main scene
+     * @param colManager - collsion manager for static elements of map
      */
-    void update(const std::shared_ptr<Scene>& scene);
+    void update(const std::shared_ptr<Scene>& scene, const CollisionManager& colManager);
 protected:
 private:
     /**
@@ -120,4 +122,10 @@ private:
     * @param velocity - velocity component of player
     */
     void fitTop(const sf::Vector2f& position, const std::shared_ptr<Velocity>& velocity);
+
+    /**
+     * @param colManager - collision manager for static elements of map
+     * @return true if movement is possible, false otherwise
+     */
+    bool isAbleToMove(const CollisionManager& colManager);
 };

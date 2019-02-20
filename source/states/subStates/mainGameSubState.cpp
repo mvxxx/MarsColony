@@ -20,7 +20,7 @@ void MainGameSubState::onStop()
 void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
 	mapManager.manageAll();
-	player->update(scene);
+	player->update(scene, collisionManager);
 	mouse->update(this->scene);
 }
 

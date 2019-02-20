@@ -36,12 +36,20 @@ void CollisionManager::addToCollisionMap(std::shared_ptr<mv::Entity> entity)
 
 bool CollisionManager::checkCollsionStatus(int i, int j) const
 {
-    for(auto& entity : collisionMap.at({i,j}))
+    try
     {
-        if(entity->getComponent<Collidable>()->isCollidable())
-            return true;
+        for(auto& entity : collisionMap.at({i,j}))
+        {
+            if(entity->getComponent<Collidable>()->isCollidable())
+                return true;
+        }
+        return false;
+    } catch(std::exception ex)
+    {
+        return false;
     }
-    return false;
+
+
 }
 
 bool CollisionManager::checkCollsionStatus(const std::vector<std::pair<int,int>>& fields) const
