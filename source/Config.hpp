@@ -70,6 +70,13 @@ namespace mv
 				constexpr auto DOES_NOT_EXIST_IN_SYSTEM = "Sound with given doesn't exist in system";
 			}
 
+			namespace collisionManager
+			{
+		    	constexpr auto ENTITY_WITHOUT_COLLIDABLE = "Entity doesn't contain Collidable component";
+		    	constexpr auto ENTITY_WITHOUT_UNITPOSITION = "Entity doesn't contain UnitPosition component";
+		    	constexpr auto ENTITY_IN_DATA = "This entity currently is in considered field";
+			}
+
 			namespace componentWrapper
 			{
 				constexpr auto CANNOT_BE_NULLPTR = "Pointer to component can't be nullptr!";
