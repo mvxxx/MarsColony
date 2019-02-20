@@ -15,7 +15,7 @@ https://github.com/mvxxx
 #include "manager.hpp"
 
 /**
-* @brief class of managing tiles
+* @brief class for managing tiles in the background
 */
 class TilesManager :public Manager<mv::Entity>
 {
@@ -31,11 +31,6 @@ public:
 	* @brief classic ctor
 	*/
 	TilesManager();
-
-	/**
-	* @brief manages all tiles
-	*/
-	virtual void manage() override;
 
 	/**
 	* @brief adds entity to managing loop

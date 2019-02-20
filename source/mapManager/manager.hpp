@@ -22,10 +22,6 @@ protected:
 private:
 	/* ===Methods=== */
 public:
-	/**
-	* @brief virtual method for managing entities
-	*/
-	virtual void manage() = 0;
 
 	/**
 	* @brief adds entity to manage

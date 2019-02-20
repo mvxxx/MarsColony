@@ -13,7 +13,6 @@ https://github.com/mvxxx
 #include "../../ecs/entity/Entity.hpp"
 #include "../../entities/player/player.hpp"
 #include "../../inputManager/InputManager.hpp"
-#include "../../mapManager/SelectionManager.hpp"
 #include "../../mouse/Mouse.hpp"
 
 

@@ -5,7 +5,6 @@ https://github.com/mvxxx
 
 #include "Scene.hpp"
 #include "../Config.hpp"
-#include "../mapManager/SelectionManager.hpp"
 
 Scene::Scene( const std::string& title, const sf::Vector2f& dimensions)
 	:viewSpeed( 10.f ),

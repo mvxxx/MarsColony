@@ -13,6 +13,6 @@ void MapManager::createWorld( const std::string& mapPath )
 
 void MapManager::manageAll()
 {
-	tilesManager.manage();
+	(void)[](){};
 }
 

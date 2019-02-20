@@ -1,8 +1,3 @@
-/*
-mvxxx 2017
-https://github.com/mvxxx
-*/
-
 #include "TilesManager.hpp"
 
 TilesManager::TilesManager()
@@ -10,13 +5,6 @@ TilesManager::TilesManager()
 	cache.get( mv::constants::path::CELL_TEXTURE_ATLAS );
 }
 
-void TilesManager::manage()
-{
-	for ( auto& entity : entities )
-	{
-		UNUSED(entity);
-	}
-}
 
 void TilesManager::addEntityToManage( std::shared_ptr<mv::Entity> entity )
 {

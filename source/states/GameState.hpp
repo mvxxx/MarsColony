@@ -9,7 +9,6 @@ https://github.com/mvxxx
 #include "subStates/mainGameSubState.hpp"
 #include "../eventControl/EventControl.hpp"
 #include "../LoopManager/LoopManager.hpp"
-#include "../mapManager/SelectionManager.hpp"
 
 /**
 * @brief state of game
