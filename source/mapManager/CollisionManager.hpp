@@ -43,14 +43,14 @@ public:
      * @param j - y in unit system
      * @return true if collision occurs, false otherwise
      */
-    bool checkCollsionStatus(int i, int j);
+    bool checkCollsionStatus(int i, int j) const;
 
     /**
      * @brief Checks if on given vec(i,j) field collision occurs
      * @param fields - unit positions of fields to consider
      * @return true if collision occurs, false otherwise
      */
-    bool checkCollsionStatus(const std::vector<std::pair<int,int>>& fields);
+    bool checkCollsionStatus(const std::vector<std::pair<int,int>>& fields) const;
 
 protected:
 private:
