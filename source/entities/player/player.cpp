@@ -22,14 +22,14 @@ void Player::setTextureOptions()
 
 }
 
-void Player::update(const std::shared_ptr<Scene>& scene, const std::shared_ptr<Mouse>& mouse)
+void Player::update(const std::shared_ptr<Scene>& scene)
 {
     inputControl.update();
     this->getComponent<UnitPosition>()->update(this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").getPosition());
 
     this->accelerateMotion();
 
-    this->fitTexture(mouse->getComponent<ProperBody>()->getAs<sf::Sprite>().getPosition());
+    this->fitTexture(Utilities::mouseWorldPosition(scene,Scene::viewType_t::DEFAULT));
     this->adaptView(scene);
     this->reduceVelocity();
 }
@@ -37,7 +37,7 @@ void Player::update(const std::shared_ptr<Scene>& scene, const std::shared_ptr<M
 void Player::moveTop()
 {
     this->getComponent<Velocity>()->y -= speed * mv::constants::mob::DEFAULT_SPEED;
-}
+}a
 
 void Player::moveRight()
 {
@@ -115,6 +115,7 @@ void Player::fitBottom(const std::shared_ptr<Velocity>& velocity)
 
 void Player::fitTop(const sf::Vector2f& position, const std::shared_ptr<Velocity>& velocity)
 {
+    std::cout<<position.x<<" "<<position.y<<std::endl;
     auto selfPosition = this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").getPosition();
 
     float angle = Utilities::angleBetweenVectors(

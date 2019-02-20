@@ -46,8 +46,9 @@ public:
 
     /**
      * @brief updates player's behavior
+     * @param scene - pointer for main scene
      */
-    void update(const std::shared_ptr<Scene>& scene, const std::shared_ptr<Mouse>& mouse);
+    void update(const std::shared_ptr<Scene>& scene);
 protected:
 private:
     /**
