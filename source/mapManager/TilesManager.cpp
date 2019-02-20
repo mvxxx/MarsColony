@@ -11,7 +11,7 @@ void TilesManager::addEntityToManage( std::shared_ptr<mv::Entity> entity )
 	entities.push_back( entity );
 }
 
-void TilesManager::createWorld( const std::string& mapPath )
+void TilesManager::createWorld( const std::string& mapPath, CollisionManager& collisionManager  )
 {
 	Loader loader;
 
@@ -21,10 +21,12 @@ void TilesManager::createWorld( const std::string& mapPath )
 	{
 		for ( int j = 0; j < mapPack->unitDimensions_y; j++ )
 		{
-			addEntityToManage( std::make_shared<Cell>( sf::Vector2f(i * mv::constants::defaults::CELL_DIMENSION.x, j * mv::constants::defaults::CELL_DIMENSION.y),
-													   mv::constants::defaults::CELL_DIMENSION,
-					                                   *cache.get( mv::constants::path::CELL_TEXTURE_ATLAS ),
-					                                   mapPack->map[j*mapPack->unitDimensions_x + i] ) );
+			std::shared_ptr<Cell> currentCell = std::make_shared<Cell>( sf::Vector2f(i * mv::constants::defaults::CELL_DIMENSION.x, j * mv::constants::defaults::CELL_DIMENSION.y),
+																		mv::constants::defaults::CELL_DIMENSION,
+																		*cache.get( mv::constants::path::CELL_TEXTURE_ATLAS ),
+																		mapPack->map[j*mapPack->unitDimensions_x + i] );
+			collisionManager.addToCollisionMap(currentCell) ;
+			this->addEntityToManage(currentCell);
 		}
 	}
 }

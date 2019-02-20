@@ -2,6 +2,7 @@
 mvxxx 2019
 https://github.com/mvxxx
 */
+#pragma once
 
 #include <map>
 
@@ -30,11 +31,6 @@ private:
     std::map<std::pair<int,int>,std::vector<std::shared_ptr<mv::Entity>>> collisionMap;
     /* ===Methods=== */
 public:
-    /**
-	* @brief classic ctor
-	*/
-    CollisionManager();
-
     /**
     * @brief adds entity to managing loop
     * @param entity - pointer to given object

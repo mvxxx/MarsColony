@@ -14,6 +14,7 @@ https://github.com/mvxxx
 #include "../../entities/player/player.hpp"
 #include "../../inputManager/InputManager.hpp"
 #include "../../mouse/Mouse.hpp"
+#include "../../mapManager/CollisionManager.hpp"
 
 
 /**
@@ -27,6 +28,9 @@ protected:
 private:
   //manager of map
   MapManager mapManager;
+
+  //manager of collisions
+  CollisionManager collisionManager;
 
   //pointer to mouse
   std::shared_ptr<Mouse> mouse;

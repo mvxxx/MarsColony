@@ -3,13 +3,12 @@
 MainGameSubState::MainGameSubState( const std::shared_ptr<Scene>& sceneptr)
 	:scene(sceneptr)
 {
-
 	this->onStart();
 }
 
 void MainGameSubState::onStart()
 {
-	mapManager.createWorld( mv::constants::path::MAP );
+	mapManager.createWorld( mv::constants::path::MAP, collisionManager);
 	player = std::make_shared<Player>(sf::Vector2f{400.f,400.f},1,0,mv::constants::mob::DEFAULT_SPEED);
 	mouse = std::make_shared<Mouse>(this->scene);
 }

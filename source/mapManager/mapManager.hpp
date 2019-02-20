@@ -28,8 +28,9 @@ public:
 	/**
 	* @brief creates world from path
 	* @param mapPath - path to resource
+	* @param collisionManager - manager of collision events
 	*/
-	void createWorld(const std::string& mapPath);
+	void createWorld(const std::string& mapPath, CollisionManager& collisionManager);
 
 	/**
 	* @brief manages all tiles

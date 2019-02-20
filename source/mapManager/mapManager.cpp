@@ -6,9 +6,9 @@ MapManager::MapManager()
 {
 }
 
-void MapManager::createWorld( const std::string& mapPath )
+void MapManager::createWorld( const std::string& mapPath, CollisionManager& collisionManager )
 {
-	tilesManager.createWorld( mapPath );
+	tilesManager.createWorld( mapPath, collisionManager );
 }
 
 void MapManager::manageAll()
