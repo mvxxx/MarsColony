@@ -12,6 +12,7 @@ namespace mv
 {
 	namespace constants
 	{
+
 		namespace scene
 		{
 			constexpr auto ZOOM_SPEED = 0.05f;
@@ -92,14 +93,7 @@ namespace mv
 			const sf::Vector2u BORDER_TOLERANCE = {100, 100};
 			const sf::Vector2f MOUSE_DIMENSIONS = {20, 20};
 			const sf::Vector2f CELL_DIMENSION = {64,64};
-		}
-
-		namespace event_flags
-		{
-			constexpr auto LEFT_MOUSE_BUTTON = "-lmb";
-			constexpr auto RIGHT_MOUSE_BUTTON = "-lmb";
-			constexpr auto DECREASE_MODE = "-d";
-			constexpr auto ZOOM_MODE = "-z";
+			const sf::Vector2f WEAPON_DIMENSIONS = {70,70};
 		}
 
 		namespace path
@@ -111,11 +105,24 @@ namespace mv
 			constexpr auto MOUSE_TEXTURE_ATLAS = "data/textures/mouseAtlas.png";
 		}
 
+		namespace event_flags
+		{
+			constexpr auto LEFT_MOUSE_BUTTON = "-lmb";
+			constexpr auto RIGHT_MOUSE_BUTTON = "-lmb";
+			constexpr auto DECREASE_MODE = "-d";
+			constexpr auto ZOOM_MODE = "-z";
+		}
+
 		namespace id
 		{
 			constexpr auto sand_red = 0;
 			constexpr auto sand_yellow = 1;
 			constexpr auto stone = 2;
+		}
+
+		namespace weapon
+		{
+            constexpr auto shift = 0.15f; //shift of weapon towards entity's border in percent
 		}
 	}
 }

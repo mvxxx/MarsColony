@@ -32,11 +32,30 @@ public:
      * @param texture - of gun's sprite
      * @param position - of gun's sprite
      * @param label - type of weapon
+     * @param entitySpr - sprite of player object
      */
     explicit Weapon(const std::shared_ptr<sf::Texture>& texture,
             const sf::Vector2f& position,
-            const Weapon::type& label);
+            const Weapon::type& label,
+            const sf::Sprite& entitySpr);
 protected:
 private:
+
+    /**
+     * @brief Installs components required for player
+     * @param texture - of gun's sprite
+     * @param position - of gun's sprite
+     * @param label - type of weapon
+     */
+    void installComponents(const std::shared_ptr<sf::Texture>& texture,
+                           const sf::Vector2f& position,
+                           const Weapon::type& label);
+
+    /**
+    * @brief Sets relative position of gun
+    * @param label -type of weapon
+    * @param entitySpr - sprite of player object
+    */
+    void setRelativePosition(const Weapon::type& label, const sf::Sprite& entitySpr);
 };
 

@@ -103,6 +103,7 @@ private:
 
      /**
      * @brief Installs components required for player
+     * @param position - current position of player
      */
      void installComponents(const sf::Vector2f& position);
 
