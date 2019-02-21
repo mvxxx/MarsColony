@@ -11,6 +11,7 @@ add_executable(MarsCombat
         source/ecs/component/Velocity.hpp
         source/ecs/component/Visible.hpp
         source/ecs/component/Collidable.hpp
+        source/ecs/component/Weapon.hpp
         source/ecs/entity/Entity.cpp
         source/ecs/entity/Entity.hpp
         source/entities/cell/cell.cpp
@@ -58,5 +59,5 @@ add_executable(MarsCombat
         source/main.cpp
         source/Utilities.hpp
         source/entities/player/player.cpp
-        source/entities/player/player.hpp)
+        source/entities/player/player.hpp source/ecs/component/Weapon.cpp)
 target_link_libraries(MarsCombat sfml-graphics sfml-audio)

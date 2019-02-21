@@ -9,6 +9,8 @@ https://github.com/mvxxx
 #include "../../../external/SFML/include/SFML/Graphics/Drawable.hpp"
 #include "../../../external/SFML/include/SFML/Graphics/RenderTarget.hpp"
 #include "../../../external/SFML/include/SFML/Graphics/RenderWindow.hpp"
+#include "../../logger/Logger.hpp"
+#include "../../Config.hpp"
 
 #include "Visible.hpp"
 

@@ -12,11 +12,11 @@ Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, flo
 void Player::setTextureOptions()
 {
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("top")
-            .setTexture(*textureCache.get( mv::constants::path::PLAYER_TEXTURE_TOP ));
+            .setTexture(*playerTexture.get( mv::constants::path::PLAYER_TEXTURE_TOP ));
     this->getComponent<ProperBody>()->setCenter("top");
 
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom")
-            .setTexture(*textureCache.get( mv::constants::path::PLAYER_TEXTURE_BOTTOM ));
+            .setTexture(*playerTexture.get( mv::constants::path::PLAYER_TEXTURE_BOTTOM ));
     this->getComponent<ProperBody>()->setCenter("bottom");
 }
 

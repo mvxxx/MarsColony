@@ -31,7 +31,8 @@ private:
     int16_t level;
     int64_t exp;
     float speed;
-    mv::Cache<sf::Texture> textureCache;
+    mv::Cache<sf::Texture> playerTexture;
+    mv::Cache<sf::Texture> weaponsCache;
     state_t state;
     mv::InputManager<Player> inputControl;
     /* ===Methods=== */
