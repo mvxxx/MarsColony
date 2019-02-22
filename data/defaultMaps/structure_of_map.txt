@@ -1,0 +1,15 @@
+size_x size_y
+a[0][0] ... a[size_x-1][0]
+..			.
+.	.		.
+.		.	.
+a[0][size_y-1] ... a[size_x-1][size_y-1]
+
+player1_spawn_x_unit player1_spawn_y_unit
+player2_spawn_x_unit player2_spawn_y_unit
+number_of_icon_spawns
+pos_icon_0_x_unit pos_icon_0_y_unit
+.
+.
+.
+pos_icon_(number_of_icon_spawns-1)_x_unit pos_icon_(number_of_icon_spawns-1)_y_unit
