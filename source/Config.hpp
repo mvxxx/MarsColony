@@ -94,6 +94,7 @@ namespace mv
 			const sf::Vector2f MOUSE_DIMENSIONS = {20, 20};
 			const sf::Vector2f CELL_DIMENSION = {64,64};
 			const sf::Vector2f WEAPON_DIMENSIONS = {70,70};
+            const sf::Vector2f ICON_DIMENSIONS = {70,70};
 		}
 
 		namespace path
@@ -104,6 +105,7 @@ namespace mv
 			constexpr auto PLAYER_TEXTURE_BOTTOM = "data/textures/player_bottom.png";
 			constexpr auto MOUSE_TEXTURE_ATLAS = "data/textures/mouseAtlas.png";
 			constexpr auto WEAPON_TEXTURE_ATLAS = "data/textures/weaponAtlas.png";
+			constexpr auto ICON_TEXTURE_ATLAS = "data/textures/iconAtlas.png";
 		}
 
 		namespace event_flags

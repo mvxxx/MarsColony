@@ -58,5 +58,7 @@ add_executable(MarsCombat
         source/main.cpp
         source/Utilities.hpp
         source/entities/player/player.cpp
-        source/entities/player/player.hpp)
+        source/entities/player/player.hpp
+        source/entities/icon/Icon.hpp
+        source/entities/icon/Icon.cpp)
 target_link_libraries(MarsCombat sfml-graphics sfml-audio)
