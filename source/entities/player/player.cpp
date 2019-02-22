@@ -186,12 +186,9 @@ void Player::setRelativePosition(const std::string& name, const weapon_t& label)
         sign = 1;
     }
 
-    printf(" pos %f, %f | rotation: %f \n",sprite.getPosition().x, sprite.getPosition().y, sprite.getRotation());
-
-    float new_X = 0.5f * static_cast<float>(sprite.getGlobalBounds().width*cos(Utilities::degreeToRadian(sprite.getRotation())));
-    float new_Y = 0.5f * static_cast<float>(sprite.getGlobalBounds().width*sin(Utilities::degreeToRadian(sprite.getRotation())));
+    float new_X = 0.5f * static_cast<float>(sprite.getLocalBounds().width*std::cos(Utilities::degreeToRadian(sprite.getRotation())));
+    float new_Y = 0.5f * static_cast<float>(sprite.getLocalBounds().width*std::sin(Utilities::degreeToRadian(sprite.getRotation())));
     this->getComponent<ProperBody>()->getAs<sf::Sprite>(name).setPosition(sprite.getPosition() + sf::Vector2f{sign*new_X,sign*new_Y});
-
     this->getComponent<ProperBody>()->getAs<sf::Sprite>(name).setRotation(sprite.getRotation());
 
 }
