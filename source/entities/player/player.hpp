@@ -28,13 +28,22 @@ private:
         FIGHTING
     };
 
+    enum class weapon_t
+    {
+        machine_gun,
+        laser = 1,
+        rocket_launcher = 2
+    };
+
     int16_t level;
     int64_t exp;
     float speed;
     mv::Cache<sf::Texture> playerTexture;
-    mv::Cache<sf::Texture> weaponsCache;
+    mv::Cache<sf::Texture> weaponsTexture;
     state_t state;
     mv::InputManager<Player> inputControl;
+    int ammo_primary;
+    int ammo_secondary;
     /* ===Methods=== */
 public:
 
@@ -130,4 +139,16 @@ private:
      * @return true if movement is possible, false otherwise
      */
     bool isAbleToMove(const CollisionManager& colManager);
+
+    /**
+     * @brief prepares primary and secondary weapon for game
+     */
+    void updateRelativePositions();
+
+    /**
+    * @brief Sets relative position of gun
+    * @param label - type of weapon
+    * @param name - name of weapon
+    */
+    void setRelativePosition(const std::string& name, const weapon_t& label);
 };

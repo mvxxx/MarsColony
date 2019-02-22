@@ -92,13 +92,23 @@ public:
 	}
 
 	/**
-	 * @brief converts radian to
+	 * @brief converts radian to degrees
 	 * @param radian - angle in radians
 	 * @return angle in degrees
 	 */
 	static float radianToDegree(float radian)
 	{
 	 	return radian * (180.f/static_cast<float>(M_PI));
+	}
+
+	/**
+	 * @brief converts degrees to radians
+	 * @param angle - in degrees
+	 * @return angle in radians
+	 */
+	static float degreeToRadian(float angle)
+	{
+		return angle * (static_cast<float>(M_PI)/180.f);
 	}
 
 	/**

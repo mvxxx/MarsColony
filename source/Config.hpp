@@ -103,6 +103,7 @@ namespace mv
 			constexpr auto PLAYER_TEXTURE_TOP = "data/textures/player_top.png";
 			constexpr auto PLAYER_TEXTURE_BOTTOM = "data/textures/player_bottom.png";
 			constexpr auto MOUSE_TEXTURE_ATLAS = "data/textures/mouseAtlas.png";
+			constexpr auto WEAPON_TEXTURE_ATLAS = "data/textures/weaponAtlas.png";
 		}
 
 		namespace event_flags

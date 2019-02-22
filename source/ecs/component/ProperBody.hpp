@@ -56,6 +56,7 @@ public:
 			sprite->setOrigin( sprite->getGlobalBounds().width / 2.f, sprite->getGlobalBounds().height / 2.f );
 		}
 	}
+
 	void setCenter()
 	{
 		for(auto& element: body)

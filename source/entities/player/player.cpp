@@ -5,8 +5,9 @@ Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, flo
 {
     this->installComponents(position);
     this->setTextureOptions();
+    this->getComponent<ProperBody>()->setCenter();
     this->assignInputs();
-
+    this->updateRelativePositions();
 }
 
 void Player::setTextureOptions()
@@ -31,7 +32,7 @@ void Player::update(const std::shared_ptr<Scene>& scene, const CollisionManager&
         this->fitTexture(Utilities::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
         this->adaptView(scene);
     }
-
+    this->updateRelativePositions();
     this->reduceVelocity();
 }
 
@@ -93,6 +94,23 @@ void Player::installComponents(const sf::Vector2f& position)
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").setPosition( position );
     this->getComponent<ProperBody>()->appendType<sf::Sprite>("bottom");
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").setPosition( position );
+
+    std::function<void(const std::string&,weapon_t)> weaponSettings = [=](const std::string& label,weapon_t type)
+            {
+                this->getComponent<ProperBody>()->appendType<sf::Sprite>(label);
+                this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setTexture(
+                        *weaponsTexture.get(mv::constants::path::WEAPON_TEXTURE_ATLAS));
+
+                this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setTextureRect( sf::IntRect(
+                        static_cast<int>(static_cast<int>(type)*mv::constants::defaults::WEAPON_DIMENSIONS.x),
+                        0, static_cast<int>(mv::constants::defaults::WEAPON_DIMENSIONS.x),
+                        static_cast<int>(mv::constants::defaults::WEAPON_DIMENSIONS.y)));
+
+                this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setPosition(position);
+            };
+
+    weaponSettings("primary_weapon",weapon_t::machine_gun);
+    weaponSettings("secondary_weapon",weapon_t::rocket_launcher);
 }
 
 void Player::assignInputs()
@@ -151,3 +169,30 @@ bool Player::isAbleToMove(const CollisionManager &colManager)
     }
     return true;
 }
+
+void Player::updateRelativePositions()
+{
+    this->setRelativePosition("primary_weapon",weapon_t::machine_gun);
+    this->setRelativePosition("secondary_weapon",weapon_t::rocket_launcher);
+}
+
+void Player::setRelativePosition(const std::string& name, const weapon_t& label)
+{
+    auto sprite = this->getComponent<ProperBody>()->getAs<sf::Sprite>("top");
+    int8_t sign = -1;
+
+    if(label == weapon_t::machine_gun)
+    {
+        sign = 1;
+    }
+
+    printf(" pos %f, %f | rotation: %f \n",sprite.getPosition().x, sprite.getPosition().y, sprite.getRotation());
+
+    float new_X = 0.5f * static_cast<float>(sprite.getGlobalBounds().width*cos(Utilities::degreeToRadian(sprite.getRotation())));
+    float new_Y = 0.5f * static_cast<float>(sprite.getGlobalBounds().width*sin(Utilities::degreeToRadian(sprite.getRotation())));
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>(name).setPosition(sprite.getPosition() + sf::Vector2f{sign*new_X,sign*new_Y});
+
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>(name).setRotation(sprite.getRotation());
+
+}
+
