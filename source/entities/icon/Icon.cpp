@@ -1,15 +1,13 @@
 #include "Icon.hpp"
 
-Icon::Icon(float _rotateSpeed, const bonus_t& bonus, std::shared_ptr<mv::Cache<sf::Texture>> cache
+Icon::Icon(const bonus_t& bonus, const sf::Texture& texture
         ,const sf::Vector2f& pos)
-    :rotateSpeed(_rotateSpeed),
-    type(bonus),
-    textureCache(std::move(cache))
+        : type(bonus)
 {
     this->addComponent<ProperBody>();
     this->getComponent<ProperBody>()->appendType<sf::Sprite>();
 
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>(mv::constants::path::ICON_TEXTURE_ATLAS);
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>().setTexture(texture);
     this->getComponent<ProperBody>()->getAs<sf::Sprite>().setTextureRect( sf::IntRect(
             static_cast<int>(static_cast<int>(type)*mv::constants::defaults::ICON_DIMENSIONS.x),
             0, static_cast<int>(mv::constants::defaults::ICON_DIMENSIONS.x),
@@ -17,4 +15,12 @@ Icon::Icon(float _rotateSpeed, const bonus_t& bonus, std::shared_ptr<mv::Cache<s
 
     this->getComponent<ProperBody>()->setCenter();
     this->getComponent<ProperBody>()->getAs<sf::Sprite>().setPosition(pos);
+
+    this->addComponent<UnitPosition>();
+    this->getComponent<UnitPosition>()->update(pos);
+}
+
+std::pair<Icon::bonus_t, int16_t> Icon::collect()
+{
+    return {type,static_cast<int16_t>(mv::constants::icon::VALUES[static_cast<int>(type)])};
 }

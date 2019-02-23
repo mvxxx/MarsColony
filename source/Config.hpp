@@ -8,6 +8,8 @@ https://github.com/mvxxx
 #include "../external/SFML/include/SFML/Graphics/Color.hpp"
 #include "../external/SFML/include/SFML/System/Vector2.hpp"
 
+#include <vector>
+
 namespace mv
 {
 	namespace constants
@@ -127,5 +129,12 @@ namespace mv
 		{
             constexpr auto shift = 0.15f; //shift of weapon towards entity's border in percent
 		}
+
+		namespace icon
+        {
+		    const std::vector<int> VALUES{100,5,25,10,25,50};
+			constexpr auto rotationSpeed = 5.f;
+			constexpr auto respawnTime = 5; // in seconds
+        }
 	}
 }

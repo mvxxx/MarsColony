@@ -142,6 +142,18 @@ public:
 	{
 		return !p || q;
 	}
+
+	/**
+	 * @brief convers vec to pair
+	 * @tparam T - type contained by vector
+	 * @param vec - just sf::Vector
+	 * @return pair created from vector
+	 */
+	template<class T>
+	static std::pair<T,T> vecToPair(const sf::Vector2<T>& vec)
+	{
+		return {vec.x,vec.y};
+	}
 protected:
 private:
 };

@@ -36,6 +36,8 @@ add_executable(MarsCombat
         source/mapManager/CollisionManager.cpp
         source/mapManager/TilesManager.cpp
         source/mapManager/TilesManager.hpp
+        source/mapManager/IconManager.hpp
+        source/mapManager/IconManager.cpp
         source/mouse/Mouse.cpp
         source/mouse/Mouse.hpp
         source/renderer/renderer.cpp
