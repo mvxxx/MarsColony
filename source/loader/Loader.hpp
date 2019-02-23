@@ -26,9 +26,9 @@ public:
 	/**
 	* @brief loads map from path
 	* @param path - path for data
-	* @return unique_ptr for map
+	* @return map data
 	*/
-	std::unique_ptr<WorldWrapper_t> loadMap( const std::string& path );
+	WorldWrapper_t loadMap( const std::string& path );
 
 protected:
 private:

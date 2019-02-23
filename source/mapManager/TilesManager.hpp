@@ -41,10 +41,10 @@ public:
 	
 	/**
 	* @brief creates world from path
-	* @param mapPath - path to resource
+	* @param mapPack - pack with map data
 	* @param collisionManager - manager of collision events
 	*/
-	void createWorld( const std::string& mapPath, CollisionManager& collisionManager );
+	void createWorld(const WorldWrapper_t& mapPack, CollisionManager& collisionManager );
 	
 	/**
 	* @brief getter for tiles
