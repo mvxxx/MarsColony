@@ -27,6 +27,8 @@ void MainGameSubState::onStop()
 void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
 	player->update(scene, collisionManager);
+	iconManager->update();
+	iconManager->getTouchedIcon(player->getComponent<UnitPosition>()->getAsVec2i());
 	mouse->update(this->scene);
 }
 

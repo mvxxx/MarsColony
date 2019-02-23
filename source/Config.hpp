@@ -134,7 +134,7 @@ namespace mv
         {
 		    const std::vector<int> VALUES{100,5,25,10,25,50};
 			constexpr auto rotationSpeed = 5.f;
-			constexpr auto respawnTime = 5; // in seconds
+			constexpr auto respawnTime = 2; // in seconds
         }
 	}
 }

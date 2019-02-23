@@ -51,6 +51,15 @@ public:
 		j = pos.y;
 	}
 
+	/**
+	 * @brief converts unit system pos to vec2i
+	 * @return i,j as vec2i
+	 */
+	sf::Vector2i getAsVec2i()
+	{
+		return sf::Vector2i{i,j};
+	}
+
 protected:
 private:
 };

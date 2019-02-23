@@ -29,12 +29,26 @@ void IconManager::update()
 std::shared_ptr<Icon> IconManager::getTouchedIcon(const sf::Vector2i &unitPos)
 {
     auto itr = availablePositions.find(Utilities::vecToPair<int>(unitPos));
+
     if(itr == availablePositions.end())
     {
         return nullptr;
     }
 
-    return itr->second.second->getComponent<ProperBody>()->isVisible() ? itr->second.second : nullptr;
+    if(itr->second.second->getComponent<ProperBody>()->isVisible())
+    {
+        itr->second.second->getComponent<ProperBody>()->setVisible(false);
+
+        if(requests.empty())
+        {
+            timer.restart();
+        }
+
+        requests.emplace(unitPos);
+        return itr->second.second;
+    }
+
+    return nullptr;
 }
 
 std::vector<std::shared_ptr<mv::Entity>> IconManager::getIconsContainer()
