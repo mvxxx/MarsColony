@@ -18,7 +18,8 @@ void IconManager::update()
 {
     if(!requests.empty() && timer.getElapsedTime().asSeconds() >= mv::constants::icon::respawnTime)
     {
-            availablePositions[Utilities::vecToPair<int>(requests.front())].second->getComponent<ProperBody>()->setVisible(true);
+            availablePositions[Utilities::vecToPair<int>(requests.front())].second->
+            getComponent<ProperBody>()->setVisible(true);
             requests.pop();
             timer.restart();
     }
@@ -33,7 +34,7 @@ std::shared_ptr<Icon> IconManager::getTouchedIcon(const sf::Vector2i &unitPos)
         return nullptr;
     }
 
-    return itr->second.second;
+    return itr->second.second->getComponent<ProperBody>()->isVisible() ? itr->second.second : nullptr;
 }
 
 
