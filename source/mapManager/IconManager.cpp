@@ -37,4 +37,16 @@ std::shared_ptr<Icon> IconManager::getTouchedIcon(const sf::Vector2i &unitPos)
     return itr->second.second->getComponent<ProperBody>()->isVisible() ? itr->second.second : nullptr;
 }
 
+std::vector<std::shared_ptr<mv::Entity>> IconManager::getIconsContainer()
+{
+    auto vec = std::vector<std::shared_ptr<mv::Entity>>();
+
+    for(auto& var: availablePositions)
+    {
+        vec.emplace_back(var.second.second);
+    }
+
+    return vec;
+}
+
 

@@ -8,6 +8,7 @@ https://github.com/mvxxx
 
 #include "../../wrappers/FunctionPointerWrapper_t.hpp"
 #include "../../mapManager/mapManager.hpp"
+#include "../../mapManager/IconManager.hpp"
 #include "../../renderer/renderer.hpp"
 #include "../../wrappers/EventWrapper.hpp"
 #include "../../ecs/entity/Entity.hpp"
@@ -39,6 +40,8 @@ private:
 
   //pointer to scene
   std::shared_ptr<Scene> scene;
+
+  std::shared_ptr<IconManager> iconManager;
 
   /* ===Methods=== */
 public:

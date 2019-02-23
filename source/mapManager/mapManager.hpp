@@ -31,11 +31,6 @@ public:
 	* @param collisionManager - manager of collision events
 	*/
 	void createWorld(const WorldWrapper_t& mapPack, CollisionManager& collisionManager);
-
-	/**
-	* @brief manages all tiles
-	*/
-	void manageAll();
 protected:
 private:
 };

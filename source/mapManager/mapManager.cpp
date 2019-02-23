@@ -11,8 +11,3 @@ void MapManager::createWorld( const WorldWrapper_t& mapPack, CollisionManager& c
 	tilesManager.createWorld( mapPack, collisionManager );
 }
 
-void MapManager::manageAll()
-{
-	(void)[](){};
-}
-

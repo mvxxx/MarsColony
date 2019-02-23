@@ -29,6 +29,6 @@ struct WorldWrapper_t
 	sf::Vector2i firstPlayerPosition;
 	sf::Vector2i secondPlayerPosition;
 
-	std::vector<std::pair<sf::Vector2i,Icon::bonus_t>> iconsData;
+	std::vector<std::pair<Icon::bonus_t,sf::Vector2i>> iconsData;
 
 };

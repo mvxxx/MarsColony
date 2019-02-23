@@ -51,6 +51,13 @@ public:
      * @return pointer to touched icon | if entity doesn't touch anything, then nullptr
      */
     std::shared_ptr<Icon> getTouchedIcon(const sf::Vector2i& unitPos);
+
+    /**
+     * @brief creates vector of pointers to icon
+     * @return vector of shared pointer to icon
+     * @info used for renderer
+     */
+    std::vector<std::shared_ptr<mv::Entity>> getIconsContainer();
 protected:
 private:
 };

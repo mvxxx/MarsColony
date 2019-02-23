@@ -16,6 +16,7 @@ Icon::Icon(const bonus_t& bonus, const sf::Texture& texture
     this->getComponent<ProperBody>()->setCenter();
     this->getComponent<ProperBody>()->getAs<sf::Sprite>().setPosition(pos);
 
+
     this->addComponent<UnitPosition>();
     this->getComponent<UnitPosition>()->update(pos);
 }
