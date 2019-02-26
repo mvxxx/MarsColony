@@ -151,4 +151,10 @@ private:
     * @param name - name of weapon
     */
     void setRelativePosition(const std::string& name, const weapon_t& label);
+
+    /**
+     * @brief rotates weapon to the mouse
+     * @param position position of mouse
+     */
+    void rotateWeapons(const sf::Vector2f& position);
 };

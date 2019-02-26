@@ -71,6 +71,24 @@ void Player::fitTexture(const sf::Vector2f& position)
     auto velocity = this->getComponent<Velocity>();
     this->fitBottom(velocity);
     this->fitTop(position, velocity);
+    this->rotateWeapons(position);
+}
+
+void Player::rotateWeapons(const sf::Vector2f& position)
+{
+    std::function<float(std::string)> calculateAngle =
+            [=](const std::string& name)
+            {
+                auto posOfWeapon = this->getComponent<ProperBody>()->getAs<sf::Sprite>(name).getPosition();
+
+                float angle = Utilities::angleBetweenVectors(
+                        {0.f, -1.f},
+                        sf::Vector2f{position.x - posOfWeapon.x, position.y - posOfWeapon.y});
+
+                return position.x - posOfWeapon.x >= 0 ? angle : 360.f - angle;
+            };
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("primary_weapon").setRotation(calculateAngle("primary_weapon"));
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("secondary_weapon").setRotation(calculateAngle("secondary_weapon"));
 }
 
 void Player::adaptView(const std::shared_ptr<Scene>& scene)
@@ -189,6 +207,5 @@ void Player::setRelativePosition(const std::string& name, const weapon_t& label)
     float new_X = 0.5f * static_cast<float>(sprite.getLocalBounds().width*std::cos(Utilities::degreeToRadian(sprite.getRotation())));
     float new_Y = 0.5f * static_cast<float>(sprite.getLocalBounds().width*std::sin(Utilities::degreeToRadian(sprite.getRotation())));
     this->getComponent<ProperBody>()->getAs<sf::Sprite>(name).setPosition(sprite.getPosition() + sf::Vector2f{sign*new_X,sign*new_Y});
-    this->getComponent<ProperBody>()->getAs<sf::Sprite>(name).setRotation(sprite.getRotation());
 }
 
