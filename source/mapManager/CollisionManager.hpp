@@ -20,14 +20,6 @@ class CollisionManager
 public:
 protected:
 private:
-
-    /**
-     * @brief Checks if entity contains Collidable && UnitPosition components
-     * @param entity
-     * @return true if entity contains necessary components
-     */
-    bool checkRequirments(const std::shared_ptr<mv::Entity>& entity);
-
     std::map<std::pair<int,int>,std::vector<std::shared_ptr<mv::Entity>>> collisionMap;
     /* ===Methods=== */
 public:
@@ -54,4 +46,11 @@ public:
 
 protected:
 private:
+
+    /**
+     * @brief Checks if entity contains Collidable && UnitPosition components
+     * @param entity
+     * @return true if entity contains necessary components
+     */
+    bool checkRequirments(const std::shared_ptr<mv::Entity>& entity);
 };

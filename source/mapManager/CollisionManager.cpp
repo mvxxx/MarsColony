@@ -1,7 +1,6 @@
 #include "CollisionManager.hpp"
 #include "../ecs/component/unitPosition.hpp"
 
-
 void CollisionManager::addToCollisionMap(std::shared_ptr<mv::Entity> entity)
 {
     if(!this->checkRequirments(entity) || !entity->getComponent<Collidable>()->isCollidable())

@@ -108,7 +108,9 @@ namespace mv
 			constexpr auto MOUSE_TEXTURE_ATLAS = "data/textures/mouseAtlas.png";
 			constexpr auto WEAPON_TEXTURE_ATLAS = "data/textures/weaponAtlas.png";
 			constexpr auto ICON_TEXTURE_ATLAS = "data/textures/iconAtlas.png";
-		}
+            constexpr auto BULLET_TEXTURE_ATLAS = "data/textures/bulletAtlas.png";
+
+        }
 
 		namespace event_flags
 		{
@@ -136,5 +138,10 @@ namespace mv
 			constexpr auto rotationSpeed = 5.f;
 			constexpr auto respawnTime = 2; // in seconds
         }
+
+        namespace bullet
+		{
+			constexpr auto speed = 15.f;
+		}
 	}
 }
