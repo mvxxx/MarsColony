@@ -19,10 +19,21 @@ class IconManager
 {
     /* ===Objects=== */
 public:
+
+    enum class bonus_t
+    {
+        ammo_machine_gun,
+        ammo_rocket_launcher,
+        ammo_laser,
+        health_lite,
+        health_medium,
+        health_ultra
+    };
+
 protected:
 private:
     //possible positions of icons
-    std::map<std::pair<int,int>,std::pair<Icon::bonus_t,std::shared_ptr<Icon>>> availablePositions;
+    std::map<std::pair<int,int>,std::pair<bonus_t,std::shared_ptr<Icon>>> availablePositions;
 
 
     //used for spawns icons
@@ -38,7 +49,7 @@ public:
      * @brief classic ctor
      * @param positions - available positions for icons' spawn (with given type)
      */
-    explicit IconManager(const std::vector<std::pair<Icon::bonus_t ,sf::Vector2i>>& positions);
+    explicit IconManager(const std::vector<std::pair<bonus_t ,sf::Vector2i>>& positions);
 
     /**
      * @brief manages icons, spawns them, control timer
@@ -58,6 +69,13 @@ public:
      * @info used for renderer
      */
     std::vector<std::shared_ptr<mv::Entity>> getIconsContainer();
+
+    /**
+     * @brief getter for cache
+     * @return cache of icon textures
+     */
+    mv::Cache<sf::Texture>& getIconTextures();
+
 protected:
 private:
 };

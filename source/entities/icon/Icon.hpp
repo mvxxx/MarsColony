@@ -14,17 +14,8 @@ class Icon : public mv::Entity
 {
     /* ===Objects=== */
 public:
-    enum class bonus_t
-    {
-        ammo_machine_gun,
-        ammo_rocket_launcher,
-        ammo_laser,
-        health_lite,
-        health_medium,
-        health_ultra
-    };
 
-    const bonus_t type;
+    const int type;
 
 protected:
 private:
@@ -38,14 +29,14 @@ public:
      * @param texture - for icon
      * @param pos - position of icon
      */
-    Icon(const bonus_t& bonus, const sf::Texture& texture,
+    Icon(int bonus, const sf::Texture& texture,
             const sf::Vector2f& pos);
 
     /**
      * @brief collects that icon
      * @return type of bonus and value
      */
-    std::pair<bonus_t,int16_t> collect();
+    std::pair<int, int16_t> collect();
 protected:
 private:
 };

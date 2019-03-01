@@ -45,9 +45,9 @@ WorldWrapper_t Loader::loadMap( const std::string& path )
 		input>>temp;
 		pos.y = temp;
 
-        Icon::bonus_t bonus;
+        IconManager::bonus_t bonus;
         input>>temp;
-        bonus = static_cast<Icon::bonus_t>(temp);
+        bonus = static_cast<IconManager::bonus_t>(temp);
 
 		data.iconsData.emplace_back(bonus,pos);
 	}

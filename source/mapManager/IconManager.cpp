@@ -1,13 +1,13 @@
 #include "IconManager.hpp"
 
-IconManager::IconManager(const std::vector<std::pair<Icon::bonus_t ,sf::Vector2i>>& positions)
+IconManager::IconManager(const std::vector<std::pair<bonus_t ,sf::Vector2i>>& positions)
 {
 
     for(auto& var: positions)
     {
         availablePositions[Utilities::vecToPair<int>(var.second)] =
                 {var.first, std::make_shared<Icon>(
-                        var.first,
+                        static_cast<int>(var.first),
                         *iconTextures.get(mv::constants::path::ICON_TEXTURE_ATLAS),
                         sf::Vector2f{mv::constants::defaults::ICON_DIMENSIONS.x*var.second.x,
                                      mv::constants::defaults::ICON_DIMENSIONS.y*var.second.y})};
@@ -61,6 +61,11 @@ std::vector<std::shared_ptr<mv::Entity>> IconManager::getIconsContainer()
     }
 
     return vec;
+}
+
+mv::Cache<sf::Texture> &IconManager::getIconTextures()
+{
+    return iconTextures;
 }
 
 

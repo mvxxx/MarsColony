@@ -6,7 +6,7 @@ https://github.com/mvxxx
 #pragma once
 
 #include "../../external/SFML/include/SFML/System/Vector2.hpp"
-#include "../entities/icon/Icon.hpp"
+#include "../mapManager/IconManager.hpp"
 #include <vector>
 
 
@@ -29,6 +29,6 @@ struct WorldWrapper_t
 	sf::Vector2i firstPlayerPosition;
 	sf::Vector2i secondPlayerPosition;
 
-	std::vector<std::pair<Icon::bonus_t,sf::Vector2i>> iconsData;
+	std::vector<std::pair<IconManager::bonus_t,sf::Vector2i>> iconsData;
 
 };
