@@ -109,3 +109,8 @@ void Scene::moveDefaultView(const sf::Vector2f &vec)
 	views[viewType_t::DEFAULT]->move(vec);
     window->setView( *views[viewType_t::UI] );
 }
+
+mv::Cache<sf::Texture>& Scene::getCacheByName(const std::string &name)
+{
+    return textureCaches[name];
+}

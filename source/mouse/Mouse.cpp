@@ -9,7 +9,6 @@ Mouse::Mouse( std::shared_ptr<Scene> scene )
 	properBody->getAs<sf::Sprite>().setTexture( *textureAtlas.get( mv::constants::path::MOUSE_TEXTURE_ATLAS ) );
 	properBody->setCenter();
 	properBody->getAs<sf::Sprite>().setPosition(Utilities::mouseWorldPosition(scene, Scene::viewType_t::DEFAULT));
-	int x = 5;
 }
 
 void Mouse::update( std::shared_ptr<Scene> scene )

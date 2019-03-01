@@ -5,7 +5,6 @@ https://github.com/mvxxx
 
 #pragma once
 
-#include "../../cache/Cache.hpp"
 #include "../../ecs/entity/Entity.hpp"
 #include "../../ecs/component/ProperBody.hpp"
 #include "../../ecs/component/unitPosition.hpp"
@@ -38,12 +37,10 @@ private:
     int16_t level;
     int64_t exp;
     float speed;
-    mv::Cache<sf::Texture> playerTexture;
-    mv::Cache<sf::Texture> weaponsTexture;
     state_t state;
     mv::InputManager<Player> inputControl;
-    int ammo_primary;
-    int ammo_secondary;
+    std::unordered_map<weapon_t, int> ammo;
+
     /* ===Methods=== */
 public:
 
@@ -52,21 +49,29 @@ public:
     * @param position - position of player
     * @param lev - current level
     * @param experience - current experience
+    * @param playerTexture - cache with textures of player
+    * @param weaponsTexture - cache with textures of weapons
     */
-    Player(const sf::Vector2f& position,int16_t lev, int64_t experience, float speedValue);
+    Player(const sf::Vector2f& position,int16_t lev, int64_t experience, float speedValue,
+            mv::Cache<sf::Texture>& playerTexture, mv::Cache<sf::Texture>& weaponsTexture);
 
     /**
      * @brief updates player's behavior
      * @param scene - pointer for main scene
      * @param colManager - collsion manager for static elements of map
+     * @param playerTexture - cache with textures of player
+     * @param weaponsTexture - cache with textures of weapons
      */
-    void update(const std::shared_ptr<Scene>& scene, const CollisionManager& colManager);
+    void update(const std::shared_ptr<Scene>& scene, const CollisionManager& colManager,
+             mv::Cache<sf::Texture>& playerTexture, mv::Cache<sf::Texture>& weaponsTexture);
 protected:
 private:
     /**
      * @brief sets default texture options
+     * @param playerTexture - cache with textures of player
+     * @param weaponsTexture - cache with textures of weapons
      */
-     void setTextureOptions();
+     void setTextureOptions(mv::Cache<sf::Texture>& playerTexture, mv::Cache<sf::Texture>& weaponsTexture);
 
     /**
      * @brief move player top
@@ -113,8 +118,9 @@ private:
      /**
      * @brief Installs components required for player
      * @param position - current position of player
+     * @param weaponsTexture - cache with textures of weapons
      */
-     void installComponents(const sf::Vector2f& position);
+     void installComponents(const sf::Vector2f& position, mv::Cache<sf::Texture>& weaponsTexture);
 
     /**
     * @brief Assigns inputs required for player
@@ -157,4 +163,14 @@ private:
      * @param position position of mouse
      */
     void rotateWeapons(const sf::Vector2f& position);
+
+    /**
+     * @brief sets propeties of player's weapon
+     * @param position
+     * @param label of body part
+     * @param type of weapon
+     * @param weaponsTexture - cache for texture
+     */
+    void setWeaponSettings(const sf::Vector2f& position, const std::string& label, weapon_t type,
+                           mv::Cache<sf::Texture>& weaponsTexture);
 };

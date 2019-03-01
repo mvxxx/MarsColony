@@ -1,16 +1,17 @@
 #include "player.hpp"
 
-Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, float speedValue)
+Player::Player(const sf::Vector2f& position,int16_t lev, int64_t experience, float speedValue,
+        mv::Cache<sf::Texture>& playerTexture, mv::Cache<sf::Texture>& weaponsTexture)
     :state(state_t::STANDBY),level(lev),exp(experience),speed(speedValue)
 {
-    this->installComponents(position);
-    this->setTextureOptions();
+    this->installComponents(position, weaponsTexture);
+    this->setTextureOptions(playerTexture, weaponsTexture);
     this->getComponent<ProperBody>()->setCenter();
     this->assignInputs();
     this->updateRelativePositions();
 }
 
-void Player::setTextureOptions()
+void Player::setTextureOptions(mv::Cache<sf::Texture>& playerTexture, mv::Cache<sf::Texture>& weaponsTexture)
 {
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("top")
             .setTexture(*playerTexture.get( mv::constants::path::PLAYER_TEXTURE_TOP ));
@@ -21,7 +22,8 @@ void Player::setTextureOptions()
     this->getComponent<ProperBody>()->setCenter("bottom");
 }
 
-void Player::update(const std::shared_ptr<Scene>& scene, const CollisionManager& colManager)
+void Player::update(const std::shared_ptr<Scene>& scene, const CollisionManager& colManager,
+        mv::Cache<sf::Texture>& playerTexture, mv::Cache<sf::Texture>& weaponsTexture)
 {
     inputControl.update();
     this->getComponent<UnitPosition>()->update(this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").getPosition());
@@ -103,7 +105,7 @@ void Player::reduceVelocity()
     velocity->y = 0;
 }
 
-void Player::installComponents(const sf::Vector2f& position)
+void Player::installComponents(const sf::Vector2f& position, mv::Cache<sf::Texture>& weaponsTexture)
 {
     this->addComponent<ProperBody>();
     this->addComponent<UnitPosition>();
@@ -112,23 +114,23 @@ void Player::installComponents(const sf::Vector2f& position)
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("top").setPosition( position );
     this->getComponent<ProperBody>()->appendType<sf::Sprite>("bottom");
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").setPosition( position );
+    this->setWeaponSettings(position,"primary_weapon",weapon_t::machine_gun, weaponsTexture);
+    this->setWeaponSettings(position,"secondary_weapon",weapon_t::rocket_launcher, weaponsTexture);
+}
 
-    std::function<void(const std::string&,weapon_t)> weaponSettings = [=](const std::string& label,weapon_t type)
-            {
-                this->getComponent<ProperBody>()->appendType<sf::Sprite>(label);
-                this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setTexture(
-                        *weaponsTexture.get(mv::constants::path::WEAPON_TEXTURE_ATLAS));
+void Player::setWeaponSettings(const sf::Vector2f& position, const std::string& label, weapon_t type,
+        mv::Cache<sf::Texture>& weaponsTexture)
+{
+    this->getComponent<ProperBody>()->appendType<sf::Sprite>(label);
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setTexture(
+            *weaponsTexture.get(mv::constants::path::WEAPON_TEXTURE_ATLAS));
 
-                this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setTextureRect( sf::IntRect(
-                        static_cast<int>(static_cast<int>(type)*mv::constants::defaults::WEAPON_DIMENSIONS.x),
-                        0, static_cast<int>(mv::constants::defaults::WEAPON_DIMENSIONS.x),
-                        static_cast<int>(mv::constants::defaults::WEAPON_DIMENSIONS.y)));
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setTextureRect( sf::IntRect(
+            static_cast<int>(static_cast<int>(type)*mv::constants::defaults::WEAPON_DIMENSIONS.x),
+            0, static_cast<int>(mv::constants::defaults::WEAPON_DIMENSIONS.x),
+            static_cast<int>(mv::constants::defaults::WEAPON_DIMENSIONS.y)));
 
-                this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setPosition(position);
-            };
-
-    weaponSettings("primary_weapon",weapon_t::machine_gun);
-    weaponSettings("secondary_weapon",weapon_t::rocket_launcher);
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setPosition(position);
 }
 
 void Player::assignInputs()

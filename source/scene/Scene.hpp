@@ -15,6 +15,7 @@ https://github.com/mvxxx
 #include "../states/State.hpp"
 #include "../renderer/renderer.hpp"
 #include "../eventDock/EventDock.hpp"
+#include "../cache/Cache.hpp"
 
 class SelectionManager;
 
@@ -77,6 +78,7 @@ private:
 		LEFT
 	};
 
+    std::unordered_map<std::string, mv::Cache<sf::Texture>> textureCaches;
 	/* ===Methods=== */
 public:
 	/**
@@ -156,6 +158,13 @@ public:
 	* @param eventList - list of events which are needed to be checked
 	*/
 	virtual void handleEventTypes( const eventWrapper_t& eventList ) override;
+
+	/**
+	 * @brief finds and returns texture cache
+	 * @param name
+	 * @return ref to texture cache with given name
+	 */
+	mv::Cache<sf::Texture>& getCacheByName(const std::string& name);
 
 protected:
 private:

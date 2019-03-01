@@ -15,7 +15,8 @@ void MainGameSubState::onStart()
             sf::Vector2f{mapPack.firstPlayerPosition.x * mv::constants::defaults::CELL_DIMENSION.x,
              mapPack.firstPlayerPosition.y * mv::constants::defaults::CELL_DIMENSION.y},
 	        1,0,
-	        5.f*mv::constants::mob::DEFAULT_SPEED);
+	        5.f*mv::constants::mob::DEFAULT_SPEED,
+			scene->getCacheByName("player"), scene->getCacheByName("weapon"));
 	this->mouse = std::make_shared<Mouse>(this->scene);
 	this->iconManager = std::make_shared<IconManager>(mapPack.iconsData);
 }
@@ -26,7 +27,7 @@ void MainGameSubState::onStop()
 
 void MainGameSubState::run( eventWrapper_t& eventTypes )
 {
-	player->update(scene, collisionManager);
+	player->update(scene, collisionManager, scene->getCacheByName("player"), scene->getCacheByName("weapon"));
 	iconManager->update();
 	iconManager->getTouchedIcon(player->getComponent<UnitPosition>()->getAsVec2i());
 	mouse->update(this->scene);
