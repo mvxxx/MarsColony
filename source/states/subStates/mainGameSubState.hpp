@@ -14,6 +14,7 @@ https://github.com/mvxxx
 #include "../../ecs/entity/Entity.hpp"
 #include "../../entities/player/player.hpp"
 #include "../../inputManager/InputManager.hpp"
+#include "../../mapManager/UIManager.hpp"
 #include "../../mouse/Mouse.hpp"
 
 
@@ -41,7 +42,11 @@ private:
   //pointer to scene
   std::shared_ptr<Scene> scene;
 
+  //pointer to manager of icons
   std::shared_ptr<IconManager> iconManager;
+
+  //pointer to manager of UI
+  std::shared_ptr<UIManager> uimanager;
 
   /* ===Methods=== */
 public:

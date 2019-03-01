@@ -19,6 +19,7 @@ void MainGameSubState::onStart()
 			scene->getCacheByName("player"), scene->getCacheByName("weapon"));
 	this->mouse = std::make_shared<Mouse>(this->scene);
 	this->iconManager = std::make_shared<IconManager>(mapPack.iconsData);
+	uimanager = std::make_shared<UIManager>(iconManager->getIconTextures());
 }
 
 void MainGameSubState::onStop()
@@ -40,4 +41,5 @@ void MainGameSubState::fillRenderer( Renderer& renderer )
   for(auto& ic : icons) {renderer.addSingle(ic,1,DrawMap::renderType_t::DEFAULT);}
   renderer.addSingle(player,1,DrawMap::renderType_t::DEFAULT);
   renderer.addSingle(mouse, 1, DrawMap::renderType_t::UI);
+  renderer.addSingle(uimanager,1, DrawMap::renderType_t::UI);
 }
