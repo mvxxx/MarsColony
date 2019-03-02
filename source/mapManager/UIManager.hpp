@@ -28,7 +28,7 @@ public:
      * @brief classic ctor
      * @param iconTexture - cache for icons
      */
-    UIManager(mv::Cache<sf::Texture>& iconTexture);
+    UIManager(mv::Cache<sf::Texture>& iconTexture, const sf::View& view);
 
     /**
      * @brief updates score on the scoreboard
@@ -68,7 +68,7 @@ private:
     * @brief Installs components required for UI
     * @param iconTexture - cache for icons
     */
-    void installComponents(mv::Cache<sf::Texture>& iconTexture);
+    void installComponents(mv::Cache<sf::Texture>& iconTexture, const sf::View& view);
 
     /**
     * @brief Installs texts required for UI

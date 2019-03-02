@@ -1,8 +1,8 @@
 #include "UIManager.hpp"
 
-UIManager::UIManager(mv::Cache<sf::Texture>& iconTexture)
+UIManager::UIManager(mv::Cache<sf::Texture>& iconTexture, const sf::View& view)
 {
-    this->installComponents(iconTexture);
+    this->installComponents(iconTexture, view);
     this->installTexts();
 }
 
@@ -31,7 +31,7 @@ void UIManager::updateAmmo(int weaponType, int ammo)
 
 }
 
-void UIManager::installComponents(mv::Cache<sf::Texture>& iconTexture)
+void UIManager::installComponents(mv::Cache<sf::Texture>& iconTexture, const sf::View& view)
 {
     this->addComponent<ProperBody>();
 
@@ -50,11 +50,23 @@ void UIManager::installComponents(mv::Cache<sf::Texture>& iconTexture)
                                 static_cast<int>(mv::constants::defaults::ICON_DIMENSIONS.y))
                         );
 
+        this->getComponent<ProperBody>()->setCenter();
         this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setPosition(pos);
     };
 
-    setPropeties("health", static_cast<int>(IconManager::bonus_t::health_lite),{300,300});
-    setPropeties("ammo",static_cast<int>(IconManager::bonus_t::ammo_machine_gun),{500,500});
+    setPropeties("health", static_cast<int>(IconManager::bonus_t::health_lite),
+            {mv::constants::defaults::ICON_DIMENSIONS.x/2.f,mv::constants::defaults::ICON_DIMENSIONS.y/2.f});
+    setPropeties("ammo",static_cast<int>(IconManager::bonus_t::ammo_machine_gun),
+                 {mv::constants::defaults::ICON_DIMENSIONS.x/2.f,3*mv::constants::defaults::ICON_DIMENSIONS.y/2.f});
+
+    this->getComponent<ProperBody>()->appendType<sf::Sprite>("scoreboard");
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("scoreboard").setTexture
+            (*iconTexture.get(mv::constants::path::SCOREBOARD));
+    this->getComponent<ProperBody>()->setCenter();
+    this->getComponent<ProperBody>()->getAs<sf::Sprite>("scoreboard")
+            .setPosition(view.getSize().x/2.f,
+            this->getComponent<ProperBody>()->getAs<sf::Sprite>("scoreboard").getLocalBounds().height/2.f
+            +view.getCenter().y-view.getSize().y/2.f);
 }
 
 void UIManager::installTexts()

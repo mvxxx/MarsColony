@@ -11,6 +11,6 @@ void Game::run()
 
 void Game::init()
 {
-	scene = std::make_shared<Scene>( "MarsCombat", sf::Vector2f( 1000, 1000 ) );
+	scene = std::make_shared<Scene>( "MarsCombat", mv::constants::defaults::WINDOW_DIMENSIONS );
 	state = std::make_unique<GameState>( scene );
 }

@@ -12,8 +12,6 @@ https://github.com/mvxxx
 
 #include <cmath>
 
-#define UNUSED(x) (void)x;
-
 /**
 * @brief Most important tools in application
 */

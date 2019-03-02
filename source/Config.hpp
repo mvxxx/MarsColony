@@ -91,7 +91,7 @@ namespace mv
 			constexpr auto EMPTY = "EMPTY";
 			constexpr auto EMPTY_STATE_NUMBER = 0;
 			constexpr auto UNNAMED = "unnamed";
-			const sf::Vector2f WINDOW_DIMENSIONS = {1280, 720};
+			const sf::Vector2f WINDOW_DIMENSIONS = {640, 360};
 			const sf::Vector2u BORDER_TOLERANCE = {100, 100};
 			const sf::Vector2f MOUSE_DIMENSIONS = {20, 20};
 			const sf::Vector2f CELL_DIMENSION = {64,64};
@@ -109,7 +109,7 @@ namespace mv
 			constexpr auto WEAPON_TEXTURE_ATLAS = "data/textures/weaponAtlas.png";
 			constexpr auto ICON_TEXTURE_ATLAS = "data/textures/iconAtlas.png";
             constexpr auto BULLET_TEXTURE_ATLAS = "data/textures/bulletAtlas.png";
-
+            constexpr auto SCOREBOARD = "data/textures/scoreboard.png";
         }
 
 		namespace event_flags

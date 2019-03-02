@@ -19,7 +19,7 @@ void MainGameSubState::onStart()
 			scene->getCacheByName("player"), scene->getCacheByName("weapon"));
 	this->mouse = std::make_shared<Mouse>(this->scene);
 	this->iconManager = std::make_shared<IconManager>(mapPack.iconsData);
-	uimanager = std::make_shared<UIManager>(iconManager->getIconTextures());
+	uimanager = std::make_shared<UIManager>(iconManager->getIconTextures(),*scene->getViews().at(Scene::viewType_t::DEFAULT));
 }
 
 void MainGameSubState::onStop()
