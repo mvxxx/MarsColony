@@ -20,15 +20,17 @@ class UIManager :public mv::Entity
 public:
 protected:
 private:
-    std::unordered_map<std::string,sf::Text> texts;
+    sf::Font font;
     /* ===Methods=== */
 public:
 
     /**
      * @brief classic ctor
      * @param iconTexture - cache for icons
+     * @param ammo
+     * @param health
      */
-    UIManager(mv::Cache<sf::Texture>& iconTexture, const sf::View& view);
+    UIManager(mv::Cache<sf::Texture>& iconTexture, const sf::View& view, int ammo, int health);
 
     /**
      * @brief updates score on the scoreboard
@@ -72,6 +74,8 @@ private:
 
     /**
     * @brief Installs texts required for UI
+    * @param ammo
+    * @param health
     */
-    void installTexts();
+    void installTexts(int ammo, int health);
 };

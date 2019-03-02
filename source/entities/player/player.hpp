@@ -35,11 +35,13 @@ private:
     };
 
     int16_t level;
+    int health;
     int64_t exp;
     float speed;
     state_t state;
     mv::InputManager<Player> inputControl;
     std::unordered_map<weapon_t, int> ammo;
+    weapon_t secondary;
 
     /* ===Methods=== */
 public:
@@ -64,6 +66,25 @@ public:
      */
     void update(const std::shared_ptr<Scene>& scene, const CollisionManager& colManager,
              mv::Cache<sf::Texture>& playerTexture, mv::Cache<sf::Texture>& weaponsTexture);
+
+    /**
+     * @brief getter of type
+     * @return type of current secondary weapon
+     */
+    weapon_t getTypeOfSecondaryWeapon();
+
+    /*
+     * @brief getter of ammo number of ammo
+     * @param type - of weapon
+     * @return number of ammo
+     */
+    int getAmmo(const weapon_t& type);
+
+    /*
+     * @brief getter
+     * @return health
+     */
+    int getHealth();
 protected:
 private:
     /**

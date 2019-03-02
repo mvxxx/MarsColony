@@ -1,9 +1,14 @@
 #include "UIManager.hpp"
 
-UIManager::UIManager(mv::Cache<sf::Texture>& iconTexture, const sf::View& view)
+UIManager::UIManager(mv::Cache<sf::Texture>& iconTexture, const sf::View& view, int ammo, int health)
 {
     this->installComponents(iconTexture, view);
-    this->installTexts();
+    if(!font.loadFromFile(mv::constants::path::FONT))
+    {
+        mv::Logger::Log(mv::constants::error::uimanager::FONT_NOT_LOADED,
+                mv::Logger::STREAM::BOTH,mv::Logger::TYPE::ERROR);
+    }
+    this->installTexts(ammo, health);
 }
 
 void UIManager::updateScore(int first, int second)
@@ -50,7 +55,7 @@ void UIManager::installComponents(mv::Cache<sf::Texture>& iconTexture, const sf:
                                 static_cast<int>(mv::constants::defaults::ICON_DIMENSIONS.y))
                         );
 
-        this->getComponent<ProperBody>()->setCenter();
+        this->getComponent<ProperBody>()->setCenter(label);
         this->getComponent<ProperBody>()->getAs<sf::Sprite>(label).setPosition(pos);
     };
 
@@ -69,7 +74,22 @@ void UIManager::installComponents(mv::Cache<sf::Texture>& iconTexture, const sf:
             +view.getCenter().y-view.getSize().y/2.f);
 }
 
-void UIManager::installTexts()
+void UIManager::installTexts(int ammo, int health)
 {
+    std::function<void(const std::string&, const std::string&, const std::string& , const sf::Vector2f&)> textPropeties
+    = [=](const std::string& labelText, const std::string& labelIcon, const std::string& str, const sf::Vector2f& shift)
+            {
+                this->getComponent<ProperBody>()->appendType<sf::Text>(labelText);
+                this->getComponent<ProperBody>()->setCenter(labelText);
+                this->getComponent<ProperBody>()->getAs<sf::Text>(labelText).setFont(font);
+                this->getComponent<ProperBody>()->getAs<sf::Text>(labelText).setString(str);
+                this->getComponent<ProperBody>()->getAs<sf::Text>(labelText).setPosition(
+                        this->getComponent<ProperBody>()->getAs<sf::Sprite>(labelIcon).getPosition()+shift);
+            };
 
+    textPropeties("ammo_text","ammo",std::to_string(ammo),
+            sf::Vector2f{0.5f*this->getComponent<ProperBody>()->getAs<sf::Sprite>("ammo").getLocalBounds().width,0});
+
+    textPropeties("health_text","health",std::to_string(health),
+                  sf::Vector2f{0.5f*this->getComponent<ProperBody>()->getAs<sf::Sprite>("health").getLocalBounds().width,0});
 }

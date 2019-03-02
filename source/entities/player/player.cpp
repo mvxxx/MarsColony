@@ -116,6 +116,7 @@ void Player::installComponents(const sf::Vector2f& position, mv::Cache<sf::Textu
     this->getComponent<ProperBody>()->getAs<sf::Sprite>("bottom").setPosition( position );
     this->setWeaponSettings(position,"primary_weapon",weapon_t::machine_gun, weaponsTexture);
     this->setWeaponSettings(position,"secondary_weapon",weapon_t::rocket_launcher, weaponsTexture);
+    this->secondary = weapon_t::rocket_launcher;
 }
 
 void Player::setWeaponSettings(const sf::Vector2f& position, const std::string& label, weapon_t type,
@@ -210,4 +211,20 @@ void Player::setRelativePosition(const std::string& name, const weapon_t& label)
     float new_Y = 0.5f * static_cast<float>(sprite.getLocalBounds().width*std::sin(Utilities::degreeToRadian(sprite.getRotation())));
     this->getComponent<ProperBody>()->getAs<sf::Sprite>(name).setPosition(sprite.getPosition() + sf::Vector2f{sign*new_X,sign*new_Y});
 }
+
+Player::weapon_t Player::getTypeOfSecondaryWeapon()
+{
+    return this->secondary;
+}
+
+int Player::getAmmo(const Player::weapon_t &type)
+{
+    return this->ammo[type];
+}
+
+int Player::getHealth()
+{
+    return this->health;
+}
+
 

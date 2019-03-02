@@ -84,6 +84,11 @@ namespace mv
 			{
 				constexpr auto CANNOT_BE_NULLPTR = "Pointer to component can't be nullptr!";
 			}
+
+			namespace uimanager
+			{
+		    	constexpr auto FONT_NOT_LOADED = "Can't load font";
+			}
 		}
 
 		namespace defaults
@@ -97,6 +102,8 @@ namespace mv
 			const sf::Vector2f CELL_DIMENSION = {64,64};
 			const sf::Vector2f WEAPON_DIMENSIONS = {70,70};
             const sf::Vector2f ICON_DIMENSIONS = {70,70};
+            constexpr auto health = 100;
+            constexpr auto ammo = 50;
 		}
 
 		namespace path
@@ -110,6 +117,7 @@ namespace mv
 			constexpr auto ICON_TEXTURE_ATLAS = "data/textures/iconAtlas.png";
             constexpr auto BULLET_TEXTURE_ATLAS = "data/textures/bulletAtlas.png";
             constexpr auto SCOREBOARD = "data/textures/scoreboard.png";
+            constexpr auto FONT = "data/fonts/chargen.ttf";
         }
 
 		namespace event_flags
